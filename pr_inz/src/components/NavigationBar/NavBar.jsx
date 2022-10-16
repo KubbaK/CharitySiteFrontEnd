@@ -7,18 +7,17 @@ class NavBar extends React.Component{
         return(
             <nav className={styles.navbar}>
                 <h1>Witaj, 123</h1>
-                
-                <ul className={styles.ul}>  
-                    <div className={styles.dropdown}>
-                        <li className={styles.li}><a >Przegląd akcji</a></li>
+                <div className={styles.dropdown}>
+                        <a href="#" >Przegląd akcji</a>
                         <div className={styles.dropdownContent}>
-                            <a href="#">JEDEN</a>
-                            <a href="#">JEDEN</a>
-                            <a href="#">JEDEN</a>
+                            <a href="#">Zobacz akcje wolontariackie</a>
+                            <a href="#">Zobacz zbiórki pieniężne</a>
+                            <a href="#">Zobacz wszystkie zbiórki</a>
                         </div>
                     </div>
-                    <li className={styles.li}><a >Przegląd akcji</a></li>
-                    <li className={styles.li}><a >Utwórz akcję</a></li>
+                <ul className={styles.ul}>     
+                    <li className={styles.li}><a >Nowa akcja</a></li>
+                    <li className={styles.li}><a >Utwórz akcję</a></li> 
                 </ul>
                 <SettingsIcon className={styles.sicon}></SettingsIcon>
             </nav>
