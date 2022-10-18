@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
-import styles from "./SignUp.module.scss"
+import styles from "./Login.module.scss"
 import NavBar from "../NavigationBar/NavBar.jsx"
-const SignUp = () => {
+const Login = () => {
     const [data, setData] = useState({
         login: "",
         email: "",
@@ -19,7 +19,7 @@ const SignUp = () => {
         try {
             const url = "http://localhost:7500/register"
             const { data: res } = await axios.post(url, data)
-            navigate("/login")
+            navigate("/signup")
             console.log(res.message)
         } catch (error) {
             if (
@@ -31,47 +31,31 @@ const SignUp = () => {
             }
         }
     }
-    const text = "Założyłeś już konto? \n Zaloguj się!";
+    const text = " Nie masz konta? \n Zarejestruj się!";
     return (
         <div>
         <NavBar/>
-        <div className={styles.signup_container}>
+        <div className={styles.login_container}>
             
-            <div className={styles.signup_form_container}>
+            <div className={styles.login_form_container}>
                 
                 <div className={styles.center}>
                     <form className={styles.form_container}
                         onSubmit={handleSubmit}>
-                        <h1>Zakładanie konta</h1>
-                        <input type="text"
-                        placeholder="Login"
-                        name="login"
-                        onChange={handleChange}
-                        value={data.login}
-                        required
-                        className={styles.input}
-/>
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            name="email"
+                        <h1>Logowanie</h1>
+                        
+                        <input 
+                            type="text"
+                            placeholder="Login/Email"
+                            name="login"
                             onChange={handleChange}
-                            value={data.email}
+                            value={data.login}
                             required
                             className={styles.input}
-                        />
+/>
                         <input
                             type="password"
                             placeholder="Hasło"
-                            name="password"
-                            onChange={handleChange}
-                            value={data.password}
-                            required
-                            className={styles.input}
-                        />
-                        <input
-                            type="password"
-                            placeholder="Powtórz hasło"
                             name="password"
                             onChange={handleChange}
                             value={data.password}
@@ -82,17 +66,17 @@ const SignUp = () => {
                             className={styles.error_msg}>{error}</div>}
                         <button type="submit"
                             className={styles.blue_btn}>
-                            Zarejestruj się
+                            Zaloguj się
                         </button>
                     </form>
                 </div>
                 <div className={styles.bottom}>
                     
                     <h1>{text}</h1>
-                    <Link to="/login">
+                    <Link to="/signup">
                         <button type="button"
                             className={styles.login_btn}>
-                            Zaloguj się
+                            Zarejestruj się
                         </button>
                     </Link>
                 </div>
@@ -102,4 +86,4 @@ const SignUp = () => {
         
     );
 };
-export default SignUp
+export default Login
