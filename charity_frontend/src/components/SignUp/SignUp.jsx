@@ -8,6 +8,7 @@ const SignUp = () => {
         login: "",
         email: "",
         password: "",
+        confirmPassword: "",
     })
     const [error, setError] = useState("")
     const navigate = useNavigate()
@@ -17,7 +18,7 @@ const SignUp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const url = "http://localhost:7500/register"
+            const url = "http://localhost:5012/v1/Account/register"
             const { data: res } = await axios.post(url, data)
             navigate("/login")
             console.log(res.message)
@@ -72,9 +73,9 @@ const SignUp = () => {
                         <input
                             type="password"
                             placeholder="Powtórz hasło"
-                            name="password"
+                            name="confirmPassword"
                             onChange={handleChange}
-                            value={data.password}
+                            value={data.confirmPassword}
                             required
                             className={styles.input}
                         />

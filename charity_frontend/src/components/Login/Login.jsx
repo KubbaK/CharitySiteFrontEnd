@@ -5,8 +5,7 @@ import styles from "./Login.module.scss"
 import NavBar from "../NavigationBar/NavBar.jsx"
 const Login = () => {
     const [data, setData] = useState({
-        login: "",
-        email: "",
+        loginOrEmail: "",
         password: "",
     })
     const [error, setError] = useState("")
@@ -17,7 +16,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const url = "http://localhost:7500/register"
+            const url = "http://localhost:5012/v1/Account/login"
             const { data: res } = await axios.post(url, data)
             navigate("/signup")
             console.log(res.message)
@@ -47,9 +46,9 @@ const Login = () => {
                         <input 
                             type="text"
                             placeholder="Login/Email"
-                            name="login"
+                            name="loginOrEmail"
                             onChange={handleChange}
-                            value={data.login}
+                            value={data.loginOrEmail}
                             required
                             className={styles.input}
 />
