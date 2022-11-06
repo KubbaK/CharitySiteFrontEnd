@@ -3,22 +3,36 @@ import styles from './UserPanel.module.scss'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import { style } from "@mui/system";
+import {Link,Navigate, useNavigate} from 'react-router-dom';
+import {useCookies} from "react-cookie"
 
-class UserPanel extends React.Component{
-    render(){
+const UserPanel = () =>{
+    const [jwtcookie,,RemoveJwtcookie] = useCookies(["jwt"]);
+    const navigate = useNavigate()
+    const handleLogout = () =>{
+        RemoveJwtcookie("jwt")
+        navigate("/login")
+    }
         return(
             <div className={styles.dropdown}>
                 <ArrowDropDownIcon className={styles.arrowdd}/> 
                 <div className={styles.ddContainer}>
-                <Stack direction="column" spacing={1}>
-                    <Button className={styles.button} variant="contained">Moje konto</Button>
-                    <Button className={styles.button} variant="contained">Wyloguj się</Button>
-                </Stack>
+                   {jwtcookie.jwt == undefined &&
+                    <Stack direction="column" spacing={1} marginTop={3} alignItems="center" >
+                        <Link to="/Login"><Button className={styles.button} variant="contained">Zaloguj się</Button></Link>
+                        <Button className={styles.button} variant="contained">Zarejestruj się</Button>
+                    </Stack>
+                   } 
+                   {jwtcookie.jwt != undefined &&
+                     <Stack direction="column" spacing={1} marginTop={3} alignItems="center" >
+                        <Link to="/Login"><Button className={styles.button} variant="contained">Moje konto</Button></Link>
+                        <Button className={styles.button} variant="contained" onClick={handleLogout}>Wyloguj się</Button>
+                     </Stack>   
+                   }
+                
                 </div>
             </div>
         );
-    }
 }
 
 export default UserPanel

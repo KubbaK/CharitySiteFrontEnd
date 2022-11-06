@@ -15,6 +15,7 @@ const SignUp = () => {
     const handleChange = ({ currentTarget: input }) => {
         setData({ ...data, [input.name]: input.value })
     }
+    
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
@@ -90,7 +91,7 @@ const SignUp = () => {
                 <div className={styles.bottom}>
                     
                     <h1>{text}</h1>
-                    <Link to="/login">
+                    <Link to="/login" style={{textDecoration: 'none'}}>
                         <button type="button"
                             className={styles.login_btn}>
                             Zaloguj się

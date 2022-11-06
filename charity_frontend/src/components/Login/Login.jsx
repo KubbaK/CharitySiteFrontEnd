@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import {useCookies} from "react-cookie"
 import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
 import styles from "./Login.module.scss"
@@ -8,17 +9,20 @@ const Login = () => {
         loginOrEmail: "",
         password: "",
     })
-    const [error, setError] = useState("")
-    const navigate = useNavigate()
     const handleChange = ({ currentTarget: input }) => {
         setData({ ...data, [input.name]: input.value })
     }
+    const [error, setError] = useState("")
+    const [jwtcookie, setJwtcookie] = useCookies(["jwt"]);
+    const navigate = useNavigate()
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
             const url = "http://localhost:5012/v1/Account/login"
             const { data: res } = await axios.post(url, data)
-            navigate("/signup")
+            setJwtcookie("jwt",res,{ path: '/' })
+            navigate("/")
             console.log(res.message)
         } catch (error) {
             if (
@@ -32,7 +36,7 @@ const Login = () => {
     }
     const text = " Nie masz konta? \n Zarejestruj się!";
     return (
-        <div>
+        <div> 
         <NavBar/>
         <div className={styles.login_container}>
             
@@ -72,7 +76,7 @@ const Login = () => {
                 <div className={styles.bottom}>
                     
                     <h1>{text}</h1>
-                    <Link to="/signup">
+                    <Link to="/signup" style={{textDecoration: 'none'}}>
                         <button type="button"
                             className={styles.login_btn}>
                             Zarejestruj się

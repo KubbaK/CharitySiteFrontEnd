@@ -13,19 +13,41 @@ $nav-height: 70px;
 }
 
 .ddContainer {
-	display: none;
+	//display: none;
+	visibility: hidden;
 	position:absolute;
-	height: auto;
-	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+	background-color: rgba(#67809f,0.9);
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,1.0);
 	padding-top: 1px;
-    margin-left: -50px;
-	width: calc(100% - 51.5px);
+	margin-top: -10px;
+    margin-left: -60px;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	width: 170px;
+	height:0;
 	z-index: 100;
 }
 
-.dropdown:hover .ddContainer{display: block;}
+.dropdown:hover .ddContainer {
+	visibility: visible;
+	height: 220px;
+	transition-property: all;
+    transition-duration: 0.5s; }
+
+.dropdown:hover .dropdown{
+}
 
 .button{
     width: 150px;
-    position:absolute;
+	height: 0px;
+    position:relative;
+}
+
+.dropdown:hover .button{
+	height:80px;
+	transition-property: all;
+    transition-duration: 0.5s; 
+}
+.dropdown:hover .arrowdd{
+	color: rgba(blue,0.7);
 }
