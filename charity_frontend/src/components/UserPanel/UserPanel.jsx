@@ -3,7 +3,7 @@ import styles from './UserPanel.module.scss'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import {Link,Navigate, useNavigate} from 'react-router-dom';
+import {Link,useNavigate} from 'react-router-dom';
 import {useCookies} from "react-cookie"
 
 const UserPanel = () =>{
@@ -17,15 +17,15 @@ const UserPanel = () =>{
             <div className={styles.dropdown}>
                 <ArrowDropDownIcon className={styles.arrowdd}/> 
                 <div className={styles.ddContainer}>
-                   {jwtcookie.jwt == undefined &&
+                   {jwtcookie.jwt === undefined &&
                     <Stack direction="column" spacing={1} marginTop={3} alignItems="center" >
                         <Link to="/Login"><Button className={styles.button} variant="contained">Zaloguj się</Button></Link>
-                        <Button className={styles.button} variant="contained">Zarejestruj się</Button>
+                        <Link to="/SignUp"><Button className={styles.button} variant="contained">Zarejestruj się</Button></Link>
                     </Stack>
                    } 
-                   {jwtcookie.jwt != undefined &&
+                   {jwtcookie.jwt !== undefined &&
                      <Stack direction="column" spacing={1} marginTop={3} alignItems="center" >
-                        <Link to="/Login"><Button className={styles.button} variant="contained">Moje konto</Button></Link>
+                        <Link to="/Account"><Button className={styles.button} variant="contained">Moje konto</Button></Link>
                         <Button className={styles.button} variant="contained" onClick={handleLogout}>Wyloguj się</Button>
                      </Stack>   
                    }

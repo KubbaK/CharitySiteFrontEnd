@@ -1,19 +1,48 @@
 import React from "react";
 import styles from './EventContainer.module.scss'
 import Box from '@mui/system/Box';
+import PhotoContainer from "../PhotoContainer/PhotoContainer";
+import {useNavigate} from 'react-router-dom';
+import Image1 from '../images/jest.png'
 
-class EventContainer extends React.Component{
-    render(){
+const EventContainer= (props) => {
+    const navigate = useNavigate()
+    const handleClick = () => {
+        navigate("/login")
+    }
         return(
-            <div className={styles.Box} onClick={this.props.onClick}>
-            <Box name="boxik" color="white" bgcolor="lightgreen" p={1} sx={{ borderRadius: 15 }}>
-                <h2>Tytuł ogłoszenia: {this.props.name}</h2>
-                <h3 className={styles.h3}>{this.props.name2}</h3>
+            <div className={styles.Box}>
+            <Box className={styles.box} name="boxik" sx={{ borderRadius: 15 }} onClick={handleClick}> 
+            <PhotoContainer image={Image1}/>   
+                <h2>TUTAJ BĘDZIE TYTUŁ{props.name}</h2>
+                <h3 className={styles.h3}>a tutaj będzie skrócony opis zbiórki,ograniczony
+                    ilością słów żeby ładnie mieściło się wszystko w komponencie{props.name2}</h3>
             </Box>
+            <Box className={styles.box} name="boxik" sx={{ borderRadius: 15 }}> 
+            <PhotoContainer image={Image1}/>   
+                <h2>TUTAJ BĘDZIE TYTUŁ{props.name}</h2>
+                <h3 className={styles.h3}>a tutaj będzie skrócony opis zbiórki{props.name2}</h3>
+            </Box>
+            <Box className={styles.box} name="boxik" sx={{ borderRadius: 15 }}> 
+            <PhotoContainer image={Image1}/>   
+                <h2>TUTAJ BĘDZIE TYTUŁ{props.name}</h2>
+                <h3 className={styles.h3}>a tutaj będzie skrócony opis zbiórki{props.name2}</h3>
+            </Box>
+            <Box className={styles.box} name="boxik" sx={{ borderRadius: 15 }}> 
+            <PhotoContainer image={Image1}/>   
+                <h2>TUTAJ BĘDZIE TYTUŁ{props.name}</h2>
+                <h3 className={styles.h3}>a tutaj będzie skrócony opis zbiórki{props.name2}</h3>
+            </Box>
+            <Box className={styles.box} name="boxik" sx={{ borderRadius: 15 }}> 
+            <PhotoContainer image={Image1}/>   
+                <h2>TUTAJ BĘDZIE TYTUŁ{props.name}</h2>
+                <h3 className={styles.h3}>a tutaj będzie skrócony opis zbiórki{props.name2}</h3>
+            </Box>
+            
             </div>
         );
-    }
 }
 
 
 export default EventContainer
+

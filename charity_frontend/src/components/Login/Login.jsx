@@ -13,7 +13,7 @@ const Login = () => {
         setData({ ...data, [input.name]: input.value })
     }
     const [error, setError] = useState("")
-    const [jwtcookie, setJwtcookie] = useCookies(["jwt"]);
+    const [, setJwtcookie] = useCookies(["jwt"]);
     const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
