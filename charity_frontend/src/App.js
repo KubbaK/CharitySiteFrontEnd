@@ -13,6 +13,7 @@ function App() {
       <Route path="/login" exact element={<Login />} />
       <Route path="" exact element={<MainPage/>}/>
     </Routes>
+    
   );
 }
 

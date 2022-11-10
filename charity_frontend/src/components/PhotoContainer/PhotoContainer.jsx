@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './PhotoContainer.module.scss'
+import styles from './PhotoContainers.module.scss'
 import Box from '@mui/system/Box';
 
 const PhotoContainer = (props) =>{

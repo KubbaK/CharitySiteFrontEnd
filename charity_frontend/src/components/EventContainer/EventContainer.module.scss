@@ -10,6 +10,7 @@
     display:flex;
     flex-flow: row wrap;
     margin-left: 50px;
+    
 }
 .h3{
   display: block;
@@ -19,27 +20,21 @@
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: small;
+  
 }
 
 .box{
   margin-left: 10px;
   color:white; 
   background-color:lightblue; 
-  height:350px;
+  height:370px;
   max-width:350px;
   border-style: solid;
   border: 3px solid rgba(42, 91, 195, 0.3);
-  flex: 0 0 33.3333%
+  flex: 0 0 33.3333%;
+  position: relative;
 }
 
-.progress{
-  width: 300px;
-  margin-left: 20px;
-}
-
-.progress label{
-  color: pink;
-}
 
 .box:hover{
   cursor: pointer;

@@ -1,0 +1,30 @@
+.image{
+    overflow: hidden;
+    width: 800px;
+    height: 380px;
+    margin-left: 235px;
+    z-index: 10;
+    position: relative;
+    border-radius: 10px;
+}
+.textbox{
+    -webkit-text-stroke: 1.5px black;
+    color:white;
+    background-color: white;
+    opacity: 0.75;
+    width:800px;
+    height: 120px;
+    font-size: 25px;
+    z-index: 15;
+    margin-top: 260px;
+    position: absolute;
+    margin-left:235px;
+    border-bottom-left-radius: 8.8px;
+    border-bottom-right-radius: 8.8px;
+}
+
+.text{
+    left:85px;
+    bottom:-50px;
+    position: absolute;
+}
