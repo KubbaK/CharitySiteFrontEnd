@@ -39,7 +39,7 @@ const NavBar = (props) =>{
                             titlebutton = {'Przegląd akcji'}/>
                 <ul className={styles.ul}>     
                     <li className={styles.li}><a >Nowa akcja</a></li>
-                    <li className={styles.li}><a >Utwórz akcję</a></li>
+                    <li className={styles.li}><Link to="/form" style={{textDecoration: 'none'}}>Utwórz akcję</Link></li>
                     <li className={styles.spacer}><p></p></li>
                     <li className={styles.li}><Link to="/" style={{textDecoration: 'none'}}>Strona główna</Link></li>
                 </ul>

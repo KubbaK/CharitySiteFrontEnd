@@ -4,6 +4,7 @@ import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
 import styles from "./Login.module.scss"
 import NavBar from "../NavigationBar/NavBar.jsx"
+
 const Login = () => {
     const [data, setData] = useState({
         loginOrEmail: "",
@@ -36,10 +37,9 @@ const Login = () => {
     }
     const text = " Nie masz konta? \n Zarejestruj się!";
     return (
-        <div> 
+        <div className={styles.loginPage}> 
         <NavBar/>
         <div className={styles.login_container}>
-            
             <div className={styles.login_form_container}>
                 
                 <div className={styles.center}>
@@ -55,7 +55,7 @@ const Login = () => {
                             value={data.loginOrEmail}
                             required
                             className={styles.input}
-/>
+                        />
                         <input
                             type="password"
                             placeholder="Hasło"
@@ -83,9 +83,12 @@ const Login = () => {
                         </button>
                     </Link>
                 </div>
+               
             </div> 
+               
+        </div>                 
         </div>
-        </div>
+        
         
     );
 };

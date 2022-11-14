@@ -1,14 +1,15 @@
 import React from 'react';
 import styles from './DropdownList.module.scss'
+import { Link } from "react-router-dom"
 
 const DropdownList = (props) => {
         return(
             <div className={styles.dropdown}>
-                <a href="#" >{props.titlebutton}</a>
+                <Link to="/eventTypeChoose"><div className={styles.a}>{props.titlebutton}</div></Link>
                 <div className={styles.dropdownContent}>
-                    <a href="#">{props.data1}</a>
-                    <a href="#">{props.data2}</a>
-                    <a href="#">{props.data3}</a>
+                    <div className={styles.a}>{props.data1}</div>
+                    <div className={styles.a}>{props.data2}</div>
+                    <div className={styles.a}>{props.data3}</div>
                 </div>
             </div>
         )

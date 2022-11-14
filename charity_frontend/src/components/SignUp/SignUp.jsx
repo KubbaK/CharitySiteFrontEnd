@@ -99,7 +99,7 @@ const SignUp = () => {
                     </Link>
                 </div>
             </div> 
-        </div>
+        </div>                
         </div>
         
     );
