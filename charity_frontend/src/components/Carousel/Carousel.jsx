@@ -11,7 +11,7 @@ const contentStyle = {
   lineHeight: '160px',
   textAlign: 'center',
   background: '#f5f0d7',
-  marginTop: '100px',
+  marginTop: '0px',
 };
 const CarouselStyled = styled(Carousel)`
      .slick-dots li button{

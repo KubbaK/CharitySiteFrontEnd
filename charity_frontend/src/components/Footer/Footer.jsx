@@ -1,12 +1,14 @@
 import React from "react";
 import styles from './Footer.module.scss'
 import CopyrightIcon from '@mui/icons-material/Copyright';
+import Regulamin from "../FooterPopUps/Regulamin";
+import ContactUs from "../FooterPopUps/ContactUs";
 
 const Footer = () => (
     <div className={styles.footer}>
       <div className={styles.firstline}>Copyright  2022 <CopyrightIcon fontSize=""/> JK ŁK KŁ   </div>
-      <div className={styles.secondline}>Contact Us</div>
-      <div className={styles.thirdline}>Privacy Policy</div>
+      <div className={styles.secondline}><ContactUs/></div>
+      <div className={styles.thirdline}><Regulamin/></div>
     </div>
   );
   

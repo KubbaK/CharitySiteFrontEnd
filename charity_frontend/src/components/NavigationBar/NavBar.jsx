@@ -1,12 +1,17 @@
 import React,{useEffect,useState} from 'react';
 import axios from "axios"
-import {Link} from "react-router-dom"
+import {Link} from 'react-router-dom';
 import styles from './NavBar.module.scss'
 import SettingsIcon from '@mui/icons-material/Settings';
 import DropdownList from "../DropdownList/DropdownList";
 import UserPanel from "../UserPanel/UserPanel";
+import {useCookies} from "react-cookie"
+import MyDialog from '../Dialog/MyDialog';
 
 const NavBar = (props) =>{
+    const [opened, setShowOpened] = useState(false);
+    const [jwtcookie,,RemoveJwtcookie] = useCookies(["jwt"]);
+
     const [error, setError] = useState("")
     const [data, getData] = useState([])
     useEffect(() => {
@@ -37,14 +42,20 @@ const NavBar = (props) =>{
                     data2 = {'Zobacz zbiórki pieniężne'}
                         data3 = {'Zobacz wszystkie zbiórki'}
                             titlebutton = {'Przegląd akcji'}/>
-                <ul className={styles.ul}>     
-                    <li className={styles.li}><a >Nowa akcja</a></li>
-                    <li className={styles.li}><Link to="/form" style={{textDecoration: 'none'}}>Utwórz akcję</Link></li>
+                <ul className={styles.ul}>
+                    { jwtcookie.jwt !== undefined &&     
+                        <li className={styles.li}><Link to="/form" style={{textDecoration: 'none'}}>Utwórz akcję</Link></li>
+                    } 
+                    { jwtcookie.jwt === undefined &&
+                           <li className={styles.li} onClick={() => setShowOpened(true)}><Link to="" style={{textDecoration: 'none'}}>Utwórz akcję</Link></li>
+                    }   
                     <li className={styles.spacer}><p></p></li>
                     <li className={styles.li}><Link to="/" style={{textDecoration: 'none'}}>Strona główna</Link></li>
+                     
                 </ul>
                 <UserPanel/>
                 <SettingsIcon className={styles.sicon}></SettingsIcon>
+                <MyDialog open={opened}/>
             </nav>
         );
 }

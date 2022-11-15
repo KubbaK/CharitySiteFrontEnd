@@ -1,0 +1,95 @@
+
+.sub_btn {
+	border: none;
+	outline: none;
+	padding: 12px 0;
+	background-color: rgb(254, 247, 215);
+	border-radius: 20px;
+    border:2px solid black;
+    box-shadow: 0 0 1px 1px black;
+	width: 150px;
+	font-weight: bold;
+	font-size: 14px;
+	cursor: pointer;
+    margin-bottom: 30px;
+    position: relative;
+    left:41%;
+}
+.page_title{
+	position: relative;
+    left:40%;
+    margin-top: 80px;
+}
+
+.form_box{
+	margin-left: 250px;
+    width: 60%;
+    background-color: white;
+    border-radius: 40px;
+}
+.field1,.field2,.field3,.field4{
+	margin-bottom: 20px;
+    position: relative;
+    text-align: center;
+}
+.field1_label{
+	margin-bottom: 200px;
+}
+
+.input{
+	width: 500px;
+	height: 40px;
+    font-size: 20px;
+    background-color: rgb(254, 247, 215);
+    color: black;
+    border-radius: 5px;
+}
+
+.input2{
+	width: 500px;
+	height: 150px;
+    font-size: 18px;
+    background-color: rgb(254, 247, 215);
+    color: black;
+    border-radius: 5px;
+}
+
+.input3{
+	width: 500px;
+	height: 50px;
+    background-color: rgb(254, 247, 215);
+    color: black;
+    border-radius: 5px;
+}
+
+.input4{
+	width: 500px;
+	height: 50px;
+    background-color: rgb(254, 247, 215);
+    color: black;
+    border-radius: 5px;
+}
+
+.message{
+	margin-left: 80px;
+    text-align: center;
+}
+
+.main_container{
+	margin:0;
+	height: 100vh;
+}
+
+.select{
+	width: 310px;
+	margin-bottom: 20px;
+    text-align: center;
+    position:relative;
+    left: 27.7%;
+}
+
+
+.selectLabel{
+    left: 28%;
+    position: relative;
+}
