@@ -5,8 +5,7 @@ import NavBar from "../NavigationBar/NavBar.jsx"
 import EventFormVolunteering from '../EventForm/EventFormVolunteering';
 import EventFormBoth from '../EventForm/EventFormBoth';
 import {useCookies} from "react-cookie"
-import axios from 'axios';
-import jwtDecode from 'jwt-decode';
+
 
 const FormComponent = () =>{
     const [rodzaj,setRodzaj] = useState("donate");
@@ -16,7 +15,6 @@ const FormComponent = () =>{
     const [bothVisible,setBoth] = useState(false);
 
     const [jwtcookie,,] = useCookies(["jwt"]);
-    
     useEffect(() => {
         rodzaj === "donate"
         ? setDonate(true)
@@ -28,6 +26,7 @@ const FormComponent = () =>{
         ? setBoth(true)
         : setBoth(false);
      } ,[rodzaj]);
+
     function handleOnChange(event) {
             setRodzaj(event.target.value);
         }  

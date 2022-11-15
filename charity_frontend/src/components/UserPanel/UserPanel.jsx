@@ -25,7 +25,7 @@ const UserPanel = () =>{
                    } 
                    {jwtcookie.jwt !== undefined &&
                      <Stack direction="column" spacing={1} marginTop={3} alignItems="center" >
-                        <Link to="/Account"><Button className={styles.button} variant="contained">Moje konto</Button></Link>
+                        <Link to="/userAccount"><Button className={styles.button} variant="contained">Moje konto</Button></Link>
                         <Button className={styles.button} variant="contained" onClick={handleLogout}>Wyloguj się</Button>
                      </Stack>   
                    }
