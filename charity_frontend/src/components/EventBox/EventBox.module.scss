@@ -1,0 +1,46 @@
+.h2{
+    text-align: center;
+    position: relative;
+    font-weight: bold;
+    bottom: 20px;
+    margin-left: 1px;
+    margin-right: 1px;
+    line-height: 1.3em;
+    max-height: 3.9em;
+    overflow: hidden;
+}
+
+.h3{
+    display: block;
+    width: 95%;
+    margin-left: 8px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: small;
+    position: relative;
+    bottom: 35px;
+  }
+  
+  .box{
+    margin-left: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color:white; 
+    background-color:lightblue; 
+    height:405px;
+    max-width:350px;
+    border-style: solid;
+    border: 3px solid rgba(42, 91, 195, 0.3);
+    flex: 0 0 33.3333%;
+    position: relative;
+  }
+  
+  
+  .box:hover{
+    cursor: pointer;
+    box-shadow: 10px 3px 3px -15px rgb(0 0 0 / 20%),
+      0px 3px 4px 5px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+  }
+
+ 

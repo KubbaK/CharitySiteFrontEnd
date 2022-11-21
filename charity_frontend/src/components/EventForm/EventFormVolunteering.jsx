@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import styles from './EventFormVolunteering.module.scss'
-import jwt_decode from 'jwt-decode'
+import jwtDecode from 'jwt-decode'
 import Footer from "../Footer/Footer.jsx"
 import axios from 'axios';
+import {useCookies} from "react-cookie"
+import { useNavigate } from 'react-router-dom';
 
 const EventFormVolunteering = () => {
     const [title, setTitle] = useState("");
@@ -11,28 +13,37 @@ const EventFormVolunteering = () => {
     const [volunteers, setVolunteers] = useState("");
     const [message, setMessage] = useState("");
 
+    const [jwtcookie,,] = useCookies(["jwt"]);
+    const navigate = useNavigate()
+    const token = jwtcookie.jwt
+    const decoded = jwtDecode(token)
+    const id = decoded.Id
+    const sleep = ms => new Promise(
+        resolve => setTimeout(resolve, ms)
+      );
+
     const handleSubmit = async(e) => {
-        const token = jwt_decode(localStorage.getItem("token"))
-        const id = token._id
         e.preventDefault();
         try{
-            let res = await axios.post("http://localhost:7500/sales",{
+            let res = await axios.post("http://localhost:5012/v1/CharityEvent",{
                 isVolunteering: true,
                 isFundraising: false,
                 title: title,
                 description: description,
-                organizerId: 0,
+                organizerId: id,
+                imageId : 1,
                 fundTarget: fundTarget,
-                amountOfMoneyToCollect: volunteers,
-                amountOfNeededVolunteers: 0
+                amountOfMoneyToCollect: 0,
+                amountOfNeededVolunteers: volunteers
             },
-            {headers:{'x-access-token': localStorage.getItem("token")}})
-            console.log(res)
+            {headers:{Authorization: `Bearer ${token}`}})
             if (res.status === 200) {
                 setMessage("Dodano ogłoszenie!");
+                await sleep(2000)
+                navigate("/")
                 console.log(res)
               } else {
-                setMessage("Spróbuj jeszcze raz");
+                setMessage("Spróbuj jeszcze raz"); 
                 
               }
             } catch (err) {

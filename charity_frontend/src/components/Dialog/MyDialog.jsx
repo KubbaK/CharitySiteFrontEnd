@@ -3,7 +3,12 @@ import {React, useState, useEffect } from 'react'
 import {Link} from 'react-router-dom'
 
 const MyDialog = (props) => {
-    const [open,setOpen] = useState({...props.open})
+    const [open,setOpen] = useState(false)
+    const exit = () =>
+    {
+        setOpen(false)
+        props.setShowOpened(false)
+    }
     useEffect(() => {
         setOpen(props.open);
     }, [props.open])
@@ -18,8 +23,8 @@ const MyDialog = (props) => {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={() => setOpen(false)}>Wróć</Button>
-                    <Link to="/login"><Button onClick={() => setOpen(false)}>Strona logowania</Button></Link>
+                    <Button onClick={exit}>Wróć</Button>
+                    <Link to="/login"><Button onClick={exit}>Strona logowania</Button></Link>
                 </DialogActions>
             </Dialog>
         </>

@@ -4,11 +4,8 @@ import EventContainer from "../EventContainer/EventContainer.jsx"
 import Footer from "../Footer/Footer.jsx"
 import styles from './MainPage.module.scss'
 import CarouselComponent from "../Carousel/Carousel.jsx"
-import { useCookies } from "react-cookie"
 
 const MainPage = (props) =>{
-    const [jwtcookie] = useCookies(['jwt'])
-    console.log(jwtcookie.jwt)
     return(
         <div className={styles.page}>
             <NavBar/>

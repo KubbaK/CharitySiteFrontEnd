@@ -3,11 +3,19 @@ import styles from './UserPanel.module.scss'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import jwtDecode from 'jwt-decode'
 import {Link,useNavigate} from 'react-router-dom';
 import {useCookies} from "react-cookie"
 
 const UserPanel = () =>{
     const [jwtcookie,,RemoveJwtcookie] = useCookies(["jwt"]);
+    const token = jwtcookie.jwt
+    let roles = ""
+    if(token !== undefined){
+        const decoded = jwtDecode(token)
+        roles = decoded.Roles
+    }
+    
     const navigate = useNavigate()
     const handleLogout = () =>{
         RemoveJwtcookie("jwt")
@@ -23,9 +31,15 @@ const UserPanel = () =>{
                         <Link to="/SignUp"><Button className={styles.button} variant="contained">Zarejestruj się</Button></Link>
                     </Stack>
                    } 
-                   {jwtcookie.jwt !== undefined &&
+                   {(jwtcookie.jwt !== undefined && roles === "Volunteer") &&
                      <Stack direction="column" spacing={1} marginTop={3} alignItems="center" >
                         <Link to="/userAccount"><Button className={styles.button} variant="contained">Moje konto</Button></Link>
+                        <Button className={styles.button} variant="contained" onClick={handleLogout}>Wyloguj się</Button>
+                     </Stack>   
+                   }
+                   {(jwtcookie.jwt !== undefined && roles === "Admin") &&
+                     <Stack direction="column" spacing={1} marginTop={3} alignItems="center" >
+                        <Link to="/adminPanel"><Button className={styles.button} variant="contained">Panel Administratora</Button></Link>
                         <Button className={styles.button} variant="contained" onClick={handleLogout}>Wyloguj się</Button>
                      </Stack>   
                    }

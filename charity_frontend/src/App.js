@@ -7,9 +7,10 @@ import MainPage from './components/MainPage/MainPage';
 import EventTypeChoose from './components/EventTypeChoose/EventTypeChoose';
 import FormComponent from './components/FormComponent/FormComponent';
 import UserAccount from './components/UserAccount/UserAccount';
+import AdminPanel from './components/AdminPanel/AdminPanel';
+import GetEvent from './components/GetEvent/GetEvent';
 
 function App() {
-  //const user = localStorage.getItem("token")
   return (
     <Routes>
       <Route path="/signup" exact element={<Signup />} />
@@ -18,6 +19,8 @@ function App() {
       <Route path="/eventTypeChoose" exact element={<EventTypeChoose/>}/>
       <Route path="/form" exact element={<FormComponent/>}/>
       <Route path="/userAccount" exact element={<UserAccount/>}/>
+      <Route path="/adminPanel" exact element={<AdminPanel/>}/>
+      <Route path="/getEvents" exact element={<GetEvent/>}/>
     </Routes>
     
   );

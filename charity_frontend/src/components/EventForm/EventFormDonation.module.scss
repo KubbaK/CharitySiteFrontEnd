@@ -27,7 +27,7 @@
     background-color: white;
     border-radius: 40px;
 }
-.field1,.field2,.field3,.field4{
+.field1,.field2,.field3,.field4,.field5{
 	margin-bottom: 20px;
     position: relative;
     text-align: center;
@@ -66,6 +66,14 @@
 	width: 500px;
 	height: 50px;
     background-color: rgb(254, 247, 215);
+    color: black;
+    border-radius: 5px;
+}
+
+.inputIm{
+	width: 200px;
+	height: 25px;
+    margin-top: 10px;
     color: black;
     border-radius: 5px;
 }

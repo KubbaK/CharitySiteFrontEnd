@@ -4,7 +4,6 @@ import jwtDecode from 'jwt-decode'
 import Footer from "../Footer/Footer.jsx"
 import axios from 'axios';
 import {useCookies} from "react-cookie"
-import SelectInput from '@mui/material/Select/SelectInput';
 import { useNavigate } from 'react-router-dom';
 
 const EventFormDonation = () => {
@@ -12,6 +11,7 @@ const EventFormDonation = () => {
     const [description, setDescription] = useState("");
     const [fundTarget, setFundTarget] = useState("");
     const [money, setMoney] = useState("");
+    const [selectedFile, setSelectedFile] = useState(null);
     const [message, setMessage] = useState("");
     const [jwtcookie,,] = useCookies(["jwt"]);
     const navigate = useNavigate()
@@ -31,6 +31,7 @@ const EventFormDonation = () => {
                 title: title,
                 description: description,
                 organizerId: id,
+                imageId : 1,
                 fundTarget: fundTarget,
                 amountOfMoneyToCollect: money,
                 amountOfNeededVolunteers: 0
@@ -87,6 +88,15 @@ const EventFormDonation = () => {
                 onChange={(e) => setMoney(e.target.value)} 
              />
             </div>
+            
+            <div className={styles.field5}>    
+            <div><label className={styles.field5_label}>Dodaj zdjęcie tytułowe do twojego ogłoszenia</label></div>
+            <input className={styles.inputIm} type="file" 
+                onChange={(e) => setSelectedFile(e.target.files[0])}
+                accept="image/*"
+            />
+            </div>
+
             <button type = "submit" id= "submitBtn" className ={styles.sub_btn}> Dodaj Ogłoszenie</button>
             <div className={styles.message}>{message ? <p>{message}</p> : null}</div>
         </form>
