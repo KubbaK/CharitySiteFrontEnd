@@ -11,21 +11,22 @@
 	font-weight: bold;
 	font-size: 14px;
 	cursor: pointer;
+    position:relative;
+    top:0; left:0; right:0; bottom:0; 
+    margin: 0 auto;
     margin-bottom: 30px;
-    position: relative;
-    left:41%;
-}
-.page_title{
-	position: relative;
-    left:40%;
-    margin-top: 80px;
+    margin-left: 320px;
+    
 }
 
 .form_box{
 	margin-left: 250px;
-    width: 60%;
+    width: 800px;
     background-color: white;
     border-radius: 40px;
+    position: relative;
+    top:0; left:0; right:0; bottom:0; 
+    margin: 0 auto;
 }
 .field1,.field2,.field3,.field4,.field5{
 	margin-bottom: 20px;

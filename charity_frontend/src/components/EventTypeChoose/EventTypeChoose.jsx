@@ -1,6 +1,7 @@
 import React from "react"
 import styles from "./EventTypeChoose.module.scss"
 import NavBar from "../NavigationBar/NavBar.jsx"
+import { Link } from "react-router-dom"
 
 const EventTypeChoose = () => {
     return (
@@ -8,7 +9,7 @@ const EventTypeChoose = () => {
             <NavBar/>
             <div className={styles.first}>
                 <div className={styles.overlay}>
-                    <div className={styles.text}>Akcje pieniężne</div>
+                    <Link to="/getEvents"><div className={styles.text}>Akcje pieniężne</div></Link>
                 </div>
             </div>
             <div className={styles.second}>

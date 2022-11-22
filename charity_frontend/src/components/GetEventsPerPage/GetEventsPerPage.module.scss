@@ -10,7 +10,17 @@
     display:flex;
     flex-flow: row wrap;
     margin-left: 30px;
+    position:relative; 
+    top:0; left:0; right:0; bottom:0; 
+    margin: auto;
     background-color: rgb(240, 239, 231);
     border-radius: 30px;
     margin-top: 40px;
 }
+
+html {
+    width: 100%;
+  }
+  body {
+    min-width: 100%;
+  }

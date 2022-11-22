@@ -2,10 +2,11 @@
     overflow: hidden;
     width: 800px;
     height: 380px;
-    margin-left: 235px;
-    z-index: 10;
+    z-index: 20;
     position: relative;
     border-radius: 10px;
+    top:0; left:0; right:0; bottom:0 ; 
+    margin: 0 auto;
 }
 .textbox{
     -webkit-text-stroke: 1.5px black;
@@ -15,10 +16,10 @@
     width:800px;
     height: 120px;
     font-size: 25px;
-    z-index: 15;
-    margin-top: 260px;
+    z-index: 30;
     position: absolute;
-    margin-left:235px;
+    top:20; left:0; right:0; bottom:0 ; 
+    margin: 0 auto;
     border-bottom-left-radius: 8.8px;
     border-bottom-right-radius: 8.8px;
 }
@@ -27,4 +28,9 @@
     left:85px;
     bottom:-50px;
     position: absolute;
+}
+
+.box{
+    position: relative;
+    text-align: center;
 }

@@ -11,7 +11,7 @@ const contentStyle = {
   lineHeight: '160px',
   textAlign: 'center',
   background: '#f5f0d7',
-  marginTop: '0px',
+  postion:'relative'
 };
 const CarouselStyled = styled(Carousel)`
      .slick-dots li button{
@@ -24,19 +24,21 @@ const CarouselStyled = styled(Carousel)`
     }
 `;
     const CarouselComponent = () => (
-        <CarouselStyled dotPosition='bottom:50px' autoplay>
+        
+        <CarouselStyled dotPosition='bottom:50px' autoplay={true}>
         <div>
             <h3 style={contentStyle}><CarouselPhotoContainer  image={Image1}/></h3>
         </div>
         <div>
-            <h3 style={contentStyle}><CarouselPhotoContainer  image={Image1}/></h3> 
+            <h3 style={contentStyle}><CarouselPhotoContainer  image={Image1}/></h3>
         </div>
         <div>
-            <h3 style={contentStyle}><CarouselPhotoContainer  image={Image1}/></h3> 
+            <h3 style={contentStyle}><CarouselPhotoContainer  image={Image1}/></h3>
         </div>
         <div>
-            <h3 style={contentStyle}><CarouselPhotoContainer  image={Image1}/></h3> 
+            <h3 style={contentStyle}><CarouselPhotoContainer  image={Image1}/></h3>
         </div>
         </CarouselStyled>
+            
 );
 export default CarouselComponent;

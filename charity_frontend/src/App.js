@@ -8,7 +8,7 @@ import EventTypeChoose from './components/EventTypeChoose/EventTypeChoose';
 import FormComponent from './components/FormComponent/FormComponent';
 import UserAccount from './components/UserAccount/UserAccount';
 import AdminPanel from './components/AdminPanel/AdminPanel';
-import GetEvent from './components/GetEvent/GetEvent';
+import GetEvents from './components/GetEvents/GetEvents';
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
       <Route path="/form" exact element={<FormComponent/>}/>
       <Route path="/userAccount" exact element={<UserAccount/>}/>
       <Route path="/adminPanel" exact element={<AdminPanel/>}/>
-      <Route path="/getEvents" exact element={<GetEvent/>}/>
+      <Route path="/getEvents" exact element={<GetEvents/>}/>
     </Routes>
     
   );

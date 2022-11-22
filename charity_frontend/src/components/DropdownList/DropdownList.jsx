@@ -9,7 +9,7 @@ const DropdownList = (props) => {
                 <div className={styles.dropdownContent}>
                     <div className={styles.a}>{props.data1}</div>
                     <div className={styles.a}>{props.data2}</div>
-                    <div className={styles.a}>{props.data3}</div>
+                    <Link to="/getEvents"><div className={styles.a}>{props.data3}</div></Link>
                 </div>
             </div>
         )
