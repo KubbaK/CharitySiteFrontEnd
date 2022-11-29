@@ -38,8 +38,7 @@ const NavBar = () =>{
                     { jwtcookie.jwt === undefined &&
                            <li className={styles.li} onClick={() => setShowOpened(true)}><Link to="" style={{textDecoration: 'none'}}>Utwórz akcję</Link></li>
                     }   
-                    <li className={styles.spacer}><p></p></li>
-                    <li className={styles.li}><Link to="/" style={{textDecoration: 'none'}}>Strona główna</Link></li>
+                    <li className={styles.lis}><Link to="/" style={{textDecoration: 'none'}}>Strona główna</Link></li>
                      
                 </ul>
                 <UserPanel/>

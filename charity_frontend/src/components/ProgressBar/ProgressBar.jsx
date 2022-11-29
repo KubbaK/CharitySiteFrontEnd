@@ -39,8 +39,11 @@ const ProgressBar = (props) => {
                 {props.progress <= 10 && props.progress > 5 &&
                     <Box className={styles.labelStyles}></Box>
                 }
-                {props.progress <= 5 &&
+                {props.progress <= 5 && props.progress > 0 &&
                     <Box className={styles.labelStyles}>{small}</Box>
+                }
+                {props.progress === 0 &&
+                    <Box className={styles.labelStyles}>0</Box>
                 }
                 {props.progress >= 100 &&
                     <Box className={styles.labelStyles}>zebrano 100%, dziękujemy</Box>

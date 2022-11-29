@@ -53,12 +53,30 @@ $nav-height: 70px;
 	color: white;
 }
 
+.lis {
+	float: left;
+	margin-left: 30px;
+}
+.lis a {
+	display: inline-block;
+	color: black;
+	padding: 14px 16px;
+	height: $nav-height - 28.2;
+	font-size: 25px;
+	
+}
+  
+.lis a:hover {
+	background-color: #111;
+	color: white;
+}
 .spacer{
 	float: left;
-	margin-left: 150px;
+	width: 100px;
 }
 
 .li:hover a {background-color: black; color:white; border-radius: 15px;}
+.lis:hover a {background-color: black; color:white; border-radius: 15px;}
 
 
 

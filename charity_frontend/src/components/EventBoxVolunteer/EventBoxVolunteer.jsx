@@ -4,6 +4,7 @@ import { Box } from '@mui/system'
 import PhotoContainer from '../PhotoContainer/PhotoContainer'
 import {useNavigate} from 'react-router-dom';
 import Image1 from '../images/jest.png'
+import { Link } from 'react-router-dom';
 
 const EventBoxVolunteer = (props) =>{
     const navigate = useNavigate()
@@ -16,12 +17,12 @@ const EventBoxVolunteer = (props) =>{
 
     return(
         <div>
-        <Box className={styles.box} name="boxik" sx={{ borderRadius: 15 }} onClick={handleClick}> 
+        <Link style={{ textDecoration: 'none' }} to={{pathname: `/event/${props.charityId}`}}><Box className={styles.box} name="boxik" sx={{ borderRadius: 15 }} onClick={handleClick}> 
             <PhotoContainer  image={Image1}/>   
                 <h2 className={styles.h2}>{props.title}</h2>
                 <h3 className={styles.h3}>{truncate(props.description)}</h3>
                 <h3 className={styles.h3}>Potrzebni wolontariusze: {props.volunteers}</h3>
-            </Box>
+            </Box></Link>
         </div>
     )
 }

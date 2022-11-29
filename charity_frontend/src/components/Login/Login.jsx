@@ -24,7 +24,6 @@ const Login = () => {
             const { data: res } = await axios.post(url, data)
             setJwtcookie("jwt",res,{ path: '/' })
             navigate("/")
-            console.log(res.message)
         } catch (error) {
             if (
                 error.response &&

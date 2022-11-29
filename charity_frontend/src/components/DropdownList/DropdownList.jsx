@@ -7,8 +7,8 @@ const DropdownList = (props) => {
             <div className={styles.dropdown}>
                 <Link to="/eventTypeChoose"><div className={styles.a}>{props.titlebutton}</div></Link>
                 <div className={styles.dropdownContent}>
-                    <div className={styles.a}>{props.data1}</div>
-                    <div className={styles.a}>{props.data2}</div>
+                    <Link to="/getVolunteering"><div className={styles.a}>{props.data1}</div></Link>
+                    <Link to="/getFundraising"><div className={styles.a}>{props.data2}</div></Link>
                     <Link to="/getEvents"><div className={styles.a}>{props.data3}</div></Link>
                 </div>
             </div>

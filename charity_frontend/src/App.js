@@ -9,6 +9,8 @@ import FormComponent from './components/FormComponent/FormComponent';
 import UserAccount from './components/UserAccount/UserAccount';
 import AdminPanel from './components/AdminPanel/AdminPanel';
 import GetEvents from './components/GetEvents/GetEvents';
+import GetEventsFundraising from './components/GetEvents/GetEventsFundraising';
+import GetEventsVolunteering from './components/GetEvents/GetEventsVolunteering';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
       <Route path="/userAccount" exact element={<UserAccount/>}/>
       <Route path="/adminPanel" exact element={<AdminPanel/>}/>
       <Route path="/getEvents" exact element={<GetEvents/>}/>
+      <Route path="/getFundraising" exact element={<GetEventsFundraising/>}/>
+      <Route path="/getVolunteering" exact element={<GetEventsVolunteering/>}/>
     </Routes>
     
   );

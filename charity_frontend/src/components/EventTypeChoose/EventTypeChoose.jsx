@@ -8,19 +8,19 @@ const EventTypeChoose = () => {
         <div className={styles.fullscreen}>
             <NavBar/>
             <div className={styles.first}>
-                <div className={styles.overlay}>
-                    <Link to="/getEvents"><div className={styles.text}>Akcje pieniężne</div></Link>
-                </div>
+                <Link to="/getFundraising"><div className={styles.overlay}>
+                   <div className={styles.text}>Akcje pieniężne</div>
+                </div></Link>
             </div>
             <div className={styles.second}>
-                <div className={styles.overlay}>
+                <Link to="/getVolunteering"><div className={styles.overlay}>
                     <div className={styles.text}>Akcje wolontariackie</div>
-                </div>
+                </div></Link>
             </div>
             <div className={styles.back}>
-            <div className={styles.overlay}>
-                    <div className={styles.text}>Wszystkie akcje</div>
-                </div>
+             <Link to="/getEvents"><div className={styles.overlay}>
+                <div className={styles.text}>Wszystkie akcje</div>
+                </div></Link>
             </div>
         </div>
     );

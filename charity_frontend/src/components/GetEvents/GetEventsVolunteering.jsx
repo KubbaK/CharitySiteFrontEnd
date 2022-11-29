@@ -2,12 +2,12 @@ import React,{useState,useEffect} from "react";
 import axios from "axios";
 import {useCookies} from "react-cookie";
 import GetEventsPerPage from "../GetEventsPerPage/GetEventsPerPage";
-import Pagination from "../Pagination/Pagination";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import Pagination from "../Pagination/Pagination";
 import styles from "./GetEvents.module.scss";
 import {useNavigate} from 'react-router-dom';
 
-const GetEvents = () => {
+const GetEventsVolunteering = () => {
     const [allEvents, setAllEvents] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [eventsPerPage] = useState(9);
@@ -19,9 +19,10 @@ const GetEvents = () => {
     }
     useEffect(() => {
         const fetchEvents = async () => {
-            axios.get("http://localhost:5012/v1/Search",{headers:{Authorization: `Bearer ${token}`}})
+            axios.get("http://localhost:5012/v1/Search?isVolunteering=true",{headers:{Authorization: `Bearer ${token}`}})
             .then(response => {
              setAllEvents(response.data)
+             console.log(response)
           });
         }
      fetchEvents()
@@ -31,6 +32,7 @@ const GetEvents = () => {
     const indexOfLastEvent = currentPage * eventsPerPage
     const indexOfFirstEvent = indexOfLastEvent - eventsPerPage
     const currentEvents = allEvents.slice(indexOfFirstEvent,indexOfLastEvent)
+    console.log(allEvents)
     return(
         <div>
           <KeyboardBackspaceIcon className={styles.back} onClick={goBack}/>
@@ -41,4 +43,4 @@ const GetEvents = () => {
     )
 }
 
-export default GetEvents
+export default GetEventsVolunteering

@@ -22,7 +22,6 @@ const SignUp = () => {
             const url = "http://localhost:5012/v1/Account/register"
             const { data: res } = await axios.post(url, data)
             navigate("/login")
-            console.log(res.message)
         } catch (error) {
             if (
                 error.response &&
@@ -51,8 +50,7 @@ const SignUp = () => {
                         onChange={handleChange}
                         value={data.login}
                         required
-                        className={styles.input}
-/>
+                        className={styles.input}/>
                         <input
                             type="email"
                             placeholder="Email"
