@@ -6,8 +6,10 @@ import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import Pagination from "../Pagination/Pagination";
 import styles from "./GetEvents.module.scss";
 import {useNavigate} from 'react-router-dom';
+import { Skeleton } from "@mui/material";
 
 const GetEventsVolunteering = () => {
+    const [loaded,setLoaded] = useState(true)
     const [allEvents, setAllEvents] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [eventsPerPage] = useState(9);
@@ -23,6 +25,7 @@ const GetEventsVolunteering = () => {
             .then(response => {
              setAllEvents(response.data)
              console.log(response)
+             setLoaded(false)
           });
         }
      fetchEvents()
@@ -34,12 +37,16 @@ const GetEventsVolunteering = () => {
     const currentEvents = allEvents.slice(indexOfFirstEvent,indexOfLastEvent)
     console.log(allEvents)
     return(
-        <div>
-          <KeyboardBackspaceIcon className={styles.back} onClick={goBack}/>
-          {allEvents.length === 0 && <div>BRAK</div>}
-          <GetEventsPerPage allEvents={currentEvents}/>
-          <Pagination eventsPerPage={eventsPerPage} totalEvents={allEvents.length} paginate={paginate} />
-        </div>
+      <div>
+      <KeyboardBackspaceIcon className={styles.back} onClick={goBack}/>
+      {loaded ? <Skeleton variant="rectangular"  className={styles.skeleton} /> : 
+      <div className={styles.brak}>
+        {allEvents.length === 0 && <div><h1>BRAK AKCJI! </h1><h2>DODAJ JAKĄŚ JEŚLI CHCESZ JĄ WYŚWIETLIĆ</h2></div>}
+        <GetEventsPerPage allEvents={currentEvents} loaded={loaded}/>
+        <Pagination eventsPerPage={eventsPerPage} totalEvents={allEvents.length} paginate={paginate} />
+      </div>
+    }
+  </div>
     )
 }
 

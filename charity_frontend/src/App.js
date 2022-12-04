@@ -11,6 +11,7 @@ import AdminPanel from './components/AdminPanel/AdminPanel';
 import GetEvents from './components/GetEvents/GetEvents';
 import GetEventsFundraising from './components/GetEvents/GetEventsFundraising';
 import GetEventsVolunteering from './components/GetEvents/GetEventsVolunteering';
+import SpecificEventView from './components/SpecificEventView/SpecificEventView';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
       <Route path="/getEvents" exact element={<GetEvents/>}/>
       <Route path="/getFundraising" exact element={<GetEventsFundraising/>}/>
       <Route path="/getVolunteering" exact element={<GetEventsVolunteering/>}/>
+      <Route path="/event/:id" exact element={<SpecificEventView/>}/>
     </Routes>
     
   );

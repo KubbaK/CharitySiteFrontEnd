@@ -18,6 +18,7 @@ const GetEventsPerPage = ({allEvents}) => {
       return image
     }
     return(
+      <div>
         <div className={styles.Box}>
           {
             allEvents.map((ev,index) => ( 
@@ -26,16 +27,17 @@ const GetEventsPerPage = ({allEvents}) => {
                 progress={(15/ev.charityEventFundrasing.amountOfMoneyToCollect)*100}
                   charityId={ev.idCharityEvent} />:
               (ev.charityEventVolunteering !== null  && ev.charityEventFundrasing === null  ) ?
-              <EventBoxVolunteer key={index} title={ev.title} description={ev.description}  
+              <EventBoxVolunteer key={index} image={base64toImage(ev.imageDto.contentType,ev.imageDto.content)} title={ev.title} description={ev.description}  
                   volunteers={ev.charityEventVolunteering.amountOfNeededVolunteers}
                   charityId={ev.idCharityEvent} />:
-              <EventBoxBoth key={index} title={ev.title} description={ev.description} 
+              <EventBoxBoth key={index} image={base64toImage(ev.imageDto.contentType,ev.imageDto.content)} title={ev.title} description={ev.description} 
                   volunteers={ev.charityEventVolunteering.amountOfNeededVolunteers} 
                       progress={(15/ev.charityEventFundrasing.amountOfMoneyToCollect)*100}
                       charityId={ev.idCharityEvent} />
             ))
           }
         </div>
+      </div>
     )
 }
 

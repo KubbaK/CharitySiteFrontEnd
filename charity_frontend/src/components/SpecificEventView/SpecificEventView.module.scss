@@ -1,0 +1,51 @@
+.title{
+    text-align: center;
+    font-size: 50px;
+    width:70%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.description{
+    text-align: center;
+    width:80%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.fundT{
+    text-align:left;
+    font-weight: bold;
+    font-size: 30px;
+    width:80%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.money{
+    text-align:left;
+    font-weight: bold;
+    color:red;
+    font-size: 30px;
+    width:80%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.photos{
+    margin-top: 20px;
+}
+.close{
+    float:right;
+    margin-right: 50px;
+    font-size: 80px;
+    border-radius: 30px;
+}
+
+.close:hover{
+    background-color: rgb(128, 128, 128,0.1);
+}
