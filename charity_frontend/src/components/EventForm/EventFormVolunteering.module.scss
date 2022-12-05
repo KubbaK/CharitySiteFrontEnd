@@ -11,23 +11,24 @@
 	font-weight: bold;
 	font-size: 14px;
 	cursor: pointer;
+    position:relative;
+    top:0; left:0; right:0; bottom:0; 
+    margin: 0 auto;
     margin-bottom: 30px;
-    position: relative;
-    left:41%;
-}
-.page_title{
-	position: relative;
-    left:40%;
-    margin-top: 80px;
+    margin-left: 320px;
+    
 }
 
 .form_box{
 	margin-left: 250px;
-    width: 60%;
+    width: 800px;
     background-color: white;
     border-radius: 40px;
+    position: relative;
+    top:0; left:0; right:0; bottom:0; 
+    margin: 0 auto;
 }
-.field1,.field2,.field3,.field4{
+.field1,.field2,.field3,.field4,.field5{
 	margin-bottom: 20px;
     position: relative;
     text-align: center;
@@ -38,7 +39,7 @@
 
 .input{
 	width: 500px;
-	height: 40px;
+	height: 50px;
     font-size: 20px;
     background-color: rgb(254, 247, 215);
     color: black;
@@ -48,7 +49,7 @@
 .input2{
 	width: 500px;
 	height: 150px;
-    font-size: 18px;
+    font-size: 20px;
     background-color: rgb(254, 247, 215);
     color: black;
     border-radius: 5px;
@@ -60,24 +61,33 @@
     background-color: rgb(254, 247, 215);
     color: black;
     border-radius: 5px;
+    font-size: 20px;
 }
 
 .input4{
-	width: 500px;
+	width: 200px;
 	height: 50px;
     background-color: rgb(254, 247, 215);
     color: black;
     border-radius: 5px;
 }
 
+.inputIm{
+	width: 250px;
+	height: 25px;
+    margin-top: 10px;
+    color: black;
+    border-radius: 5px;
+}
+
 .message{
-	margin-left: 80px;
+    margin-left: 15px;
     text-align: center;
 }
 
 .main_container{
 	margin:0;
-	height: 100vh;
+	height: 90vh;
 }
 
 .select{
@@ -93,3 +103,38 @@
     left: 28%;
     position: relative;
 }
+
+textarea {
+    resize: none;
+  }
+
+  textarea,
+  input[type=text] {
+      font-family:Arial;
+      font-size: 30px;
+  }
+
+  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    font-size: 19px;
+    font-weight: bold;
+    color:grey;
+    line-height: 1.5em;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    font-size: 19px;
+    font-weight: bold;
+    color:grey;
+    line-height: 1.5em;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    font-size: 19px;
+    font-weight: bold;
+    color:grey;
+    line-height: 1.5em;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    font-size: 19px;
+    font-weight: bold;
+    color:grey;
+    line-height: 1.5em;
+  }

@@ -26,7 +26,6 @@
     margin-top: 30px;
 }
 .money{
-    text-align:left;
     font-weight: bold;
     color:red;
     font-size: 30px;
@@ -41,11 +40,31 @@
 }
 .close{
     float:right;
-    margin-right: 50px;
-    font-size: 80px;
+    margin-right: 20px;
+    margin-top: 20px;
+    font-size: 80px !important;
     border-radius: 30px;
 }
 
 .close:hover{
     background-color: rgb(128, 128, 128,0.1);
+}
+
+.display{
+    background-color: white;
+    width: 95%;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.button{
+    position: relative;
+    float: right;
+    right: 15%;
+    top: -5%;
 }

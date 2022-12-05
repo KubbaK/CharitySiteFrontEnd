@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 import EventCarousel from "../EventCarousel/EventCarousel";
 import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
+import VolunteerDialog from "../ButtonPopUps/VolunteerDialog";
 
 const SpecificEventView = () => {
     const params = useParams();
@@ -38,7 +40,7 @@ const SpecificEventView = () => {
     return(
         <div>
             {eventData.length !== 0 && 
-             <div>
+             <div className={styles.display}>
                 <CloseIcon className={styles.close} onClick={goBack}/>
                 <h1 className={styles.title}>{eventData.title}</h1>
                 <h2 className={styles.description}>{eventData.description}</h2>
@@ -49,20 +51,31 @@ const SpecificEventView = () => {
                                 <div className={styles.fundT}>Cel zbiórki: {eventData.charityEventFundrasing.fundTarget}</div>
                                 <div className={styles.money}>{"Obecnie zebrano: "}
                                     {eventData.charityEventFundrasing.amountOfAlreadyCollectedMoney}/
-                                        {eventData.charityEventFundrasing.amountOfMoneyToCollect}</div>
+                                        {eventData.charityEventFundrasing.amountOfMoneyToCollect}
+                                    <Button className={styles.button} variant="contained" color="success" >Wpłać Darowiznę</Button>
+                                </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
                             </div>:
                         (eventData.charityEventVolunteering !== null && eventData.charityEventFundrasing === null) ?
                             <div>
-                                <div>{eventData.charityEventFundrasing.fundTarget}</div>
-                                <div>{eventData.charityEventFundrasing.amountOfAlreadyCollectedMoney}</div>
-                                <div>{eventData.charityEventFundrasing.amountOfMoneyToCollect}</div>
+                                <div className={styles.money}>{"Potrzebnych wolontariuszy: "}
+                                    {eventData.charityEventVolunteering.amountOfNeededVolunteers}
+                                    <div className={styles.button}><VolunteerDialog /></div>
+                                </div>
+                                <div className={styles.photos}><EventCarousel photos={photos}/></div>
                             </div>:
                             <div>
-                                <div>{eventData.charityEventFundrasing.fundTarget}</div>
-                                <div>{eventData.charityEventFundrasing.amountOfAlreadyCollectedMoney}</div>
-                                <div>{eventData.charityEventFundrasing.amountOfMoneyToCollect}</div>
-                                <div>123</div>
+                                <div className={styles.fundT}>Cel zbiórki: {eventData.charityEventFundrasing.fundTarget}</div>
+                                <div className={styles.money}>{"Obecnie zebrano: "}
+                                    {eventData.charityEventFundrasing.amountOfAlreadyCollectedMoney}/
+                                        {eventData.charityEventFundrasing.amountOfMoneyToCollect} zł
+                                        <Button className={styles.button} variant="contained" color="success" >Wpłać Darowiznę</Button>
+                                </div>
+                                <div className={styles.money}>{"Potrzebnych wolontariuszy: "}
+                                    {eventData.charityEventVolunteering.amountOfNeededVolunteers}
+                                    <div className={styles.button}><VolunteerDialog /></div>
+                                </div>
+                                <div className={styles.photos}><EventCarousel photos={photos}/></div>
                             </div>
                     }    
                 </div>

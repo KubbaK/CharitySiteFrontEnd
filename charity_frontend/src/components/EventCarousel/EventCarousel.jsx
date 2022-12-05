@@ -19,13 +19,15 @@ const contentStyle = {
   color: '#fff',
   lineHeight: '160px',
   textAlign: 'center',
-  background: '#f5f0d7',
-  postion:'relative'
+  background: 'white',
+  position:'relative',
+ 
 };
 const CarouselStyled = styled(Carousel)`
      .slick-dots li button{
         background: green !important;
         width: 20px;
+        bottom: 10px;
     }
     .slick-dots li.slick-active button{
         background: green !important;

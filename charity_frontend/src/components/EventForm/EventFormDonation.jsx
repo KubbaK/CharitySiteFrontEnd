@@ -61,7 +61,7 @@ const EventFormDonation = () => {
         <form onSubmit={handleSubmit} encType="multipart/form-data"> 
             <div className ={styles.field1}>
                 <div><label className={styles.field1_label}> Tytuł akcji  </label></div>
-                <input className={styles.input} placeholder="Podaj tytuł"
+                <textarea className={styles.input} placeholder="Podaj tytuł"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)} 
                 />
@@ -69,7 +69,7 @@ const EventFormDonation = () => {
 
             <div className={styles.field2}>
             <div><label className={styles.field2_label}> Opis akcji </label> </div>
-            <input className={styles.input2} placeholder="Podaj opis" 
+            <textarea className={styles.input2} placeholder="Podaj opis" 
                 value={description}
                 onChange={(e) => setDescription(e.target.value)} 
              />
@@ -77,7 +77,7 @@ const EventFormDonation = () => {
 
             <div className={styles.field3}>    
             <div><label className={styles.field3_label}> Cel zbiórki</label></div>
-            <input className={styles.input3} placeholder="Podaj cel"
+            <textarea className={styles.input3} placeholder="Podaj cel"
                 value={fundTarget}
                 onChange={(e) => setFundTarget(e.target.value)} 
              />

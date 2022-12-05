@@ -47,7 +47,7 @@ const GetEvents = () => {
             <KeyboardBackspaceIcon className={styles.back} onClick={goBack}/>
             {loaded ? <Skeleton variant="rectangular"  className={styles.skeleton} /> : 
             <div>
-              {allEvents.length === 0 && <div className={styles.brak}>BRAK</div>}
+              {allEvents.length === 0 && <div className={styles.brak}>BRAK AKCJI!</div>}
               <GetEventsPerPage allEvents={allEvents} loaded={loaded}/>
               <Pagination eventsPerPage={eventsPerPage} totalEvents={totalPages} paginate={paginate} />
             </div>

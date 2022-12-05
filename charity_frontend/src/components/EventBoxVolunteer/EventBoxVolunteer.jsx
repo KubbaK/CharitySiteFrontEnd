@@ -16,7 +16,7 @@ const EventBoxVolunteer = (props) =>{
 
     return(
         <div>
-        <Link style={{ textDecoration: 'none' }} to="/event/:id" params={{id:props.charityId}}>
+        <Link style={{ textDecoration: 'none' }} to={{pathname:`/event/${props.charityId}`,state:{id: props.charityId}}}>
         <Box className={styles.box} name="boxik" sx={{ borderRadius: 15 }} onClick={handleClick}> 
             <PhotoContainer  image={props.image}/>   
                 <h2 className={styles.h2}>{props.title}</h2>
