@@ -3,7 +3,7 @@ $nav-height: 70px;
 .navbar {
 	width: 100%;
 	height: $nav-height;
-	background-color: #67809f;
+	background-color: #020112;
 	display:flex;
 	align-items: center;
 	justify-content: space-between;
@@ -28,7 +28,7 @@ $nav-height: 70px;
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	background-color: #67809f;
+	background-color: #020112;
 	width: 70%;
 	height: $nav-height;
 	font-weight: bold;
@@ -40,7 +40,7 @@ $nav-height: 70px;
 }
 .li a {
 	display: inline-block;
-	color: black;
+	color: white;
 	padding: 14px 16px;
 	height: $nav-height - 28.2;
 	font-size: 25px;
@@ -59,7 +59,7 @@ $nav-height: 70px;
 }
 .lis a {
 	display: inline-block;
-	color: black;
+	color: white;
 	padding: 14px 16px;
 	height: $nav-height - 28.2;
 	font-size: 25px;
@@ -75,18 +75,19 @@ $nav-height: 70px;
 	width: 100px;
 }
 
-.li:hover a {background-color: black; color:white; border-radius: 15px;}
-.lis:hover a {background-color: black; color:white; border-radius: 15px;}
+.li:hover a {background-color: #28559a; color:white; border-radius: 15px;}
+.lis:hover a {background-color: #28559a; color:white; border-radius: 15px;}
 
 
 
 .sicon{
 	margin-right: 50px;
 	margin-bottom: 5px;
+	color:white;
 }
 
 .sicon:hover{
-	color: white;
+	color: #28559a;
 }
 
 

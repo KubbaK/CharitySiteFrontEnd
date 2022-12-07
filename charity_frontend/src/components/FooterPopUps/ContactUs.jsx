@@ -6,7 +6,7 @@ const ContactUs = () => {
     const [open,setOpen] = useState(false)
     return(
         <>
-            <Button style={{color:'black',fontWeight:'bold'}} onClick={() => setOpen(true)}>Skontaktuj się z nami</Button>
+            <Button style={{color:'white',fontWeight:'bold'}} onClick={() => setOpen(true)}>Skontaktuj się z nami</Button>
             <Dialog aria-labelledby='dialog-title' aria-describedby='dialog-description' 
                 open={open} onClose={() => setOpen(false)}>
                 <DialogTitle id='dialog-title'>Dane kontakowe</DialogTitle>

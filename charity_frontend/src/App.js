@@ -32,7 +32,6 @@ function App() {
       <Route path="/successDonate" exact element={<SuccessfullDonate/>}/>
       <Route path="/verification/:id" exact element={<VerificationView/>}/>
     </Routes>
-    
   );
 }
 

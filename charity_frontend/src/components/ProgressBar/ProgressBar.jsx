@@ -7,20 +7,20 @@ const ProgressBar = (props) => {
     const fillerStyles = (props.progress < 100 && props.progress > 5) ? {
         height: '100%',
         width: `${props.progress}%`,
-        backgroundColor: "#5c56db",
+        backgroundColor: "#ffef00",
         borderRadius: 'inherit',
         textAlign: 'right',
       }: props.progress <= 5 ?{
         height: '100%',
         width: `0px`,
-        backgroundColor: "#5c56db",
+        backgroundColor: "#ffef00",
         borderRadius: 'inherit',
         textAlign: 'right',
       }:
       {
         height: '100%',
         width: `100%`,
-        backgroundColor: "#5c56db",
+        backgroundColor: "#ffef00",
         borderRadius: 'inherit',
         textAlign: 'right'
       }

@@ -6,7 +6,7 @@ const Regulamin = () => {
     const [open,setOpen] = useState(false)
     return(
         <>
-            <Button style={{color:'black',fontWeight:'bold'}} onClick={() => setOpen(true)}>Regulamin</Button>
+            <Button style={{color:'white',fontWeight:'bold'}} onClick={() => setOpen(true)}>Regulamin</Button>
             <Dialog aria-labelledby='dialog-title' aria-describedby='dialog-description' 
                 open={open} onClose={() => setOpen(false)}>
                 <DialogTitle id='dialog-title'>Regulamin</DialogTitle>

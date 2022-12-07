@@ -24,13 +24,18 @@ const EventContainer= () => {
      fetchEvents()
     },[]);
         return(
-            <div className={styles.Box}>
-            {loaded ? <Skeleton variant="rectangular"  className={styles.skeleton} /> : 
             <div>
-              {allEvents.length === 0 && <div className={styles.brak}>BRAK</div>}
-                <GetEventsPerPage allEvents={allEvents} atype='normal' loaded={loaded}/>
-            </div>
-            }   
+            {
+            (!allEvents.charityEventVolunteering) &&
+                <div className={styles.Box}>
+                {loaded ? <Skeleton variant="rectangular"  className={styles.skeleton} /> : 
+                <div>
+                {allEvents.length === 0 && <div className={styles.brak}>BRAK</div>}
+                    <GetEventsPerPage allEvents={allEvents} atype='normal' loaded={loaded}/>
+                </div>
+                }   
+                </div>
+            }
             </div>
         );
 }

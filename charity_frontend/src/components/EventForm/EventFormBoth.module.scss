@@ -3,7 +3,8 @@
 	border: none;
 	outline: none;
 	padding: 12px 0;
-	background-color: rgb(254, 247, 215);
+	background-color: #28559a;
+    color:white;
 	border-radius: 20px;
     border:2px solid black;
     box-shadow: 0 0 1px 1px black;
@@ -24,7 +25,7 @@
 .form_box{
 	margin-left: 250px;
     width: 60%;
-    background-color: white;
+    background-color: #ebebeb;
     border-radius: 40px;
 }
 .field1,.field2,.field3,.field4,.field5{
@@ -40,7 +41,8 @@
 	width: 500px;
 	height: 40px;
     font-size: 20px;
-    background-color: rgb(254, 247, 215);
+    background-color: white;
+    border: 3px solid rgba(42, 91, 195, 0.3);
     color: black;
     border-radius: 5px;
 }
@@ -49,7 +51,8 @@
 	width: 500px;
 	height: 150px;
     font-size: 18px;
-    background-color: rgb(254, 247, 215);
+    background-color: white;
+    border: 3px solid rgba(42, 91, 195, 0.3);
     color: black;
     border-radius: 5px;
 }
@@ -57,7 +60,8 @@
 .input3{
 	width: 500px;
 	height: 50px;
-    background-color: rgb(254, 247, 215);
+    background-color: white;
+    border: 3px solid rgba(42, 91, 195, 0.3);
     color: black;
     border-radius: 5px;
 }
@@ -65,7 +69,8 @@
 .input4{
 	width: 500px;
 	height: 50px;
-    background-color: rgb(254, 247, 215);
+    background-color: white;
+    border: 3px solid rgba(42, 91, 195, 0.3);
     color: black;
     border-radius: 5px;
 }
@@ -73,7 +78,8 @@
 .input5{
 	width: 500px;
 	height: 50px;
-    background-color: rgb(254, 247, 215);
+    background-color: white;
+    border: 3px solid rgba(42, 91, 195, 0.3);
     color: black;
     border-radius: 5px;
 }

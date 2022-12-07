@@ -4,6 +4,7 @@ import NavBar from "../NavigationBar/NavBar.jsx"
 import { Link } from "react-router-dom"
 
 const EventTypeChoose = () => {
+
     return (
         <div className={styles.fullscreen}>
             <NavBar/>

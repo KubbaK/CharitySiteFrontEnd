@@ -2,7 +2,7 @@
     width: 101%;
     height: 100%;
     background-color: white;
-    position: absolute;
+    position: fixed;
     opacity: 1;
     overflow: hidden;
 }
@@ -59,7 +59,7 @@
   }
   
 .text {
-    color: blue;
+    color: #28559a;
     font-size: 70px;
     position: absolute;
     top: 47%;

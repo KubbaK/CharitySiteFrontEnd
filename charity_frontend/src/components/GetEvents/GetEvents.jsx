@@ -7,6 +7,8 @@ import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import styles from "./GetEvents.module.scss";
 import {useNavigate} from 'react-router-dom';
 import { Skeleton} from "@mui/material";
+import Navbar from "../NavigationBar/NavBar.jsx"
+import Footer from "../Footer/Footer.jsx"
 
 const GetEvents = () => {
     const [loaded,setLoaded] = useState(true)
@@ -44,6 +46,7 @@ const GetEvents = () => {
     }
     return(
         <div>
+            <div style={{marginBottom:'70px'}}><Navbar/></div>
             <KeyboardBackspaceIcon className={styles.back} onClick={goBack}/>
             {loaded ? <Skeleton variant="rectangular"  className={styles.skeleton} /> : 
             <div>

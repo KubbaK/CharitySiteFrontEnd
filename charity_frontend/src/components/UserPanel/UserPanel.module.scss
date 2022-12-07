@@ -2,6 +2,7 @@ $nav-height: 70px;
 
 .arrowdd {
      font-size: 50px !important;
+	 color: white;
 }
 .dropdown {
 	position:relative;
@@ -47,5 +48,5 @@ $nav-height: 70px;
     transition-duration: 0.5s; 
 }
 .dropdown:hover .arrowdd{
-	color: rgba(blue,0.7);
+	color:#28559a;
 }

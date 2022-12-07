@@ -11,7 +11,7 @@ const MainPage = (props) =>{
             <NavBar/>
             <h1 className={styles.h12}>NAJWAŻNIEJSZE INFORMACJE</h1>
             <CarouselComponent/>
-            <h1 className={styles.h1}>POPULARNE ZBIÓRKI</h1>
+            <h1 className={styles.h1}>POPULARNE AKCJE ZE ZBIÓRKAMI PIENIĘDZY </h1>
                 <div className={styles.event}>
                     <EventContainer/>
                 </div>

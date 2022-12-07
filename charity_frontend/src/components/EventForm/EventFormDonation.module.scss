@@ -3,7 +3,8 @@
 	border: none;
 	outline: none;
 	padding: 12px 0;
-	background-color: rgb(254, 247, 215);
+	background-color: #28559a;
+    color:white;
 	border-radius: 20px;
     border:2px solid black;
     box-shadow: 0 0 1px 1px black;
@@ -22,7 +23,7 @@
 .form_box{
 	margin-left: 250px;
     width: 800px;
-    background-color: white;
+    background-color: #ebebeb;
     border-radius: 40px;
     position: relative;
     top:0; left:0; right:0; bottom:0; 
@@ -41,7 +42,8 @@
 	width: 500px;
 	height: 50px;
     font-size: 20px;
-    background-color: rgb(254, 247, 215);
+    background-color: white;
+    border: 3px solid rgba(42, 91, 195, 0.3);
     color: black;
     border-radius: 5px;
 }
@@ -50,7 +52,8 @@
 	width: 500px;
 	height: 150px;
     font-size: 20px;
-    background-color: rgb(254, 247, 215);
+    background-color: white;
+    border: 3px solid rgba(42, 91, 195, 0.3);
     color: black;
     border-radius: 5px;
 }
@@ -58,7 +61,8 @@
 .input3{
 	width: 500px;
 	height: 50px;
-    background-color: rgb(254, 247, 215);
+    background-color: white;
+    border: 3px solid rgba(42, 91, 195, 0.3);
     color: black;
     border-radius: 5px;
     font-size: 20px;
@@ -67,7 +71,8 @@
 .input4{
 	width: 200px;
 	height: 50px;
-    background-color: rgb(254, 247, 215);
+    background-color: white;
+    border: 3px solid rgba(42, 91, 195, 0.3);
     color: black;
     border-radius: 5px;
 }

@@ -1,7 +1,7 @@
 import { Carousel } from 'antd';
 import styled from 'styled-components';
 import 'antd/lib/carousel/style/index.css'
-import Image1 from '../images/jest.png'
+import Image1 from '../images/ch_event.jpg'
 import CarouselPhotoContainer from '../CarouselPhotoContainer/CarouselPhotoContainer';
 import React from 'react';
 
@@ -10,7 +10,7 @@ const contentStyle = {
   color: '#fff',
   lineHeight: '160px',
   textAlign: 'center',
-  background: '#f5f0d7',
+  background: 'white',
   postion:'relative'
 };
 const CarouselStyled = styled(Carousel)`

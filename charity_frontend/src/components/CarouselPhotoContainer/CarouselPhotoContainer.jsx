@@ -6,7 +6,7 @@ const CarouselPhotoContainer = (props) =>{
         return(
             <Box className={styles.box} name="photo" >
                 <img className={styles.image} src={props.image} alt="123"/>
-                <div className={styles.textbox}><p className={styles.text}>Jakiś tekst opisujący coś, na tym obrazku średnio widać</p></div>
+                <div className={styles.textbox}><p className={styles.text}>Razem możemy więcej, grajmy w jednej drużynie!</p></div>
             </Box>
         );
     }
