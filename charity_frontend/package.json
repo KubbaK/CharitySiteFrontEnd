@@ -19,9 +19,11 @@
     "react-bootstrap": "^2.6.0",
     "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
+    "react-loader-spinner": "^5.3.4",
     "react-radio-slide-toggle": "^1.1.0",
     "react-router-dom": "^6.4.1",
     "react-scripts": "5.0.1",
+    "react-virtuoso": "^3.1.5",
     "sass": "^1.55.0",
     "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"

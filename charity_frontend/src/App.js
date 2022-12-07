@@ -12,6 +12,8 @@ import GetEvents from './components/GetEvents/GetEvents';
 import GetEventsFundraising from './components/GetEvents/GetEventsFundraising';
 import GetEventsVolunteering from './components/GetEvents/GetEventsVolunteering';
 import SpecificEventView from './components/SpecificEventView/SpecificEventView';
+import SuccessfullDonate from './components/SuccessfullDonate/SuccessfullDonate';
+import VerificationView from './components/VerificationView/VerificationView';
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
       <Route path="/getFundraising" exact element={<GetEventsFundraising/>}/>
       <Route path="/getVolunteering" exact element={<GetEventsVolunteering/>}/>
       <Route path="/event/:id" exact element={<SpecificEventView/>}/>
+      <Route path="/successDonate" exact element={<SuccessfullDonate/>}/>
+      <Route path="/verification/:id" exact element={<VerificationView/>}/>
     </Routes>
     
   );

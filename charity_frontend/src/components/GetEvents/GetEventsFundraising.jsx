@@ -22,7 +22,7 @@ const GetEventsFundraising = () => {
       navigate(-1)
     }
     const fetchEvents = async (pageNumber) => {
-      axios.get(`http://localhost:5012/v1/Search/pagination?isFundraising=true&sortBy=CreatedEventDate&sortDirection=DESC&pageNumber=${pageNumber}&pageSize=${eventsPerPage}`,{headers:{Authorization: `Bearer ${token}`}})
+      axios.get(`http://localhost:5012/v1/Search/pagination?isVerified=true&isFundraising=true&sortBy=CreatedEventDate&sortDirection=DESC&pageNumber=${pageNumber}&pageSize=${eventsPerPage}`,{headers:{Authorization: `Bearer ${token}`}})
       .then(response => {
        setAllEvents(response.data.items)
        setTotalPages(response.data.totalPages)
@@ -48,7 +48,7 @@ const GetEventsFundraising = () => {
       {loaded ? <Skeleton variant="rectangular"  className={styles.skeleton} /> : 
       <div>
         {allEvents.length === 0 && <div className={styles.brak}>BRAK AKCJI!</div>}
-        <GetEventsPerPage allEvents={allEvents} loaded={loaded}/>
+        <GetEventsPerPage allEvents={allEvents} atype='normal' loaded={loaded}/>
         <Pagination eventsPerPage={eventsPerPage} totalEvents={totalPages} paginate={paginate} />
       </div>
     }

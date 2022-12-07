@@ -3,13 +3,25 @@ import { useState } from 'react'
 import axios from 'axios'
 import {React} from 'react'
 import { useCookies } from 'react-cookie'
+import jwtDecode from 'jwt-decode'
 
 const VolunteerDialog = (props) => {
     const [open,setOpen] = useState(false)
     const [jwtcookie,,] = useCookies(["jwt"]);
     const token = jwtcookie.jwt
+    let id
+    if(token !== undefined){
+        const decoded = jwtDecode(token)
+        id = decoded.Id
+    }
+
     const fetchVolunteer = async () => {
-        axios.post("http://localhost:5012/v1/Volunteer/",{headers:{Authorization: `Bearer ${token}`}},)
+        let res = axios.post("http://localhost:5012/v1/Volunteer",{idUser:id,idVolunteering:props.props},
+            {headers:{Authorization: `Bearer ${token}`}})
+            if(res.status === 200){
+                console.log("Udało się")
+            }
+        setOpen(false)
     }
     return(
         <><Button variant="contained" style={{width:'300px',fontWeight:'bold',height:'50px'}}onClick={() => setOpen(true)} color="error">Zostań wolontariuszem</Button>
@@ -23,7 +35,7 @@ const VolunteerDialog = (props) => {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={() => setOpen(false)}>Cofnij</Button>
-                    <Button onClick={() => setOpen(false)}>Zapisz mnie!</Button>
+                    <Button onClick={fetchVolunteer}>Zapisz mnie!</Button>
                 </DialogActions>
             </Dialog>
         </>

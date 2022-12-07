@@ -1,15 +1,15 @@
 import React,{useState,useEffect} from "react";
 import axios from "axios";
 import {useCookies} from "react-cookie";
-import styles from "./SpecificEventView.module.scss"
+import styles from "./VerificationView.module.scss"
 import { useParams } from "react-router-dom";
 import EventCarousel from "../EventCarousel/EventCarousel";
 import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate } from "react-router-dom";
-import VolunteerDialog from "../ButtonPopUps/VolunteerDialog";
 import DonationDialog from "../ButtonPopUps/DonationDialog";
+import { Button } from "@mui/material";
 
-const SpecificEventView = () => {
+const VerificationView = () => {
     const params = useParams();
     const id = params.id
     const [jwtcookie,,] = useCookies(["jwt"]);
@@ -36,10 +36,23 @@ const SpecificEventView = () => {
      fetchEvents()
      fetchPhotos()
     },[]);
-    console.log(eventData)
+    
+    const verify = () => {
+        axios.patch(`http://localhost:5012/v1/CharityEvent/${eventData.idCharityEvent}?isVerified=true&isActive=true`,{headers:{Authorization: `Bearer ${token}`}})
+        .then(navigate(-2))
+    }
     return(
         <div>
-            {eventData.length !== 0 && 
+            {eventData.length !== 0 && <div>
+                {(eventData.charityEventFundrasing !== null && eventData.charityEventVolunteering !== null) ?
+                <div class={styles.verification}>    
+                        <div className={styles.button}><Button onClick={verify} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj całą akcję</Button></div>
+                        <div className={styles.button}><Button variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj akcję pieniężną</Button></div>
+                        <div className={styles.button}><Button variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj akcję wolontariacką</Button></div>
+                </div>:
+                <div class={styles.verification}>
+                        <div className={styles.button}><Button onClick={verify} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj całą akcję</Button></div>
+                </div>}
              <div className={styles.display}>
                 <CloseIcon className={styles.close} onClick={goBack}/>
                 <h1 className={styles.title}>{eventData.title}</h1>
@@ -52,7 +65,6 @@ const SpecificEventView = () => {
                                 <div className={styles.money}>{"Obecnie zebrano: "}
                                     {eventData.charityEventFundrasing.amountOfAlreadyCollectedMoney}/
                                         {eventData.charityEventFundrasing.amountOfMoneyToCollect}
-                                        <div className={styles.button}><DonationDialog props={eventData.charityEventFundrasing.id} /></div>
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
                             </div>:
@@ -62,7 +74,7 @@ const SpecificEventView = () => {
                                     {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
                                         {eventData.charityEventVolunteering.amountOfNeededVolunteers}
                                             {"potrzebnych wolontariuszy:"}
-                                    <div className={styles.button}><VolunteerDialog props={eventData.charityEventVolunteering.id} /></div>
+
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
                             </div>:
@@ -71,22 +83,21 @@ const SpecificEventView = () => {
                                 <div className={styles.money}>{"Obecnie zebrano: "}
                                     {eventData.charityEventFundrasing.amountOfAlreadyCollectedMoney}/
                                         {eventData.charityEventFundrasing.amountOfMoneyToCollect} zł
-                                        <div className={styles.button}><DonationDialog props={eventData.charityEventFundrasing.id} /></div>
                                 </div>
                                 <div className={styles.money}>{"Zgłosiło się "}
                                     {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
                                         {eventData.charityEventVolunteering.amountOfNeededVolunteers}
                                             {" wolontariuszy:"}
-                                    <div className={styles.button}><VolunteerDialog props={eventData.charityEventVolunteering.id} /></div>
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
                             </div>
-                    }    
+                    }
                 </div>
+             </div>
              </div>
             }
         </div>
     );
 }   
 
-export default SpecificEventView
+export default VerificationView

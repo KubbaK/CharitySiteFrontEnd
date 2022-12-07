@@ -16,13 +16,24 @@ const EventBoxVolunteer = (props) =>{
 
     return(
         <div>
+        {
+        props.atype === "normal" &&
         <Link style={{ textDecoration: 'none' }} to={{pathname:`/event/${props.charityId}`,state:{id: props.charityId}}}>
         <Box className={styles.box} name="boxik" sx={{ borderRadius: 15 }} onClick={handleClick}> 
             <PhotoContainer  image={props.image}/>   
                 <h2 className={styles.h2}>{props.title}</h2>
                 <h3 className={styles.h3}>{truncate(props.description)}</h3>
                 <h3 className={styles.h3}>Potrzebni wolontariusze: {props.volunteers}</h3>
-            </Box></Link>
+            </Box></Link>}
+        {
+        props.atype === "verification" &&
+        <Link style={{ textDecoration: 'none' }} to={{pathname:`/verification/${props.charityId}`,state:{id: props.charityId}}}>
+        <Box className={styles.box} name="boxik" sx={{ borderRadius: 15 }} onClick={handleClick}> 
+            <PhotoContainer  image={props.image}/>   
+                <h2 className={styles.h2}>{props.title}</h2>
+                <h3 className={styles.h3}>{truncate(props.description)}</h3>
+                <h3 className={styles.h3}>Potrzebni wolontariusze: {props.volunteers}</h3>
+            </Box></Link>}
         </div>
     )
 }

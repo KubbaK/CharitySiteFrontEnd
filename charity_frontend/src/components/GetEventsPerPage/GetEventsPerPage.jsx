@@ -6,7 +6,7 @@ import styles from "./GetEventsPerPage.module.scss"
 
 
 
-const GetEventsPerPage = ({allEvents}) => {
+const GetEventsPerPage = (props) => {
     const base64toImage = (type,imageString) =>{
       var image = new Image();
       if (type === "image/png"){
@@ -17,22 +17,23 @@ const GetEventsPerPage = ({allEvents}) => {
     }
       return image
     }
+    console.log(props)
     return(
       <div>
         <div className={styles.Box}>
           {
-            allEvents.map((ev,index) => ( 
+            props.allEvents.map((ev,index) => ( 
               (ev.charityEventVolunteering === null  && ev.charityEventFundrasing !== null) ?
-              <EventBox key={index} image={base64toImage(ev.imageDto.contentType,ev.imageDto.content)} title={ev.title} description={ev.description} 
-                progress={(15/ev.charityEventFundrasing.amountOfMoneyToCollect)*100}
+              <EventBox atype={props.atype} key={index} image={base64toImage(ev.imageDto.contentType,ev.imageDto.content)} title={ev.title} description={ev.description} 
+                progress={(ev.charityEventFundrasing.amountOfAlreadyCollectedMoney/ev.charityEventFundrasing.amountOfMoneyToCollect)*100}
                   charityId={ev.idCharityEvent} />:
               (ev.charityEventVolunteering !== null  && ev.charityEventFundrasing === null  ) ?
-              <EventBoxVolunteer key={index} image={base64toImage(ev.imageDto.contentType,ev.imageDto.content)} title={ev.title} description={ev.description}  
+              <EventBoxVolunteer atype={props.atype} key={index} image={base64toImage(ev.imageDto.contentType,ev.imageDto.content)} title={ev.title} description={ev.description}  
                   volunteers={ev.charityEventVolunteering.amountOfNeededVolunteers}
                   charityId={ev.idCharityEvent} />:
-              <EventBoxBoth key={index} image={base64toImage(ev.imageDto.contentType,ev.imageDto.content)} title={ev.title} description={ev.description} 
+              <EventBoxBoth atype={props.atype} key={index} image={base64toImage(ev.imageDto.contentType,ev.imageDto.content)} title={ev.title} description={ev.description} 
                   volunteers={ev.charityEventVolunteering.amountOfNeededVolunteers} 
-                      progress={(15/ev.charityEventFundrasing.amountOfMoneyToCollect)*100}
+                      progress={(ev.charityEventFundrasing.amountOfAlreadyCollectedMoney/ev.charityEventFundrasing.amountOfMoneyToCollect)*100}
                       charityId={ev.idCharityEvent} />
             ))
           }

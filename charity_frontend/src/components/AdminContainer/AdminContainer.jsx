@@ -1,14 +1,14 @@
-import React,{useState,useEffect} from "react";
+import React,{useEffect,useState} from "react";
 import axios from "axios";
-import {useCookies} from "react-cookie";
+import styles from './AdminContainer.module.scss'
+import {useNavigate} from 'react-router-dom';
+import { useCookies } from "react-cookie";
+import { Skeleton } from "@mui/material";
 import GetEventsPerPage from "../GetEventsPerPage/GetEventsPerPage";
 import Pagination from "../Pagination/Pagination";
-import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
-import styles from "./GetEvents.module.scss";
-import {useNavigate} from 'react-router-dom';
-import { Skeleton} from "@mui/material";
 
-const GetEvents = () => {
+
+const AdminContainer = (props) => {
     const [loaded,setLoaded] = useState(true)
     const [allEvents, setAllEvents] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -22,7 +22,7 @@ const GetEvents = () => {
       navigate(-1)
     }
     const fetchEvents = async (pageNumber) => {
-      axios.get(`http://localhost:5012/v1/Search/pagination?isVerified=true&sortBy=CreatedEventDate&sortDirection=DESC&pageNumber=${pageNumber}&pageSize=${eventsPerPage}`,{headers:{Authorization: `Bearer ${token}`}})
+      axios.get(`http://localhost:5012/v1/Search/pagination?isVerified=false&sortBy=CreatedEventDate&sortDirection=DESC&pageNumber=${pageNumber}&pageSize=${eventsPerPage}`,{headers:{Authorization: `Bearer ${token}`}})
       .then(response => {
        setAllEvents(response.data.items)
        setTotalPages(response.data.totalPages)
@@ -44,11 +44,10 @@ const GetEvents = () => {
     }
     return(
         <div>
-            <KeyboardBackspaceIcon className={styles.back} onClick={goBack}/>
             {loaded ? <Skeleton variant="rectangular"  className={styles.skeleton} /> : 
             <div>
               {allEvents.length === 0 && <div className={styles.brak}>BRAK AKCJI!</div>}
-              <GetEventsPerPage allEvents={allEvents} atype='normal' loaded={loaded}/>
+              <GetEventsPerPage atype='verification' allEvents={allEvents} loaded={loaded}/>
               <Pagination eventsPerPage={eventsPerPage} totalEvents={totalPages} paginate={paginate} />
             </div>
           }
@@ -56,4 +55,5 @@ const GetEvents = () => {
     )
 }
 
-export default GetEvents
+export default AdminContainer
+
