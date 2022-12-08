@@ -56,8 +56,9 @@ const EventFormDonation = () => {
             }
     }
     return (
+        <div>
         <div className={styles.main_container}>
-            
+        <div className={styles.form_footer}>    
         <div className = {styles.form_box}>
         <form onSubmit={handleSubmit}>
             <div className ={styles.field1}>
@@ -127,7 +128,11 @@ const EventFormDonation = () => {
         </form>
         
     </div>
+    </div>
     <Footer/>
+    
+</div>
+
 </div>
 )
 }

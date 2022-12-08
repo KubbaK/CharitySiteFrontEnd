@@ -56,7 +56,7 @@ const EventFormDonation = () => {
     }
     return (
         <div className={styles.main_container}>
-            
+        <div className={styles.form_footer}>
         <div className = {styles.form_box}>
         <form onSubmit={handleSubmit} encType="multipart/form-data"> 
             <div className ={styles.field1}>
@@ -115,6 +115,7 @@ const EventFormDonation = () => {
             <div className={styles.message}>{message ? <p>{message}</p> : null}</div>
         </form>
         
+    </div>
     </div>
     <Footer/>
 </div>

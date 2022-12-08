@@ -20,6 +20,9 @@ const VerificationView = () => {
     const goBack = () =>{
       navigate(-2)
     }
+    async function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
     useEffect(() => {
         const fetchEvents = async () => {
             axios.get("http://localhost:5012/v1/Search/"+id,{headers:{Authorization: `Bearer ${token}`}})
@@ -36,10 +39,23 @@ const VerificationView = () => {
      fetchEvents()
      fetchPhotos()
     },[]);
-    
-    const verify = () => {
-        axios.patch(`http://localhost:5012/v1/CharityEvent/${eventData.idCharityEvent}?isVerified=true&isActive=true`,{headers:{Authorization: `Bearer ${token}`}})
-        .then(navigate(-2))
+    const verify = async () => {
+        await verifyAll().then(await sleep(700)).then(await verifyFundraising()).then(await sleep(500)).then(await verifyVolunteering()).then(navigate(-2))
+    }
+    const verifyF = async () => {
+        await verifyAll().then(await sleep(700)).then(await verifyFundraising()).then(await sleep(500).then(navigate(-2)))
+    }
+    const verifyV = async () => {
+        await verifyAll().then(await sleep(700)).then(await verifyVolunteering()).then(await sleep(500).then(navigate(-2)))
+    }
+    const verifyAll = async () => {
+         axios.patch(`http://localhost:5012/v1/CharityEvent/${eventData.idCharityEvent}?isVerified=true&isActive=true`,{headers:{Authorization: `Bearer ${token}`}})
+    }
+    const verifyFundraising = async () => {
+        axios.patch(`http://localhost:5012/v1/CharityEventFundraising/${eventData.fundraisingId}?isVerified=true&isActive=true`,{headers:{Authorization: `Bearer ${token}`}})
+    }
+    const verifyVolunteering = async () => {
+        axios.patch(`http://localhost:5012/v1/CharityEventVolunteering/${eventData.volunteeringId}?isVerified=true&isActive=true`,{headers:{Authorization: `Bearer ${token}`}})
     }
     return(
         <div>
@@ -47,11 +63,15 @@ const VerificationView = () => {
                 {(eventData.charityEventFundrasing !== null && eventData.charityEventVolunteering !== null) ?
                 <div class={styles.verification}>    
                         <div className={styles.button}><Button onClick={verify} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj całą akcję</Button></div>
-                        <div className={styles.button}><Button variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj akcję pieniężną</Button></div>
-                        <div className={styles.button}><Button variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj akcję wolontariacką</Button></div>
+                        <div className={styles.button}><Button onClick={verifyF} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj akcję pieniężną</Button></div>
+                        <div className={styles.button}><Button onClick={verifyV} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj akcję wolontariacką</Button></div>
+                </div>:
+                (eventData.charityEventFundrasing === null && eventData.charityEventVolunteering !== null) ?
+                <div class={styles.verification}>    
+                        <div className={styles.button}><Button onClick={verifyV} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj akcję</Button></div>
                 </div>:
                 <div class={styles.verification}>
-                        <div className={styles.button}><Button onClick={verify} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj całą akcję</Button></div>
+                        <div className={styles.button}><Button onClick={verifyF} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj akcję</Button></div>
                 </div>}
              <div className={styles.display}>
                 <CloseIcon className={styles.close} onClick={goBack}/>

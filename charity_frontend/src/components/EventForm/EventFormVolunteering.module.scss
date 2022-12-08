@@ -29,6 +29,9 @@
     top:0; left:0; right:0; bottom:0; 
     margin: 0 auto;
 }
+.form_footer{
+    min-height:calc(100vh + 68px)
+}
 .field1,.field2,.field3,.field4,.field5{
 	margin-bottom: 20px;
     position: relative;

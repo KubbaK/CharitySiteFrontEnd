@@ -31,6 +31,14 @@ const GetEventsPerPage = (props) => {
               <EventBoxVolunteer atype={props.atype} key={index} image={base64toImage(ev.imageDto.contentType,ev.imageDto.content)} title={ev.title} description={ev.description}  
                   volunteers={ev.charityEventVolunteering.amountOfNeededVolunteers}
                   charityId={ev.idCharityEvent} />:
+              (ev.charityEventVolunteering !== null  && ev.charityEventFundrasing !== null && ev.charityEventVolunteering.isActive === 1 && ev.charityEventFundrasing.isActive === 0 ) ?
+              <EventBoxVolunteer atype={props.atype} key={index} image={base64toImage(ev.imageDto.contentType,ev.imageDto.content)} title={ev.title} description={ev.description}  
+                  volunteers={ev.charityEventVolunteering.amountOfNeededVolunteers}
+                  charityId={ev.idCharityEvent} />:
+              (ev.charityEventVolunteering !== null  && ev.charityEventFundrasing !== null && ev.charityEventVolunteering.isActive === 0 && ev.charityEventFundrasing.isActive === 1) ?
+              <EventBox atype={props.atype} key={index} image={base64toImage(ev.imageDto.contentType,ev.imageDto.content)} title={ev.title} description={ev.description} 
+                progress={(ev.charityEventFundrasing.amountOfAlreadyCollectedMoney/ev.charityEventFundrasing.amountOfMoneyToCollect)*100}
+                  charityId={ev.idCharityEvent} />:
               <EventBoxBoth atype={props.atype} key={index} image={base64toImage(ev.imageDto.contentType,ev.imageDto.content)} title={ev.title} description={ev.description} 
                   volunteers={ev.charityEventVolunteering.amountOfNeededVolunteers} 
                       progress={(ev.charityEventFundrasing.amountOfAlreadyCollectedMoney/ev.charityEventFundrasing.amountOfMoneyToCollect)*100}

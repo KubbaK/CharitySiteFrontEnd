@@ -4,6 +4,7 @@ import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
 import styles from "./Login.module.scss"
 import NavBar from "../NavigationBar/NavBar.jsx"
+import Footer from "../Footer/Footer"
 
 const Login = () => {
     const [data, setData] = useState({
@@ -85,9 +86,8 @@ const Login = () => {
                
             </div> 
                
-        </div>                 
+        </div>          
         </div>
-        
         
     );
 };

@@ -66,6 +66,26 @@ const SpecificEventView = () => {
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
                             </div>:
+                        (eventData.charityEventVolunteering !== null && eventData.charityEventFundrasing !== null && eventData.charityEventVolunteering.isActive === 1 && eventData.charityEventFundrasing.isActive === 0) ?
+                            <div>
+                                <div className={styles.money}>{"Zgłosiło się "}
+                                    {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
+                                        {eventData.charityEventVolunteering.amountOfNeededVolunteers}
+                                            {"potrzebnych wolontariuszy:"}
+                                    <div className={styles.button}><VolunteerDialog props={eventData.charityEventVolunteering.id} /></div>
+                                </div>
+                                <div className={styles.photos}><EventCarousel photos={photos}/></div>
+                            </div>:
+                        (eventData.charityEventFundrasing !== null && eventData.charityEventVolunteering !== null && eventData.charityEventVolunteering.isActive === 0 && eventData.charityEventFundrasing.isActive === 1 ) ?
+                            <div>
+                                <div className={styles.fundT}>Cel zbiórki: {eventData.charityEventFundrasing.fundTarget}</div>
+                                <div className={styles.money}>{"Obecnie zebrano: "}
+                                    {eventData.charityEventFundrasing.amountOfAlreadyCollectedMoney}/
+                                        {eventData.charityEventFundrasing.amountOfMoneyToCollect}
+                                        <div className={styles.button}><DonationDialog props={eventData.charityEventFundrasing.id} /></div>
+                                </div>
+                                <div className={styles.photos}><EventCarousel photos={photos}/></div>
+                            </div>:
                             <div>
                                 <div className={styles.fundT}>Cel zbiórki: {eventData.charityEventFundrasing.fundTarget}</div>
                                 <div className={styles.money}>{"Obecnie zebrano: "}

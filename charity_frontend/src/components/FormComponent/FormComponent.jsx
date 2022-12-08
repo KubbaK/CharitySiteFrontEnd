@@ -5,6 +5,7 @@ import NavBar from "../NavigationBar/NavBar.jsx"
 import EventFormVolunteering from '../EventForm/EventFormVolunteering';
 import EventFormBoth from '../EventForm/EventFormBoth';
 import {useCookies} from "react-cookie"
+import Footer from '../Footer/Footer';
 
 
 const FormComponent = () =>{
@@ -31,9 +32,9 @@ const FormComponent = () =>{
             setRodzaj(event.target.value);
         }  
     return(
-        <div>
+        <div >
             {jwtcookie.jwt !== undefined &&
-            <div>
+            <div >
             <NavBar />
             <div className={styles.page_title}>
                 <h1>Utwórz swoją akcję charytatywną</h1>
@@ -50,6 +51,7 @@ const FormComponent = () =>{
             {volunteeringVisible && <EventFormVolunteering/>}
             {bothVisible && <EventFormBoth/>}
             </div>
+           
             }
             {jwtcookie.jwt === undefined &&
                 <div className={styles.brak}>BRAK DOSTĘPU</div>

@@ -7,6 +7,7 @@ import CarouselComponent from "../Carousel/Carousel.jsx"
 
 const MainPage = (props) =>{
     return(
+        <div>
         <div className={styles.page}>
             <NavBar/>
             <h1 className={styles.h12}>NAJWAŻNIEJSZE INFORMACJE</h1>
@@ -15,9 +16,9 @@ const MainPage = (props) =>{
                 <div className={styles.event}>
                     <EventContainer/>
                 </div>
-                
-            <Footer/>
         </div> 
+        <Footer/>
+        </div>
     );
 }
 

@@ -56,7 +56,7 @@ const EventFormVolunteering = () => {
     }
     return (
         <div className={styles.main_container}>
-            
+        <div className={styles.form_footer}>  
         <div className = {styles.form_box}>
         <form onSubmit={handleSubmit}>
             <div className ={styles.field1}>
@@ -108,6 +108,7 @@ const EventFormVolunteering = () => {
         </form>
         
     </div>
+    </div>  
     <Footer/>
 </div>
 )
