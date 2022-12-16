@@ -13,6 +13,7 @@ const NavBar = () =>{
     const [jwtcookie,setJwtcookie,] = useCookies(["jwt"]);
     setJwtcookie({secure: true,sameSite:'none'})
     const token = jwtcookie.jwt
+    console.log(token)
     let login = ""
     if (token !== undefined)
     {

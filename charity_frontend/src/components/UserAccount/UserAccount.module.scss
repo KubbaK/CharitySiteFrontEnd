@@ -10,11 +10,58 @@
 }
 
 .userData{
-    background-color: white;
-    border-radius: 30px;
     width:350px;
-    height:400px;
+    height:200px;
     position: relative;
-    left:70%;
-    top:18%;
+    left: 0;
+    right:0;
+    top:0;
+    bottom:0;
+    margin: 0 auto;
+    margin-right: 50px;
+    margin-top: 120px;
+    padding-left: 30px;
+    font-size: 20px;
+}
+
+.userStatistic{
+    width:750px;
+    height:230px;
+    position: relative;
+    left: 0;
+    right:0;
+    top:0;
+    bottom:0;
+    margin: 0 auto;
+    margin-left: 150px;
+    margin-top: 120px;
+    font-size: 25px;
+    font-weight: bolder;
+    border:2px black solid;
+    border-radius: 20px;
+    padding-left: 10px;
+}
+
+.line{
+    display: inline-block;
+    font-weight: bold;
+    margin: 2px 0;
+}
+
+.lastline{
+    display: inline-block;
+    font-weight: bold;
+    margin: 2px 0;
+}
+
+.button{
+    margin-top: 20px;
+    margin-left: 30px;
+    background-color: yellowgreen;
+}
+
+.page1{
+    min-height: calc(100vh - 94px);
+    display:flex; 
+    flex-direction:row;
 }

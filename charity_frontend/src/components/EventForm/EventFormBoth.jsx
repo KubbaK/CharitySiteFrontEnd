@@ -41,7 +41,7 @@ const EventFormDonation = () => {
         
         try{
             let res = await axios.post("http://localhost:5012/v1/CharityEvent",formdata,
-            {headers:{'Content-Type': 'multipart/form-data'}})
+            {headers:{'Content-Type': 'multipart/form-data',Authorization: `Bearer ${token}`}})
             if (res.status === 200) {
                 setMessage("Dodano ogłoszenie!");
                 await sleep(2000)

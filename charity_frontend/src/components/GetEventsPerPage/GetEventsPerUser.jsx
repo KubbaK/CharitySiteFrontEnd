@@ -6,7 +6,7 @@ import styles from "./GetEventsPerPage.module.scss"
 
 
 
-const GetEventsPerPage = (props) => {
+const GetEventsPerUser = (props) => {
     const base64toImage = (type,imageString) =>{
       var image = new Image();
       if (type === "image/png"){
@@ -17,12 +17,12 @@ const GetEventsPerPage = (props) => {
     }
       return image
     }
-    console.log(props.allEvents)
+    console.log(props)
     return(
       <div>
         <div className={styles.Box}>
           {
-            props.allEvents.map((ev,index) => ( 
+            props.allEvents.map((ev,index) => (
               (ev.charityEventVolunteering === null  && ev.charityEventFundraising !== null) ?
               <EventBox atype={props.atype} key={index} image={base64toImage(ev.imageDto.contentType,ev.imageDto.content)} title={ev.title} description={ev.description} 
                 progress={(ev.charityEventFundraising.amountOfAlreadyCollectedMoney/ev.charityEventFundraising.amountOfMoneyToCollect)*100}
@@ -50,4 +50,4 @@ const GetEventsPerPage = (props) => {
     )
 }
 
-export default GetEventsPerPage
+export default GetEventsPerUser

@@ -46,57 +46,57 @@ const SpecificEventView = () => {
                 <h2 className={styles.description}>{eventData.description}</h2>
                 <div>
                     {
-                        (eventData.charityEventFundrasing !== null && eventData.charityEventVolunteering === null) ?
+                        (eventData.charityEventFundraising !== null && eventData.charityEventVolunteering === null) ?
                             <div>
-                                <div className={styles.fundT}>Cel zbiórki: {eventData.charityEventFundrasing.fundTarget}</div>
+                                <div className={styles.fundT}>Cel zbiórki: {eventData.charityEventFundraising.fundTarget}</div>
                                 <div className={styles.money}>{"Obecnie zebrano: "}
-                                    {eventData.charityEventFundrasing.amountOfAlreadyCollectedMoney}/
-                                        {eventData.charityEventFundrasing.amountOfMoneyToCollect}
-                                        <div className={styles.button}><DonationDialog props={eventData.charityEventFundrasing.id} /></div>
+                                    {eventData.charityEventFundraising.amountOfAlreadyCollectedMoney}/
+                                        {eventData.charityEventFundraising.amountOfMoneyToCollect}
+                                        <div className={styles.button}><DonationDialog props={eventData.charityEventFundraising.id} /></div>
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
                             </div>:
-                        (eventData.charityEventVolunteering !== null && eventData.charityEventFundrasing === null) ?
+                        (eventData.charityEventVolunteering !== null && eventData.charityEventFundraising === null) ?
                             <div>
                                 <div className={styles.money}>{"Zgłosiło się "}
                                     {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
                                         {eventData.charityEventVolunteering.amountOfNeededVolunteers}
-                                            {"potrzebnych wolontariuszy:"}
+                                            {"potrzebnych wolontariuszy"}
                                     <div className={styles.button}><VolunteerDialog props={eventData.charityEventVolunteering.id} /></div>
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
                             </div>:
-                        (eventData.charityEventVolunteering !== null && eventData.charityEventFundrasing !== null && eventData.charityEventVolunteering.isActive === 1 && eventData.charityEventFundrasing.isActive === 0) ?
+                        (eventData.charityEventVolunteering !== null && eventData.charityEventFundraising !== null && eventData.charityEventVolunteering.isActive === 1 && eventData.charityEventFundraising.isActive === 0) ?
                             <div>
                                 <div className={styles.money}>{"Zgłosiło się "}
                                     {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
                                         {eventData.charityEventVolunteering.amountOfNeededVolunteers}
-                                            {"potrzebnych wolontariuszy:"}
+                                            {"potrzebnych wolontariuszy"}
                                     <div className={styles.button}><VolunteerDialog props={eventData.charityEventVolunteering.id} /></div>
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
                             </div>:
-                        (eventData.charityEventFundrasing !== null && eventData.charityEventVolunteering !== null && eventData.charityEventVolunteering.isActive === 0 && eventData.charityEventFundrasing.isActive === 1 ) ?
+                        (eventData.charityEventFundraising !== null && eventData.charityEventVolunteering !== null && eventData.charityEventVolunteering.isActive === 0 && eventData.charityEventFundraising.isActive === 1 ) ?
                             <div>
-                                <div className={styles.fundT}>Cel zbiórki: {eventData.charityEventFundrasing.fundTarget}</div>
+                                <div className={styles.fundT}>Cel zbiórki: {eventData.charityEventFundraising.fundTarget}</div>
                                 <div className={styles.money}>{"Obecnie zebrano: "}
-                                    {eventData.charityEventFundrasing.amountOfAlreadyCollectedMoney}/
-                                        {eventData.charityEventFundrasing.amountOfMoneyToCollect}
-                                        <div className={styles.button}><DonationDialog props={eventData.charityEventFundrasing.id} /></div>
+                                    {eventData.charityEventFundraising.amountOfAlreadyCollectedMoney}/
+                                        {eventData.charityEventFundraising.amountOfMoneyToCollect}
+                                        <div className={styles.button}><DonationDialog props={eventData.charityEventFundraising.id} /></div>
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
                             </div>:
                             <div>
-                                <div className={styles.fundT}>Cel zbiórki: {eventData.charityEventFundrasing.fundTarget}</div>
+                                <div className={styles.fundT}>Cel zbiórki: {eventData.charityEventFundraising.fundTarget}</div>
                                 <div className={styles.money}>{"Obecnie zebrano: "}
-                                    {eventData.charityEventFundrasing.amountOfAlreadyCollectedMoney}/
-                                        {eventData.charityEventFundrasing.amountOfMoneyToCollect} zł
-                                        <div className={styles.button}><DonationDialog props={eventData.charityEventFundrasing.id} /></div>
+                                    {eventData.charityEventFundraising.amountOfAlreadyCollectedMoney}/
+                                        {eventData.charityEventFundraising.amountOfMoneyToCollect} zł
+                                        <div className={styles.button}><DonationDialog props={eventData.charityEventFundraising.id} /></div>
                                 </div>
                                 <div className={styles.money}>{"Zgłosiło się "}
                                     {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
                                         {eventData.charityEventVolunteering.amountOfNeededVolunteers}
-                                            {" wolontariuszy:"}
+                                            {" wolontariuszy"}
                                     <div className={styles.button}><VolunteerDialog props={eventData.charityEventVolunteering.id} /></div>
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>

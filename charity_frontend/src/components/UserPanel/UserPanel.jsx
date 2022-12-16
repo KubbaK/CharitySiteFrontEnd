@@ -31,13 +31,13 @@ const UserPanel = () =>{
                         <Link to="/SignUp"><Button className={styles.button} variant="contained">Zarejestruj się</Button></Link>
                     </Stack>
                    } 
-                   {(jwtcookie.jwt !== undefined && roles === "Volunteer") &&
+                   {(jwtcookie.jwt !== undefined && roles.includes("Volunteer") === true) &&
                      <Stack direction="column" spacing={1} marginTop={3} alignItems="center" >
                         <Link to="/userAccount"><Button className={styles.button} variant="contained">Moje konto</Button></Link>
                         <Button className={styles.button} variant="contained" onClick={handleLogout}>Wyloguj się</Button>
                      </Stack>   
                    }
-                   {(jwtcookie.jwt !== undefined && roles === "Admin") &&
+                   {(jwtcookie.jwt !== undefined && roles.includes("Admin") === true) &&
                      <Stack direction="column" spacing={1} marginTop={3} alignItems="center" >
                         <Link to="/adminPanel"><Button className={styles.button} variant="contained">Panel Administratora</Button></Link>
                         <Button className={styles.button} variant="contained" onClick={handleLogout}>Wyloguj się</Button>

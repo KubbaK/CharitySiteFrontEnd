@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 import EventCarousel from "../EventCarousel/EventCarousel";
 import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate } from "react-router-dom";
-import DonationDialog from "../ButtonPopUps/DonationDialog";
 import { Button } from "@mui/material";
 
 const VerificationView = () => {
@@ -40,37 +39,38 @@ const VerificationView = () => {
      fetchPhotos()
     },[]);
     const verify = async () => {
-        await verifyAll().then(await sleep(700)).then(await verifyFundraising()).then(await sleep(500)).then(await verifyVolunteering()).then(navigate(-2))
+        await verifyAll().then(await sleep(700)).then(await verifyFundraising()).then(await sleep(500)).then(await verifyVolunteering()).then(navigate(-2).then(sleep(300)).then(navigate(0)))
     }
     const verifyF = async () => {
-        await verifyAll().then(await sleep(700)).then(await verifyFundraising()).then(await sleep(500).then(navigate(-2)))
+        await verifyAll().then(await sleep(700)).then(await verifyFundraising()).then(await sleep(500)).then(navigate(-2).then(sleep(300)).then(navigate(0)))
     }
     const verifyV = async () => {
-        await verifyAll().then(await sleep(700)).then(await verifyVolunteering()).then(await sleep(500).then(navigate(-2)))
+        await verifyAll().then(await sleep(700)).then(await verifyVolunteering()).then(await sleep(500)).then(navigate(-2).then(sleep(300)).then(navigate(0)))
     }
     const verifyAll = async () => {
-         axios.patch(`http://localhost:5012/v1/CharityEvent/${eventData.idCharityEvent}?isVerified=true&isActive=true`,{headers:{Authorization: `Bearer ${token}`}})
+         axios({method:'patch',url:`http://localhost:5012/v1/CharityEvent/${eventData.idCharityEvent}?isVerified=true&isActive=true`,headers:{Authorization: `Bearer ${token}`}})
+         
     }
     const verifyFundraising = async () => {
-        axios.patch(`http://localhost:5012/v1/CharityEventFundraising/${eventData.fundraisingId}?isVerified=true&isActive=true`,{headers:{Authorization: `Bearer ${token}`}})
+        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventFundraising/${eventData.fundraisingId}?isVerified=true&isActive=true`,headers:{Authorization: `Bearer ${token}`}})
     }
     const verifyVolunteering = async () => {
-        axios.patch(`http://localhost:5012/v1/CharityEventVolunteering/${eventData.volunteeringId}?isVerified=true&isActive=true`,{headers:{Authorization: `Bearer ${token}`}})
+        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventVolunteering/${eventData.volunteeringId}?isVerified=true&isActive=true`,headers:{Authorization: `Bearer ${token}`}})
     }
     return(
         <div>
             {eventData.length !== 0 && <div>
-                {(eventData.charityEventFundrasing !== null && eventData.charityEventVolunteering !== null) ?
-                <div class={styles.verification}>    
+                {(eventData.charityEventFundraising !== null && eventData.charityEventVolunteering !== null) ?
+                <div className={styles.verification}>    
                         <div className={styles.button}><Button onClick={verify} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj całą akcję</Button></div>
                         <div className={styles.button}><Button onClick={verifyF} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj akcję pieniężną</Button></div>
                         <div className={styles.button}><Button onClick={verifyV} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj akcję wolontariacką</Button></div>
                 </div>:
-                (eventData.charityEventFundrasing === null && eventData.charityEventVolunteering !== null) ?
-                <div class={styles.verification}>    
+                (eventData.charityEventFundraising === null && eventData.charityEventVolunteering !== null) ?
+                <div className={styles.verification}>    
                         <div className={styles.button}><Button onClick={verifyV} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj akcję</Button></div>
                 </div>:
-                <div class={styles.verification}>
+                <div className={styles.verification}>
                         <div className={styles.button}><Button onClick={verifyF} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj akcję</Button></div>
                 </div>}
              <div className={styles.display}>
@@ -79,35 +79,54 @@ const VerificationView = () => {
                 <h2 className={styles.description}>{eventData.description}</h2>
                 <div>
                     {
-                        (eventData.charityEventFundrasing !== null && eventData.charityEventVolunteering === null) ?
+                        (eventData.charityEventFundraising !== null && eventData.charityEventVolunteering === null) ?
                             <div>
-                                <div className={styles.fundT}>Cel zbiórki: {eventData.charityEventFundrasing.fundTarget}</div>
+                                <div className={styles.fundT}>Cel zbiórki: {eventData.charityEventFundraising.fundTarget}</div>
                                 <div className={styles.money}>{"Obecnie zebrano: "}
-                                    {eventData.charityEventFundrasing.amountOfAlreadyCollectedMoney}/
-                                        {eventData.charityEventFundrasing.amountOfMoneyToCollect}
+                                    {eventData.charityEventFundraising.amountOfAlreadyCollectedMoney}/
+                                        {eventData.charityEventFundraising.amountOfMoneyToCollect}
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
                             </div>:
-                        (eventData.charityEventVolunteering !== null && eventData.charityEventFundrasing === null) ?
+                        (eventData.charityEventVolunteering !== null && eventData.charityEventFundraising === null) ?
                             <div>
                                 <div className={styles.money}>{"Zgłosiło się "}
                                     {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
                                         {eventData.charityEventVolunteering.amountOfNeededVolunteers}
-                                            {"potrzebnych wolontariuszy:"}
+                                            {"potrzebnych wolontariuszy"}
 
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
                             </div>:
+                        (eventData.charityEventVolunteering !== null && eventData.charityEventFundraising !== null && eventData.charityEventVolunteering.isActive === 0 && eventData.charityEventFundraising.isActive === 1) ?
                             <div>
-                                <div className={styles.fundT}>Cel zbiórki: {eventData.charityEventFundrasing.fundTarget}</div>
+                                <div className={styles.money}>{"Zgłosiło się "}
+                                    {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
+                                        {eventData.charityEventVolunteering.amountOfNeededVolunteers}
+                                            {"potrzebnych wolontariuszy"}
+
+                                </div>
+                                <div className={styles.photos}><EventCarousel photos={photos}/></div>
+                            </div>:
+                        (eventData.charityEventFundraising !== null && eventData.charityEventVolunteering !== null && eventData.charityEventVolunteering.isActive === 1 && eventData.charityEventFundraising.isActive === 0 ) ?
+                            <div>
+                                <div className={styles.fundT}>Cel zbiórki: {eventData.charityEventFundraising.fundTarget}</div>
                                 <div className={styles.money}>{"Obecnie zebrano: "}
-                                    {eventData.charityEventFundrasing.amountOfAlreadyCollectedMoney}/
-                                        {eventData.charityEventFundrasing.amountOfMoneyToCollect} zł
+                                    {eventData.charityEventFundraising.amountOfAlreadyCollectedMoney}/
+                                        {eventData.charityEventFundraising.amountOfMoneyToCollect}
+                                </div>
+                                <div className={styles.photos}><EventCarousel photos={photos}/></div>
+                            </div>:
+                            <div>
+                                <div className={styles.fundT}>Cel zbiórki: {eventData.charityEventFundraising.fundTarget}</div>
+                                <div className={styles.money}>{"Obecnie zebrano: "}
+                                    {eventData.charityEventFundraising.amountOfAlreadyCollectedMoney}/
+                                        {eventData.charityEventFundraising.amountOfMoneyToCollect} zł
                                 </div>
                                 <div className={styles.money}>{"Zgłosiło się "}
                                     {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
                                         {eventData.charityEventVolunteering.amountOfNeededVolunteers}
-                                            {" wolontariuszy:"}
+                                            {" wolontariuszy"}
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
                             </div>

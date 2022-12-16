@@ -1,7 +1,6 @@
 import React,{useEffect,useState} from "react";
 import axios from "axios";
 import styles from './AdminContainer.module.scss'
-import {useNavigate} from 'react-router-dom';
 import { useCookies } from "react-cookie";
 import { Skeleton } from "@mui/material";
 import GetEventsPerPage from "../GetEventsPerPage/GetEventsPerPage";
@@ -17,12 +16,9 @@ const AdminContainer = (props) => {
     const [totalPages, setTotalPages] = useState(0);
     const [toogle,setToogle] = useState(false)
     const token = jwtcookie.jwt
-    const navigate = useNavigate();
-    const goBack = () =>{
-      navigate(-1)
-    }
+
     const fetchEvents = async (pageNumber) => {
-      axios.get(`http://localhost:5012/v1/Search/pagination?isVerified=false&sortBy=CreatedEventDate&sortDirection=DESC&pageNumber=${pageNumber}&pageSize=${eventsPerPage}`,{headers:{Authorization: `Bearer ${token}`}})
+      axios.get(`http://localhost:5012/v1/Search/pagination?sortBy=CreatedEventDate&sortDirection=DESC&pageNumber=${pageNumber}&pageSize=${eventsPerPage}&volunteeringOrFundraisingIsVerified=false`,{headers:{Authorization: `Bearer ${token}`}})
       .then(response => {
        setAllEvents(response.data.items)
        setTotalPages(response.data.totalPages)

@@ -10,13 +10,15 @@ const Regulamin = () => {
             <Dialog aria-labelledby='dialog-title' aria-describedby='dialog-description' 
                 open={open} onClose={() => setOpen(false)}>
                 <DialogTitle id='dialog-title'>Regulamin</DialogTitle>
-                <DialogContent>
-                    <DialogContentText id='dialog-description'>
-                        <ul>
-                            <li>Użytkownik może założyć konto w serwisie i korzystać z jego usług</li>
-                            <li>Użytkownik może 123</li>
-                            <li>Użytkownik może 123</li>
-                            <li>Użytkownik może 123</li>
+                <DialogContent >
+                    <DialogContentText id='dialog-description' >
+                        <ul style={{listStyleType: 'none',marginLeft:'-20px',fontWeight:'bold'}}>
+                            <li style={{margin:'5px 0'}}>1. Rejestracja oraz korzystanie z serwisu są dobrowolne i bezpłatne.</li>
+                            <li style={{margin:'5px 0'}}>2. Każdy Użytkownik korzystający z serwisu zobowiązany jest do zapoznania się z Regulaminem i akceptacji jego treści.</li>
+                            <li style={{margin:'5px 0'}}>3. W celu prawidłowego korzystania z funkcjonalności serwisu, niezbędne jest połączenie internetowe.</li>
+                            <li style={{margin:'5px 0'}}>4. Zabronione jest umieszczanie treści o charakterze wzywającym do nienawiści oraz treści o charakterze sprzecznym z dobrymi obyczajami.</li>
+                            <li style={{margin:'5px 0'}}>5. Zabronione jest umieszczanie materiałów o charakterze reklamowym, promocyjnym i marketingowym.</li>
+                            <li style={{margin:'5px 0'}}>6. Kwota przekazana jako darowizna nie podlega zwrotowi.</li>
                         </ul>
                     </DialogContentText>
                 </DialogContent>
