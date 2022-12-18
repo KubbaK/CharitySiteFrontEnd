@@ -1,0 +1,35 @@
+.box{
+    background-color: white;
+    max-height: 600px;
+    width: 500px;
+    padding: 5px;
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border: 2px black solid;
+    border-radius: 15px;
+
+}
+.box1{
+    max-height: 600px;
+    overflow: auto;
+    width: 500px;
+    padding: 1px;
+    border-radius: 12px;
+}
+.element{
+    background-color: teal;
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 15px;
+    width: fit-content;
+    text-overflow: ellipsis;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+.name{
+    font-weight: bolder;
+    float:left;
+    margin-right: 5px;
+}
