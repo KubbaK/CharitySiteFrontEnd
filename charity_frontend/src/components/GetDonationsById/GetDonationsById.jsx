@@ -5,15 +5,7 @@ import axios from "axios"
 import { useCookies } from 'react-cookie'
 
 const GetDonationsById = (props) => {
-    const [donation, setDonation] = useState([{
-        charityFundraisingIdCharityFundraising: null, 
-        donationId: null, 
-        amountOfDonation: null, 
-        donationDate: null,
-        description: null, 
-        userIdUser: null,
-        user: {idUser: null, login: "", email: ""}
-    }])
+    const [donation, setDonation] = useState([])
 
 const convertDate = (date) =>
 {
@@ -32,7 +24,7 @@ const fetchDonationsByFundraisingId = () =>
     }).then(response => {
 
         setDonation(response.data);
-        console.log(response);
+
     });
     
 }
@@ -44,9 +36,13 @@ useEffect(() => {
 
 
     return (
-        <div className={styles.box}>
-            <div className={styles.box1}>
+        <div className={styles.box}> 
+       
+          {
+           (donation.length !== 0) ? (
+           <div className={styles.box1}>
             {
+                
             donation.map((val, key) => {
                 return (
             
@@ -58,9 +54,12 @@ useEffect(() => {
            </div>
 
             )})
+            } 
+            </div> ) : ( <div>Nie dokonano jeszcze żadnej donacji</div> )
             }
-            </div>
+    
         </div>
+
     )
 }
 
