@@ -4,7 +4,6 @@ import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
 import styles from "./Login.module.scss"
 import NavBar from "../NavigationBar/NavBar.jsx"
-import Footer from "../Footer/Footer"
 
 const Login = () => {
     const [data, setData] = useState({
@@ -14,7 +13,7 @@ const Login = () => {
     const handleChange = ({ currentTarget: input }) => {
         setData({ ...data, [input.name]: input.value })
     }
-    const [error, setError] = useState("")
+    const [errorT, setError] = useState("")
     const [, setJwtcookie] = useCookies(["jwt"]);
     const navigate = useNavigate()
 
@@ -31,7 +30,12 @@ const Login = () => {
                 error.response.status >= 400 &&
                 error.response.status <= 500
             ) {
-                setError(error.response.data.message)
+                if (error.response.data.errors.LoginOrEmail){
+                    setError(errorT+""+error.response.data.errors.LoginOrEmail[0])
+                }
+                if (error.response.data.errors.Password){
+                    setError(errorT+""+error.response.data.errors.Password[0])
+                }
             }
         }
     }
@@ -65,12 +69,14 @@ const Login = () => {
                             required
                             className={styles.input}
                         />
-                        {error && <div
-                            className={styles.error_msg}>{error}</div>}
+                        
                         <button type="submit"
-                            className={styles.blue_btn}>
+                            className={styles.blue_btn} onClick={() => setError("")}>
                             Zaloguj się
                         </button>
+                        {errorT && <div
+                            className={styles.error_msg}>{errorT}</div>
+                        }
                     </form>
                 </div>
                 <div className={styles.bottom}>

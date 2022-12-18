@@ -6,7 +6,7 @@ import styles from "./GetEventsPerPage.module.scss"
 
 
 
-const GetEventsPerUser = (props) => {
+const GetDesactivatedEventsPerPage = (props) => {
     const base64toImage = (type,imageString) =>{
       var image = new Image();
       if (type === "image/png"){
@@ -17,25 +17,25 @@ const GetEventsPerUser = (props) => {
     }
       return image
     }
-    console.log(props)
+    console.log(props.allEvents)
     return(
       <div>
         <div className={styles.Box}>
           {
-            props.allEvents.map((ev,index) => (
-              (ev.charityEventVolunteering === null  && ev.charityEventFundraising !== null) ?
+            props.allEvents.map((ev,index) => ( 
+              (ev.charityEventVolunteering === null  && ev.charityEventFundraising !== null && ev.charityEventFundraising.isActive === 0) ?
               <EventBox atype={props.atype} key={index} image={base64toImage(ev.imageDto.contentType,ev.imageDto.content)} title={ev.title} description={ev.description} 
                 progress={(ev.charityEventFundraising.amountOfAlreadyCollectedMoney/ev.charityEventFundraising.amountOfMoneyToCollect)*100}
                   charityId={ev.idCharityEvent} />:
-              (ev.charityEventVolunteering !== null  && ev.charityEventFundraising === null  ) ?
+              (ev.charityEventVolunteering !== null  && ev.charityEventFundraising === null && ev.charityEventVolunteering.isActive === 0 ) ?
               <EventBoxVolunteer atype={props.atype} key={index} image={base64toImage(ev.imageDto.contentType,ev.imageDto.content)} title={ev.title} description={ev.description}  
                   volunteers={ev.charityEventVolunteering.amountOfNeededVolunteers}
                   charityId={ev.idCharityEvent} />:
-              (ev.charityEventVolunteering !== null  && ev.charityEventFundraising !== null && ev.charityEventVolunteering.isActive === 1 && ev.charityEventFundraising.isActive === 0 ) ?
+              (ev.charityEventVolunteering !== null  && ev.charityEventFundraising !== null && ev.charityEventVolunteering.isActive === 0 && ev.charityEventFundraising.isActive === 1 ) ?
               <EventBoxVolunteer atype={props.atype} key={index} image={base64toImage(ev.imageDto.contentType,ev.imageDto.content)} title={ev.title} description={ev.description}  
                   volunteers={ev.charityEventVolunteering.amountOfNeededVolunteers}
                   charityId={ev.idCharityEvent} />:
-              (ev.charityEventVolunteering !== null  && ev.charityEventFundraising !== null && ev.charityEventVolunteering.isActive === 0 && ev.charityEventFundraising.isActive === 1) ?
+              (ev.charityEventVolunteering !== null  && ev.charityEventFundraising !== null && ev.charityEventVolunteering.isActive === 1 && ev.charityEventFundraising.isActive === 0) ?
               <EventBox atype={props.atype} key={index} image={base64toImage(ev.imageDto.contentType,ev.imageDto.content)} title={ev.title} description={ev.description} 
                 progress={(ev.charityEventFundraising.amountOfAlreadyCollectedMoney/ev.charityEventFundraising.amountOfMoneyToCollect)*100}
                   charityId={ev.idCharityEvent} />:
@@ -50,4 +50,4 @@ const GetEventsPerUser = (props) => {
     )
 }
 
-export default GetEventsPerUser
+export default GetDesactivatedEventsPerPage

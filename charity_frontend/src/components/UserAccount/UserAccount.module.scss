@@ -1,8 +1,5 @@
 .page{
-    //position: relative;
-    height: 100vh;
-    width: 100%;
-    overflow-x: hidden;
+    min-height: calc(100vh - 44px);
 }
 
 .footer{
@@ -19,9 +16,10 @@
     bottom:0;
     margin: 0 auto;
     margin-right: 50px;
-    margin-top: 120px;
+    margin-top: 130px;
     padding-left: 30px;
     font-size: 20px;
+    margin-bottom: 100px;
 }
 
 .userStatistic{
@@ -33,13 +31,15 @@
     top:0;
     bottom:0;
     margin: 0 auto;
-    margin-left: 150px;
+    margin-left: 100px;
     margin-top: 120px;
     font-size: 25px;
     font-weight: bolder;
     border:2px black solid;
     border-radius: 20px;
     padding-left: 10px;
+    overflow: hidden;
+    margin-bottom: 100px;
 }
 
 .line{
@@ -54,14 +54,42 @@
     margin: 2px 0;
 }
 
-.button{
-    margin-top: 20px;
-    margin-left: 30px;
-    background-color: yellowgreen;
-}
-
 .page1{
-    min-height: calc(100vh - 94px);
+   
     display:flex; 
     flex-direction:row;
 }
+
+.active{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.radio{
+    margin: 0 auto;
+    text-align: left;
+    margin-bottom: 30px;
+    background-color: yellowgreen;
+    width:fit-content;
+    right: 0;
+    left: 0;
+    border-radius: 20px;
+    padding: 10px;
+    padding-right:15px;
+    padding-left:15px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.brak{
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow:-1px 1px 10px rgba(0, 0, 0, 0.35);
+}
+
+input[type="radio"] {
+    margin-top: -3px;
+    vertical-align: middle;
+  }

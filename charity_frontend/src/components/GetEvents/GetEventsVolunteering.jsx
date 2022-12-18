@@ -24,7 +24,7 @@ const GetEventsVolunteering = () => {
     navigate(-1)
   }
   const fetchEvents = async (pageNumber) => {
-    axios.get(`http://localhost:5012/v1/Search/pagination?isVerified=true&isVolunteering=true&sortBy=CreatedEventDate&sortDirection=DESC&pageNumber=${pageNumber}&pageSize=${eventsPerPage}`,{headers:{Authorization: `Bearer ${token}`}})
+    axios.get(`http://localhost:5012/v1/Search/pagination?isVerified=true&isVolunteering=true&volunteeringIsActive=true&sortBy=CreatedEventDate&sortDirection=DESC&pageNumber=${pageNumber}&pageSize=${eventsPerPage}`,{headers:{Authorization: `Bearer ${token}`}})
     .then(response => {
      setAllEvents(response.data.items)
      setTotalPages(response.data.totalPages)

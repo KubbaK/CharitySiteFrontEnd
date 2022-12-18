@@ -14,6 +14,8 @@ import GetEventsVolunteering from './components/GetEvents/GetEventsVolunteering'
 import SpecificEventView from './components/SpecificEventView/SpecificEventView';
 import SuccessfullDonate from './components/SuccessfullDonate/SuccessfullDonate';
 import VerificationView from './components/VerificationView/VerificationView';
+import UserView from './components/UserView/UserView';
+import UserDeactivatedView from './components/UserDeactivatedView/UserDeactivatedView';
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
       <Route path="/event/:id" exact element={<SpecificEventView/>}/>
       <Route path="/successDonate" exact element={<SuccessfullDonate/>}/>
       <Route path="/verification/:id" exact element={<VerificationView/>}/>
+      <Route path="/myEvent/:id" exact element={<UserView/>}/>
+      <Route path="/deactivatedEvent/:id" exact element={<UserDeactivatedView/>}/>
     </Routes>
   );
 }

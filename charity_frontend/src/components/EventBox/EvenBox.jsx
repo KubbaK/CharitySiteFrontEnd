@@ -40,8 +40,29 @@ const EventBox = (props) =>{
                 <ProgressBar progress={props.progress}/>   
             </Box>
         </Link>
-        } 
-        
+        }
+        { props.atype === "userNormal" &&
+            <Link style={{ textDecoration: 'none' }} to={{pathname:`/myEvent/${props.charityId}`,
+                state:{id: props.charityId}}}>
+                    <Box className={styles.box} name="boxik" sx={{ borderRadius: 15 }} onClick={handleClick}> 
+            <PhotoContainer  image={props.image}/>   
+                <h2 className={styles.h2}>{props.title}</h2>
+                <h3 className={styles.h3}>{truncate(props.description)}</h3>
+                <ProgressBar progress={props.progress}/>   
+            </Box>
+        </Link>
+        }  
+        { props.atype === "userDeactivated" &&
+            <Link style={{ textDecoration: 'none' }} to={{pathname:`/deactivatedEvent/${props.charityId}`,
+                state:{id: props.charityId}}}>
+                    <Box className={styles.box} name="boxik" sx={{ borderRadius: 15 }} onClick={handleClick}> 
+            <PhotoContainer  image={props.image}/>   
+                <h2 className={styles.h2}>{props.title}</h2>
+                <h3 className={styles.h3}>{truncate(props.description)}</h3>
+                <ProgressBar progress={props.progress}/>   
+            </Box>
+        </Link>
+        }  
         
         </div>
     )

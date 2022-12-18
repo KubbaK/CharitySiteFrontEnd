@@ -1,0 +1,89 @@
+.title{
+    text-align: center;
+    font-size: 50px;
+    width:70%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.description{
+    text-align: center;
+    width:80%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.fundT{
+    text-align:left;
+    font-weight: bold;
+    font-size: 30px;
+    width:80%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.money{
+    font-weight: bold;
+    color:red;
+    font-size: 30px;
+    width:80%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.photos{
+    margin-top: 20px;
+}
+.close{
+    float:right;
+    margin-right: 20px;
+    margin-top: 20px;
+    font-size: 80px !important;
+    border-radius: 30px;
+}
+
+.close:hover{
+    background-color: rgb(128, 128, 128,0.1);
+}
+
+.display{
+    background-color: white;
+    width: 95%;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.verification{
+    margin-top: 30px;
+    margin-bottom: 50px;
+    height:150px;
+    width:90%;
+    left: 0;
+    right:0;
+    margin: 0 auto;
+    position:relative;
+    margin-top: 30px;
+    white-space: nowrap;
+    overflow:hidden;
+    text-align: center;
+    background-color: aquamarine;
+    border-radius: 30px;
+    border: 2px solid black;
+}
+
+.button{
+    display: inline-block;
+    margin-right: 20px;
+    margin-top: 50px;
+    margin-left: 25px;
+}
+

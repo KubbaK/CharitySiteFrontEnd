@@ -36,7 +36,6 @@ const EventFormVolunteering = () => {
         for (let i = 0; i < files.length; i++) {
             formdata.append("imagesCharityEvent", files[i])
         }
-        formdata.append("amountOfMoneyToCollect",0)
         formdata.append("amountOfNeededVolunteers",volunteers)
         try{
             let res = await axios.post("http://localhost:5012/v1/CharityEvent",formdata,

@@ -9,8 +9,8 @@ import jwtDecode from 'jwt-decode'
 import PersonalDataAdd from '../ButtonPopUps/PersonalDataAdd'
 import PersonalDataEdit from '../ButtonPopUps/PersonalDataEdit'
 import { Skeleton } from "@mui/material";
-import GetEventsPerUser from "../GetEventsPerPage/GetEventsPerUser";
 import GetEventsPerPage from "../GetEventsPerPage/GetEventsPerPage";
+import GetDesactivatedEventsPerPage from '../GetEventsPerPage/GetDesactivatedEventsPerPage'
 import Pagination from "../Pagination/Pagination";
 
 
@@ -23,26 +23,39 @@ const UserAccount = () => {
     const [userData,setUserData] = useState("")
     const [userStatistic,setUserStatistic] = useState("")
     const [volunteerEvents,setVolunteerEvents] = useState("")
+    const [deniedEvents,setDeniedEvents] = useState("")
+    const [deactivatedEvents,setDeactivatedEvents] = useState("")
+    const [currentContainer,setCurrentContainer] = useState(1)
 
     const [loaded,setLoaded] = useState(true)
     const [allEvents, setAllEvents] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
     const [eventsPerPage] = useState(9);
-    const [totalPages, setTotalPages] = useState(0);
-    const [toogle,setToogle] = useState(false)
-    const fetchEvents = async (pageNumber) => {
-        axios.get(`http://localhost:5012/v1/Search/pagination?sortBy=CreatedEventDate&sortDirection=DESC&pageNumber=${pageNumber}&pageSize=${eventsPerPage}`,{headers:{Authorization: `Bearer ${token}`}})
+    const fetchEvents = async () => {
+        axios.get(`http://localhost:5012/v1/UserStatistics/charityEvents/${id}?volunteeringOrFundraisingIsActive=true&volunteeringOrFundraisingIsDenied=false`,{headers:{Authorization: `Bearer ${token}`}})
         .then(response => {
-         setAllEvents(response.data.items)
-         setTotalPages(response.data.totalPages)
+         setAllEvents(response.data)
          setLoaded(false)
       });
     }
     const fetchVolunteerEvents = async () => {
         axios.get("http://localhost:5012/v1/UserStatistics/charityEventsWithVolunteering/"+id,{headers:{Authorization: `Bearer ${token}`}})
         .then(response => {
-            console.log(123+response)
-         setVolunteerEvents(response.data.items)
+            console.log(response.data)
+         setVolunteerEvents(response.data)
+      });
+    }
+    const fetchDeniedEvents = async () => {
+        axios.get(`http://localhost:5012/v1/UserStatistics/charityEvents/${id}?volunteeringOrFundraisingIsDenied=true`,{headers:{Authorization: `Bearer ${token}`}})
+        .then(response => {   
+        console.log(response.data)
+         setDeniedEvents(response.data)
+      });
+    }
+    const fetchDesactivatedEvents = async () => {
+        axios.get(`http://localhost:5012/v1/UserStatistics/charityEvents/${id}?volunteeringOrFundraisingIsVerified=true&volunteeringOrFundraisingIsActive=false`,{headers:{Authorization: `Bearer ${token}`}})
+        .then(response => {   
+        console.log(response.data)
+         setDeactivatedEvents(response.data)
       });
     }
 
@@ -73,17 +86,14 @@ const UserAccount = () => {
         fetchUserStatistics()
         fetchEvents(1)
         fetchVolunteerEvents()
+        fetchDeniedEvents()
+        fetchDesactivatedEvents()
     },[]);
-
-    useEffect(() => {
-        fetchEvents(currentPage)
-      },[toogle])
       const paginate = (pageNumber) => {
-        setCurrentPage(pageNumber)
         setLoaded(true)
-        setToogle(prevState => !prevState)
       }
     return(
+        <div>
         <div className={styles.page}>
             <div className={styles.page1}>
             <NavBar/>
@@ -96,7 +106,7 @@ const UserAccount = () => {
                     <div style={{color:'rgb(73, 72, 72)'}}>Ilość założonych akcji wolontariackich: </div>
                     <div>Ilość założonych akcji pieniężnych: </div>
                 </div>
-                <div style={{float:'right',marginTop:'-168px',marginRight:'20px',color:'green'}}>
+                <div style={{float:'right',marginTop:'-166px',marginRight:'20px',color:'green'}}>
                     <div>{userStatistic.numberDonations}</div>
                     <div>{userStatistic.totalValueDonations}</div>
                     <div>{userStatistic.numberActionsAsVolunteer}</div>
@@ -124,19 +134,56 @@ const UserAccount = () => {
                     }
             </div>    
             </div>
+            <div>
+                <div className={styles.radio}>
+                    <div>
+                        <input type="radio" value={1} name="option" defaultChecked  onClick={() => setCurrentContainer(1)}/>
+                    <span>Pokaż aktywne akcje</span></div>
+                    <div>
+                        <input type="radio" value={2} name="option" onClick={() => setCurrentContainer(2)}/> 
+                    <span>Pokaż zdezaktywowane akcje</span></div>
+                    <div>
+                        <input type="radio" value={3} name="option" onClick={() => setCurrentContainer(3)} />
+                    <span>Pokaż akcje odrzucone przez administatora</span></div>
+                    <div>
+                        <input type="radio" value={4} name="option" onClick={() => setCurrentContainer(4)} /> 
+                    <span>Pokaż akcje, w których jestem wolontariuszem</span></div>
+                </div>
+                {currentContainer === 1 &&
                 <div>
+                    <div className={styles.active}>TWOJE AKTYWNE AKCJE:</div>
                     {loaded ? <Skeleton variant="rectangular"  className={styles.skeleton} /> : 
                     <div>
                         {allEvents.length === 0 && <div className={styles.brak}>BRAK AKCJI!</div>}
-                        <GetEventsPerUser atype='normal' allEvents={allEvents} loaded={loaded}/>
-                        <Pagination eventsPerPage={eventsPerPage} totalEvents={totalPages} paginate={paginate} />
+                        <GetEventsPerPage atype='userNormal' allEvents={allEvents} loaded={loaded}/>
+                        <Pagination eventsPerPage={eventsPerPage} paginate={paginate} />
                     </div>
                     }
-                </div>
+                </div>}
+                {currentContainer === 2 &&
                 <div>
-                </div>
-            <Footer/>
+                    <div>
+                        {deactivatedEvents.length === 0 && <div className={styles.brak}>BRAK AKCJI!</div>}
+                        {deactivatedEvents.length !== 0 && <GetDesactivatedEventsPerPage atype='userDeactivated' allEvents={deactivatedEvents}/>}
+                    </div>
+                </div>}
+                {currentContainer === 3 &&
+                <div>
+                    <div>
+                        {deniedEvents.length === 0 && <div className={styles.brak}>BRAK AKCJI!</div>}
+                        {deniedEvents.length !== 0 && <GetEventsPerPage atype='normal' allEvents={deniedEvents}/>}
+                    </div>
+                </div>}
+                {currentContainer === 4 &&
+                <div>
+                    <div>
+                        {volunteerEvents.length === 0 && <div className={styles.brak}>BRAK AKCJI!</div>}
+                        {volunteerEvents.length !== 0 && <GetEventsPerPage atype='normal' allEvents={volunteerEvents}/>}
+                    </div>
+                </div>}
+            </div>
         </div>
+        <Footer/></div>
     )
 }
 
