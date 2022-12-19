@@ -52,7 +52,7 @@ const UserAccount = () => {
       });
     }
     const fetchDesactivatedEvents = async () => {
-        axios.get(`http://localhost:5012/v1/UserStatistics/charityEvents/${id}?volunteeringOrFundraisingIsVerified=true&volunteeringOrFundraisingIsActive=false`,{headers:{Authorization: `Bearer ${token}`}})
+        axios.get(`http://localhost:5012/v1/UserStatistics/charityEvents/${id}?volunteeringOrFundraisingIsVerified=true&volunteeringOrFundraisingIsActive=false&volunteeringOrFundraisingIsDenied=false`,{headers:{Authorization: `Bearer ${token}`}})
         .then(response => {   
         console.log(response.data)
          setDeactivatedEvents(response.data)
@@ -162,6 +162,7 @@ const UserAccount = () => {
                 </div>}
                 {currentContainer === 2 &&
                 <div>
+                    <div className={styles.active}>TWOJE DEZAKTYWOWANE AKCJE:</div>
                     <div>
                         {deactivatedEvents.length === 0 && <div className={styles.brak}>BRAK AKCJI!</div>}
                         {deactivatedEvents.length !== 0 && <GetDesactivatedEventsPerPage atype='userDeactivated' allEvents={deactivatedEvents}/>}
@@ -169,16 +170,18 @@ const UserAccount = () => {
                 </div>}
                 {currentContainer === 3 &&
                 <div>
+                    <div className={styles.active}>AKCJE ODRZUCONE DO POPRAWY PRZEZ ADMINISTRATORA:</div>
                     <div>
                         {deniedEvents.length === 0 && <div className={styles.brak}>BRAK AKCJI!</div>}
-                        {deniedEvents.length !== 0 && <GetEventsPerPage atype='normal' allEvents={deniedEvents}/>}
+                        {deniedEvents.length !== 0 && <GetEventsPerPage atype='denied' allEvents={deniedEvents}/>}
                     </div>
                 </div>}
                 {currentContainer === 4 &&
                 <div>
+                    <div className={styles.active}>AKCJE DO KTÓRYCH JESTEM ZAPISANY JAKO WOLONTARIUSZ:</div>
                     <div>
                         {volunteerEvents.length === 0 && <div className={styles.brak}>BRAK AKCJI!</div>}
-                        {volunteerEvents.length !== 0 && <GetEventsPerPage atype='normal' allEvents={volunteerEvents}/>}
+                        {volunteerEvents.length !== 0 && <GetEventsPerPage atype='volunteer' allEvents={volunteerEvents}/>}
                     </div>
                 </div>}
             </div>

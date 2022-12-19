@@ -28,8 +28,9 @@ useEffect(() => {
 
 
     return (
+        <div>
+            <div style={{textAlign:'center',marginBottom:'20px',fontSize:'25px'}}>Zapisani wolontariusze:</div>
         <div className={styles.box}> 
-       
           {
            (volunteers.length !== 0) ? (
            <div className={styles.box1}>
@@ -38,15 +39,15 @@ useEffect(() => {
           volunteers.map((val, key) => {
                 return (
            <div className={styles.element} key={key}> 
-          <div> <div className={styles.name} >Login użytkownika: </div> <div>  {val.login} </div>  </div> 
-           </div>
-            )})
+                <div style={{display:'flex'}}> <div className={styles.name}>Imię i Nazwisko: </div> <div>{val.allPersonalData.name} {val.allPersonalData.surname} </div> 
+                <div className={styles.name} style={{marginLeft:'20px'}}> Login:</div> <div>  {val.login} </div></div>
+           </div>)}).reverse()
             } 
-            </div> ) : ( <div>Brak wolontariuszy</div> )
+                </div> ) : ( <div>Brak wolontariuszy</div> )
             }
     
         </div>
-
+            </div>
     )
 }
 

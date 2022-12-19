@@ -21,8 +21,14 @@ const NavBar = () =>{
     }
         return(
             <nav className={styles.navbar}>
-                 {jwtcookie.jwt !== undefined && 
-                    <h1>Witaj, {login} </h1>
+                 {jwtcookie.jwt !== undefined && login === 'Organizer,Volunteer' &&
+                    <h1>Witaj, organizatorze! </h1>
+                 }
+                 {jwtcookie.jwt !== undefined && login === 'Volunteer' &&
+                    <h1>Witaj, wolontariuszu! </h1>
+                 }
+                 {jwtcookie.jwt !== undefined && login.includes('Admin') &&
+                    <h1>Witaj, administratorze! </h1>
                  }
                  {jwtcookie.jwt === undefined && 
                     <h1>Witaj, gościu! </h1>

@@ -36,8 +36,10 @@ useEffect(() => {
 
 
     return (
+        <div>
+            <div style={{textAlign:'center',marginBottom:'20px',fontSize:'25px'}}>Dokonane donacje:</div>
         <div className={styles.box}> 
-       
+            
           {
            (donation.length !== 0) ? (
            <div className={styles.box1}>
@@ -53,13 +55,13 @@ useEffect(() => {
           <div>  <div className={styles.name}>Opis: </div> <div>  {val.description}</div>  </div> 
            </div>
 
-            )})
+            )}).reverse()
             } 
             </div> ) : ( <div>Nie dokonano jeszcze żadnej donacji</div> )
             }
     
         </div>
-
+        </div>
     )
 }
 

@@ -16,14 +16,15 @@
     overflow: auto;
     width: 500px;
     padding: 1px;
+    padding-top: 2px;
     border-radius: 12px;
 }
 .element{
     background-color: #b6abab;
     margin-bottom: 5px;
-    padding: 5px;
+    padding: 10px;
     border-radius: 15px;
-    width: 465px;
+    width:475px;
     text-overflow: ellipsis;
     word-break: keep-all;
     overflow-wrap: break-word;

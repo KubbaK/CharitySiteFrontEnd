@@ -1,17 +1,14 @@
 import React,{useState,useEffect} from "react";
 import axios from "axios";
 import {useCookies} from "react-cookie";
-import styles from "./SpecificEventView.module.scss"
+import styles from "./UserDeniedView.module.scss"
 import { useParams } from "react-router-dom";
 import EventCarousel from "../EventCarousel/EventCarousel";
 import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate } from "react-router-dom";
-import VolunteerDialog from "../ButtonPopUps/VolunteerDialog";
-import DonationDialog from "../ButtonPopUps/DonationDialog";
-import GetDonationsById from "../GetDonationsById/GetDonationsById";
-import GetVolunteersById from "../GetVolunteersById/GetVolunteersById";
+import { Button } from "@mui/material";
 
-const SpecificEventView = () => {
+const UserDeniedView = () => {
     const params = useParams();
     const id = params.id
     const [jwtcookie,,] = useCookies(["jwt"]);
@@ -21,6 +18,9 @@ const SpecificEventView = () => {
     const navigate = useNavigate();
     const goBack = () =>{
       navigate(-2)
+    }
+    async function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
     useEffect(() => {
         const fetchEvents = async () => {
@@ -38,10 +38,20 @@ const SpecificEventView = () => {
      fetchEvents()
      fetchPhotos()
     },[]);
-    console.log(eventData)
     return(
         <div>
-            {eventData.length !== 0 && 
+            {eventData.length !== 0 && <div>
+                {(eventData.charityEventFundraising !== null && eventData.charityEventVolunteering !== null) ?
+                <div className={styles.verification}>  
+                        <div className={styles.button}><Button onClick={''} variant="contained" style={{width:'280px',fontWeight:'bold',height:'50px'}}  color="success" >Edytuj akcję</Button></div>  
+                </div>:
+                (eventData.charityEventFundraising === null && eventData.charityEventVolunteering !== null) ?
+                <div className={styles.verification}>    
+                        <div className={styles.button}><Button onClick={''} variant="contained" style={{width:'280px',fontWeight:'bold',height:'50px'}}  color="success" >Edytuj akcję</Button></div>  
+                </div>:
+                <div className={styles.verification}>
+                        <div className={styles.button}><Button onClick={''} variant="contained" style={{width:'280px',fontWeight:'bold',height:'50px'}}  color="success" >Edytuj akcję</Button></div>  
+                </div>}
              <div className={styles.display}>
                 <CloseIcon className={styles.close} onClick={goBack}/>
                 <h1 className={styles.title}>{eventData.title}</h1>
@@ -54,10 +64,8 @@ const SpecificEventView = () => {
                                 <div className={styles.money}>{"Obecnie zebrano: "}
                                     {eventData.charityEventFundraising.amountOfAlreadyCollectedMoney}/
                                         {eventData.charityEventFundraising.amountOfMoneyToCollect}
-                                        <div className={styles.button}><DonationDialog props={eventData.charityEventFundraising.id} /></div>
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
-                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.fundraisingId}/></div>
                             </div>:
                         (eventData.charityEventVolunteering !== null && eventData.charityEventFundraising === null) ?
                             <div>
@@ -65,56 +73,49 @@ const SpecificEventView = () => {
                                     {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
                                         {eventData.charityEventVolunteering.amountOfNeededVolunteers}
                                             {" potrzebnych wolontariuszy"}
-                                    <div className={styles.button}><VolunteerDialog props={eventData.charityEventVolunteering.id} /></div>
+
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
-                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.volunteeringId}/></div>
                             </div>:
-                        (eventData.charityEventVolunteering !== null && eventData.charityEventFundraising !== null && eventData.charityEventVolunteering.isActive === 1 && eventData.charityEventFundraising.isActive === 0) ?
+                        (eventData.charityEventVolunteering !== null && eventData.charityEventFundraising !== null && eventData.charityEventVolunteering.isActive === 0 && eventData.charityEventFundraising.isActive === 1) ?
                             <div>
                                 <div className={styles.money}>{"Zgłosiło się "}
                                     {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
                                         {eventData.charityEventVolunteering.amountOfNeededVolunteers}
                                             {" potrzebnych wolontariuszy"}
-                                    <div className={styles.button}><VolunteerDialog props={eventData.charityEventVolunteering.id} /></div>
+
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
-                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.volunteeringId}/></div>
                             </div>:
-                        (eventData.charityEventFundraising !== null && eventData.charityEventVolunteering !== null && eventData.charityEventVolunteering.isActive === 0 && eventData.charityEventFundraising.isActive === 1 ) ?
+                        (eventData.charityEventFundraising !== null && eventData.charityEventVolunteering !== null && eventData.charityEventVolunteering.isActive === 1 && eventData.charityEventFundraising.isActive === 0 ) ?
                             <div>
                                 <div className={styles.fundT}>Cel zbiórki: {eventData.charityEventFundraising.fundTarget}</div>
                                 <div className={styles.money}>{"Obecnie zebrano: "}
                                     {eventData.charityEventFundraising.amountOfAlreadyCollectedMoney}/
                                         {eventData.charityEventFundraising.amountOfMoneyToCollect}
-                                        <div className={styles.button}><DonationDialog props={eventData.charityEventFundraising.id} /></div>
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
-                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.fundraisingId}/></div>
                             </div>:
                             <div>
                                 <div className={styles.fundT}>Cel zbiórki: {eventData.charityEventFundraising.fundTarget}</div>
                                 <div className={styles.money}>{"Obecnie zebrano: "}
                                     {eventData.charityEventFundraising.amountOfAlreadyCollectedMoney}/
                                         {eventData.charityEventFundraising.amountOfMoneyToCollect} zł
-                                        <div className={styles.button}><DonationDialog props={eventData.charityEventFundraising.id} /></div>
                                 </div>
                                 <div className={styles.money}>{"Zgłosiło się "}
                                     {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
                                         {eventData.charityEventVolunteering.amountOfNeededVolunteers}
                                             {" wolontariuszy"}
-                                    <div className={styles.button}><VolunteerDialog props={eventData.charityEventVolunteering.id} /></div>
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
-                                <div className={styles.stats}><div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.fundraisingId}/></div>
-                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.volunteeringId}/></div></div>
                             </div>
-                    }    
+                    }
                 </div>
+             </div>
              </div>
             }
         </div>
     );
 }   
 
-export default SpecificEventView
+export default UserDeniedView

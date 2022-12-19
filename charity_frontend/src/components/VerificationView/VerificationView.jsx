@@ -57,21 +57,46 @@ const VerificationView = () => {
     const verifyVolunteering = async () => {
         axios({method:'patch',url:`http://localhost:5012/v1/CharityEventVolunteering/${eventData.volunteeringId}?isVerified=true&isActive=true`,headers:{Authorization: `Bearer ${token}`}})
     }
+
+    const denied = async () => {
+        await deniedAll().then(await sleep(700)).then(await deniedFundraising()).then(await sleep(500)).then(await deniedVolunteering()).then(navigate(-2).then(sleep(300)).then(navigate(0)))
+    }
+    const deniedF = async () => {
+        await deniedAll().then(await sleep(700)).then(await deniedFundraising()).then(await sleep(500)).then(navigate(-2).then(sleep(300)).then(navigate(0)))
+    }
+    const deniedV = async () => {
+        await deniedAll().then(await sleep(700)).then(await deniedVolunteering()).then(await sleep(500)).then(navigate(-2).then(sleep(300)).then(navigate(0)))
+    }
+    const deniedAll = async () => {
+         axios({method:'patch',url:`http://localhost:5012/v1/CharityEvent/${eventData.idCharityEvent}?isVerified=true&isDenied=true`,headers:{Authorization: `Bearer ${token}`}})
+         
+    }
+    const deniedFundraising = async () => {
+        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventFundraising/${eventData.fundraisingId}?isVerified=true&isDenied=true`,headers:{Authorization: `Bearer ${token}`}})
+    }
+    const deniedVolunteering = async () => {
+        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventVolunteering/${eventData.volunteeringId}?isVerified=true&isDenied=true`,headers:{Authorization: `Bearer ${token}`}})
+    }
     return(
         <div>
             {eventData.length !== 0 && <div>
                 {(eventData.charityEventFundraising !== null && eventData.charityEventVolunteering !== null) ?
                 <div className={styles.verification}>    
-                        <div className={styles.button}><Button onClick={verify} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj całą akcję</Button></div>
+                        <div><div className={styles.button}><Button onClick={verify} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj całą akcję</Button></div>
                         <div className={styles.button}><Button onClick={verifyF} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj akcję pieniężną</Button></div>
-                        <div className={styles.button}><Button onClick={verifyV} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj akcję wolontariacką</Button></div>
+                        <div className={styles.button}><Button onClick={verifyV} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj akcję wolontariacką</Button></div></div>
+                        <div><div className={styles.button}><Button onClick={denied} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="error" >Odrzuć całą akcję</Button></div>
+                        <div className={styles.button}><Button onClick={deniedF} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="error" >Odrzuć akcję pieniężną</Button></div>
+                        <div className={styles.button}><Button onClick={deniedV} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="error" >Odrzuć akcję wolontariacką</Button></div></div>
                 </div>:
                 (eventData.charityEventFundraising === null && eventData.charityEventVolunteering !== null) ?
                 <div className={styles.verification}>    
                         <div className={styles.button}><Button onClick={verifyV} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj akcję</Button></div>
+                        <div className={styles.button}><Button onClick={deniedV} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="error" >Odrzuć akcję </Button></div>
                 </div>:
                 <div className={styles.verification}>
                         <div className={styles.button}><Button onClick={verifyF} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj akcję</Button></div>
+                        <div className={styles.button}><Button onClick={deniedF} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="error" >Odrzuć akcję pieniężną</Button></div>
                 </div>}
              <div className={styles.display}>
                 <CloseIcon className={styles.close} onClick={goBack}/>

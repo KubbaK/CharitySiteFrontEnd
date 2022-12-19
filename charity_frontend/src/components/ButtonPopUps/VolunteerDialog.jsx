@@ -4,11 +4,13 @@ import axios from 'axios'
 import {React} from 'react'
 import { useCookies } from 'react-cookie'
 import jwtDecode from 'jwt-decode'
+import { useEffect } from 'react'
 
 const VolunteerDialog = (props) => {
     const [open,setOpen] = useState(false)
     const [jwtcookie,,] = useCookies(["jwt"]);
-    const [info,setInfo] = useState("");
+    const [errorT,setError] = useState("");
+    const [dataExist,setDataExist] = useState(false)
     const token = jwtcookie.jwt
     let id
     if(token !== undefined){
@@ -18,31 +20,48 @@ const VolunteerDialog = (props) => {
     const sleep = ms => new Promise(
         resolve => setTimeout(resolve, ms)
       );
-    const isAlreadyVolunteer = () => {
-        axios.get(`http://localhost:5012/v1/Volunteer/exist?idUser=${id}&idVolunteering=${props.props}`,{idUser:id,idVolunteering:props.props},
-            {headers:{Authorization: `Bearer ${token}`}})
+
+      useEffect(() => {
+        const isData = async () => {
+            axios.get("http://localhost:5012/v1/PersonalData/exists/"+id,{headers:{Authorization: `Bearer ${token}`}})
             .then(response => {
-                setInfo(response.data)
-                fetchVolunteer()
-             });
-    }
-    
-    const fetchVolunteer = async () => {
-        if (info === false){
-        let res = axios.post("http://localhost:5012/v1/Volunteer",{idUser:id,idVolunteering:props.props},
+             setDataExist(response.data)
+          });
+        }
+        isData()
+    },[]);
+    const fetchVolunteer = async () => { 
+            setError("")
+            if(dataExist === true){
+            let res = await axios.post("http://localhost:5012/v1/Volunteer",{idUser:id,idVolunteering:props.props},
             {headers:{Authorization: `Bearer ${token}`}})
-            if(res.status === 200){
-                console.log("Udało się")
+            .catch(function (error) {
+            if(
+                error.response &&
+                error.response.status >= 400 &&
+                error.response.status <= 500
+            ){
+                
+                if (error.response.data.message === "This volunteer has already been assigned to this action"){
+                    setError("Już zapisałes się do tej akcji!")
+                }
+                if (error.response.data.message !== "This volunteer has already been assigned to this action"){
+                    setError("Najpierw się zaloguj!")
+                }
             }
-            else{
-                console.log(res)
-            }
+        });
+        if(res.status === 200){
+            setError("Zapisano do akcji!")
+            await sleep(2000)
+        }
         setOpen(false)
     }
     else{
-        console.log("Już")
+        setError("Musisz dodać dane personalne w swoim profilu!")
+        await sleep(2000)
+        setOpen(false)
     }
-}
+    }
     return(
         <><Button variant="contained" style={{width:'300px',fontWeight:'bold',height:'50px'}}onClick={() => setOpen(true)} color="error">Zostań wolontariuszem</Button>
             <Dialog aria-labelledby='dialog-title' aria-describedby='dialog-description' 
@@ -51,11 +70,12 @@ const VolunteerDialog = (props) => {
                 <DialogContent>
                     <DialogContentText id='dialog-description'>
                         <div style={{width:"350px"}}>Czy chcesz zapisać się jako wolontariusz?</div><br/>
+                        <div style={{color:'red',fontWeight:'bold'}}>{errorT.length > 0 && errorT}</div>
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={() => setOpen(false)}>Cofnij</Button>
-                    <Button onClick={isAlreadyVolunteer}>Zapisz mnie!</Button>
+                    <Button onClick={fetchVolunteer}>Zapisz mnie!</Button>
                 </DialogActions>
             </Dialog>
         </>

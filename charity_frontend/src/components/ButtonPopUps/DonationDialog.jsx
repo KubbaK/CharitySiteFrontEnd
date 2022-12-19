@@ -11,7 +11,7 @@ const DonationDialog = (props) => {
     const [donate,setDonate] = useState(0);
     const [description,setDescription] = useState("...");
     const token = jwtcookie.jwt
-    let id = null
+    let id = 0
     if(token !== undefined){
         const decoded = jwtDecode(token)
         id = decoded.Id

@@ -57,6 +57,26 @@ const EventBoxBoth = (props) =>{
                 <ProgressBar progress={props.progress}/>   
             </Box></Link>
             }
+        {
+        props.atype === "volunteer" &&
+        <Link style={{ textDecoration: 'none' }} to={{pathname: `/volunteerEvent/${props.charityId}`}}><Box className={styles.box} name="boxik" sx={{ borderRadius: 15 }} onClick={handleClick}> 
+            <PhotoContainer  image={props.image}/>   
+                <h2 className={styles.h2}>{props.title}</h2>
+                <h3 className={styles.h3}>{truncate(props.description)}</h3>
+                <h3 className={styles.h3}>Potrzebni wolontariusze: {props.volunteers}</h3>
+                <ProgressBar progress={props.progress}/>   
+            </Box></Link>
+            }
+            {
+        props.atype === "denied" &&
+        <Link style={{ textDecoration: 'none' }} to={{pathname: `/deniedEvent/${props.charityId}`}}><Box className={styles.box} name="boxik" sx={{ borderRadius: 15 }} onClick={handleClick}> 
+            <PhotoContainer  image={props.image}/>   
+                <h2 className={styles.h2}>{props.title}</h2>
+                <h3 className={styles.h3}>{truncate(props.description)}</h3>
+                <h3 className={styles.h3}>Potrzebni wolontariusze: {props.volunteers}</h3>
+                <ProgressBar progress={props.progress}/>   
+            </Box></Link>
+            }
         </div>
     )
 }

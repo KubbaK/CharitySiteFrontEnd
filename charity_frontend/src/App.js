@@ -16,6 +16,8 @@ import SuccessfullDonate from './components/SuccessfullDonate/SuccessfullDonate'
 import VerificationView from './components/VerificationView/VerificationView';
 import UserView from './components/UserView/UserView';
 import UserDeactivatedView from './components/UserDeactivatedView/UserDeactivatedView';
+import UserVolunteerView from './components/UserVolunteerView/UserVolunteerView';
+import UserDeniedView from './components/UserDeniedView/UserDeniedView';
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
       <Route path="/verification/:id" exact element={<VerificationView/>}/>
       <Route path="/myEvent/:id" exact element={<UserView/>}/>
       <Route path="/deactivatedEvent/:id" exact element={<UserDeactivatedView/>}/>
+      <Route path="/volunteerEvent/:id" exact element={<UserVolunteerView/>}/>
+      <Route path="/deniedEvent/:id" exact element={<UserDeniedView/>}/>
     </Routes>
   );
 }

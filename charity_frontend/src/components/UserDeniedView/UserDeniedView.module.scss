@@ -62,15 +62,28 @@
     border: 1px solid black;
 }
 
-.button{
-    position: relative;
-    float: right;
-    right: 15%;
-    top: -5%;
+.verification{
+    margin-top: 30px;
+    margin-bottom: 50px;
+    height:150px;
+    width:90%;
+    left: 0;
+    right:0;
+    margin: 0 auto;
+    position:relative;
+    margin-top: 30px;
+    white-space: nowrap;
+    overflow:hidden;
+    text-align: center;
+    background-color: aquamarine;
+    border-radius: 30px;
+    border: 2px solid black;
 }
 
-.stats{
-    display:flex;
-    justify-content: center;
-    column-gap: 50px;
+.button{
+    display: inline-block;
+    margin-right: 20px;
+    margin-top: 50px;
+    margin-left: 25px;
 }
+
