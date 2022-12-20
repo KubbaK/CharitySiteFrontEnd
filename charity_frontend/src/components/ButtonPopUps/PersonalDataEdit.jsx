@@ -120,14 +120,12 @@ const PersonalDataEdit = () => {
                                 onChange={(e) => setStreet(e.target.value)} 
                             />
                             
-                            <textarea style={{width:'50px',height:'20px',fontWeight:'bold', marginLeft:'45px',fontSize:'20px'}} type='number' onKeyPress={(event) => {if (!/[0-9]/.test(event.key)) {
-                                event.preventDefault();}}} 
+                            <textarea style={{width:'50px',height:'20px',fontWeight:'bold', marginLeft:'45px',fontSize:'20px'}} 
                                 value={houseNumber} spellcheck="false"
                                 onChange={(e) => setHouseNumber(e.target.value)} 
                             />
 
-                            <textarea style={{width:'50px',height:'20px',fontWeight:'bold', marginLeft:'35px',fontSize:'20px'}} type='number' onKeyPress={(event) => {if (!/[0-9]/.test(event.key)) {
-                                event.preventDefault();}}} 
+                            <textarea style={{width:'50px',height:'20px',fontWeight:'bold', marginLeft:'35px',fontSize:'20px'}}  
                                 value={flatNumber} spellcheck="false"
                                 onChange={(e) => setFlatNumber(e.target.value)} 
                             />

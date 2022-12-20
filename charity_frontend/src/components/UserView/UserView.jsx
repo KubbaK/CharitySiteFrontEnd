@@ -11,6 +11,8 @@ import GetDonationsById from "../GetDonationsById/GetDonationsById";
 import GetVolunteersById from "../GetVolunteersById/GetVolunteersById";
 import Footer from "../Footer/Footer";
 import NavBar from "../NavigationBar/NavBar";
+import LocationAdd from "../ButtonPopUps/LocationAdd";
+import GetLocationsByIdVolunteering from "../GetLocationsByIdVolunteering/GetLocationsByIdVolunteering"
 
 const UserView = () => {
     const params = useParams();
@@ -117,6 +119,7 @@ const UserView = () => {
 
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
+                                <div className={styles.stats1}><div style={{marginTop:'40px',marginLeft:'75px'}}><LocationAdd Eventid={eventData.volunteeringId}/></div><div  style={{marginTop:'0px',marginLeft:'10px'}}><GetLocationsByIdVolunteering id={eventData.volunteeringId}/></div></div>
                                 <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.volunteeringId} extended={true}/></div>
                             </div>:
                         (eventData.charityEventVolunteering !== null && eventData.charityEventFundraising !== null && eventData.charityEventVolunteering.isActive === 0 && eventData.charityEventFundraising.isActive === 1) ?
@@ -127,17 +130,19 @@ const UserView = () => {
                                         {eventData.charityEventFundraising.amountOfMoneyToCollect}
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
-                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.volunteeringId} extended={true}/></div>
+                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.fundraisingId}/></div>
                             </div>:
                         (eventData.charityEventFundraising !== null && eventData.charityEventVolunteering !== null && eventData.charityEventVolunteering.isActive === 1 && eventData.charityEventFundraising.isActive === 0 ) ?
                             <div>
-                                <div className={styles.fundT}>Cel zbiórki: {eventData.charityEventFundraising.fundTarget}</div>
-                                <div className={styles.money}>{"Obecnie zebrano: "}
-                                    {eventData.charityEventFundraising.amountOfAlreadyCollectedMoney}/
-                                        {eventData.charityEventFundraising.amountOfMoneyToCollect}
+                                <div className={styles.volunteers}>{"Zgłosiło się "}
+                                    {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
+                                        {eventData.charityEventVolunteering.amountOfNeededVolunteers}
+                                            {" potrzebnych wolontariuszy"}
+
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
-                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.fundraisingId}/></div>
+                                <div className={styles.stats1}><div style={{marginTop:'40px',marginLeft:'75px'}}><LocationAdd Eventid={eventData.volunteeringId}/></div><div  style={{marginTop:'0px',marginLeft:'10px'}}><GetLocationsByIdVolunteering id={eventData.volunteeringId}/></div></div>
+                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.volunteeringId} extended={true}/></div>
                             </div>:
                             <div>
                                 <div className={styles.fundT}>Cel zbiórki: {eventData.charityEventFundraising.fundTarget}</div>
@@ -151,6 +156,7 @@ const UserView = () => {
                                             {" wolontariuszy"}
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
+                                <div ><div style={{marginTop:'40px',textAlign:'center',marginBottom:'30px',marginRight:'65px'}}><LocationAdd Eventid={eventData.volunteeringId}/></div><div  style={{marginTop:'0px',textAlign:'center'}}><GetLocationsByIdVolunteering id={eventData.volunteeringId}/></div></div>
                                 <div className={styles.stats}><div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.fundraisingId}/></div>
                                 <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.volunteeringId} extended={true}/></div></div>
                             </div>

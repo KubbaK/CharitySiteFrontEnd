@@ -73,6 +73,7 @@ const EditEvent = () => {
             amountOfNeededVolunteers:volunteers
         }
         await axios({method:'put',url:"http://localhost:5012/v1/CharityEvent/"+Eventid,data:body,headers:{'Content-Type': 'application/json',Authorization: `Bearer ${token}`}})
+        .then(await sleep(500)).then(await unverify())
         if(selectedFile !== null){
             await axios({method:'put',url:"http://localhost:5012/v1/CharityEvent/image/"+Eventid,data:formdata,headers:{'Content-Type': 'multipart/form-data',Authorization: `Bearer ${token}`}})
             .then(await sleep(500)).then(await unverify())

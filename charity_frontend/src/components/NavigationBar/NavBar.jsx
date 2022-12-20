@@ -35,7 +35,7 @@ const NavBar = () =>{
                  }
                 <DropdownList data1 = {'Zobacz akcje wolontariackie'} 
                     data2 = {'Zobacz zbiórki pieniężne'}
-                        data3 = {'Zobacz wszystkie zbiórki'}
+                        data3 = {'Zobacz wszystkie akcje'}
                             titlebutton = {'Przegląd akcji'}/>
                 <ul className={styles.ul}>
                     { jwtcookie.jwt !== undefined &&     
@@ -47,7 +47,7 @@ const NavBar = () =>{
                     <li className={styles.lis}><Link to="/" style={{textDecoration: 'none'}}>Strona główna</Link></li>
                      
                 </ul>
-                <img style={{marginTop:'10px',marginRight:'100px'}} src={Logo} alt="logo" width="300" height="190"/>
+                <img style={{marginTop:'17px',marginRight:'80px'}} src={Logo} alt="logo" width="300" height="200"/>
                 <UserPanel/>
                 <MyDialog open={opened} setShowOpened={setShowOpened}/>
             </nav>

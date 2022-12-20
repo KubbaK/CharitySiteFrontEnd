@@ -87,6 +87,14 @@
     column-gap: 50px;
 }
 
+.stats1{
+    display:flex;
+    justify-content: left;
+    column-gap: 50px;
+    margin-bottom: 10px;
+    margin-top: 40px;
+}
+
 .fixfooter{
     min-height: calc(100vh - 174px);
 }

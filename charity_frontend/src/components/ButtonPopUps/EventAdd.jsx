@@ -73,7 +73,7 @@ const EventAdd = () => {
     }, []);
     return(
         
-        <><Button variant="outlined" onClick={() => setOpen(true)} color="info" style={{marginTop:'20px',marginLeft:'65px',backgroundColor:'lightblue',color:'black',fontWeight:'bold'}}>Dodaj kolejny moduł do akcji</Button>
+        <><Button variant="outlined" onClick={() => setOpen(true)} color="success" style={{marginTop:'20px',marginLeft:'65px',backgroundColor:'green',color:'white',fontWeight:'bold',width:'200px',borderRadius:'20px',border:'3px solid black'}}>Dodaj kolejny moduł do akcji</Button>
             <Dialog aria-labelledby='dialog-title' aria-describedby='dialog-description' 
                 open={open} onClose={() => setOpen(false)}>
                 <DialogTitle style={{textAlign:'center'}} id='dialog-title'>Dodaj kolejny typ akcji</DialogTitle>

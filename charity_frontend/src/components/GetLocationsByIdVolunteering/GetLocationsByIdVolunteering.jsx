@@ -27,7 +27,7 @@ useEffect(() => {
 
     return (
         <div>
-            <div style={{textAlign:'center',marginBottom:'20px',fontSize:'25px'}}>Dostępne lokacje</div>
+            <div style={{textAlign:'center',marginBottom:'20px',fontSize:'25px'}}>Dostępne lokacje:</div>
         <div className={styles.box}> 
           {
            (locations.length !== 0) ? (

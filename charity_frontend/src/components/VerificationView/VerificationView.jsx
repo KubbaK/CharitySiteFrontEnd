@@ -80,7 +80,7 @@ const VerificationView = () => {
     return(
         <div>
             {eventData.length !== 0 && <div>
-                {(eventData.charityEventFundraising !== null && eventData.charityEventVolunteering !== null && eventData.charityEventFundraising.isActive === 0 && eventData.charityEventVolunteering.isActive === 0 && eventData.charityEventFundraising.isVerified === 1 && eventData.charityEventVolunteering.isVerified === 1) ?
+                {(eventData.charityEventFundraising !== null && eventData.charityEventVolunteering !== null && eventData.charityEventFundraising.isActive === 0 && eventData.charityEventVolunteering.isActive === 0 && eventData.charityEventFundraising.isVerified === 0 && eventData.charityEventVolunteering.isVerified === 0) ?
                 <div className={styles.verification} style={{height:'250px'}}>    
                         <div><div className={styles.button}><Button onClick={verify} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj całą akcję</Button></div>
                         <div className={styles.button}><Button onClick={verifyF} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Zaakceptuj akcję pieniężną</Button></div>

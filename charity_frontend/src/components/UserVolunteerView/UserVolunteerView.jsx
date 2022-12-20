@@ -13,6 +13,8 @@ import GetVolunteersById from "../GetVolunteersById/GetVolunteersById";
 import { Button } from "@mui/material";
 import Footer from "../Footer/Footer";
 import NavBar from "../NavigationBar/NavBar";
+import GetLocationsByIdVolunteering from "../GetLocationsByIdVolunteering/GetLocationsByIdVolunteering";
+
 
 const UserVolunteerView = () => {
     const params = useParams();
@@ -84,6 +86,7 @@ const UserVolunteerView = () => {
                                     <div className={styles.button}><Button variant="contained" style={{width:'300px',fontWeight:'bold',height:'50px'}} color="error" onClick={revertVolunteer}>Wycofaj się z akcji</Button></div>
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
+                                <div className={styles.stats1} style={{justifyContent:'center'}}><div  style={{marginTop:'0px'}}><GetLocationsByIdVolunteering id={eventData.volunteeringId}/></div></div>
                                 <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.volunteeringId}/></div>
                             </div>:
                         (eventData.charityEventVolunteering !== null && eventData.charityEventFundraising !== null && eventData.charityEventVolunteering.isActive === 1 && eventData.charityEventFundraising.isActive === 0) ?
@@ -95,6 +98,7 @@ const UserVolunteerView = () => {
                                     <div className={styles.button}><Button variant="contained" style={{width:'300px',fontWeight:'bold',height:'50px'}} color="error" onClick={revertVolunteer}>Wycofaj się z akcji</Button></div>
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
+                                <div className={styles.stats1} style={{justifyContent:'center'}}><div  style={{marginTop:'0px'}}><GetLocationsByIdVolunteering id={eventData.volunteeringId}/></div></div>
                                 <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.volunteeringId}/></div>
                             </div>:
                         (eventData.charityEventFundraising !== null && eventData.charityEventVolunteering !== null && eventData.charityEventVolunteering.isActive === 0 && eventData.charityEventFundraising.isActive === 1 ) ?
@@ -122,6 +126,7 @@ const UserVolunteerView = () => {
                                             <div className={styles.button}><Button variant="contained" style={{width:'300px',fontWeight:'bold',height:'50px'}} color="error" onClick={revertVolunteer}>Wycofaj się z akcji</Button></div>
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
+                                <div className={styles.stats}><div style={{marginTop:'0px',marginBottom:'30px',marginTop:'20px'}}><GetLocationsByIdVolunteering id={eventData.volunteeringId}/></div></div>
                                 <div className={styles.stats}><div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.fundraisingId}/></div>
                                 <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.volunteeringId}/></div></div>
                             </div>

@@ -11,6 +11,8 @@ import Footer from "../Footer/Footer.jsx";
 import NavBar from "../NavigationBar/NavBar";
 import GetDonationsById from "../GetDonationsById/GetDonationsById";
 import GetVolunteersById from "../GetVolunteersById/GetVolunteersById";
+import GetLocationsByIdVolunteering from "../GetLocationsByIdVolunteering/GetLocationsByIdVolunteering";
+
 
 const UserDeactivatedView = () => {
     const params = useParams();
@@ -129,6 +131,7 @@ const UserDeactivatedView = () => {
 
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
+                                <div className={styles.stats1} style={{justifyContent:'center'}}><div  style={{marginTop:'0px'}}><GetLocationsByIdVolunteering id={eventData.volunteeringId}/></div></div>
                                 <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.volunteeringId}/></div>
 
                             </div>:
@@ -141,6 +144,7 @@ const UserDeactivatedView = () => {
 
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
+                                <div className={styles.stats1} style={{justifyContent:'center'}}><div  style={{marginTop:'0px'}}><GetLocationsByIdVolunteering id={eventData.volunteeringId}/></div></div>
                                 <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.volunteeringId}/></div>
 
                             </div>:
@@ -167,6 +171,7 @@ const UserDeactivatedView = () => {
                                             {" wolontariuszy"}
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
+                                <div className={styles.stats}><div style={{marginTop:'0px',marginBottom:'30px',marginTop:'20px'}}><GetLocationsByIdVolunteering id={eventData.volunteeringId}/></div></div>
                                 <div className={styles.stats}><div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.fundraisingId}/></div>
                                 <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.volunteeringId}/></div></div>
                             </div>
