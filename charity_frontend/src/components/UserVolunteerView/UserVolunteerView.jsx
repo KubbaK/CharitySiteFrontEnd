@@ -77,7 +77,7 @@ const UserVolunteerView = () => {
                             </div>:
                         (eventData.charityEventVolunteering !== null && eventData.charityEventFundraising === null) ?
                             <div>
-                                <div className={styles.money}>{"Zgłosiło się "}
+                                <div className={styles.volunteer}>{"Zgłosiło się "}
                                     {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
                                         {eventData.charityEventVolunteering.amountOfNeededVolunteers}
                                             {" potrzebnych wolontariuszy"}
@@ -88,7 +88,7 @@ const UserVolunteerView = () => {
                             </div>:
                         (eventData.charityEventVolunteering !== null && eventData.charityEventFundraising !== null && eventData.charityEventVolunteering.isActive === 1 && eventData.charityEventFundraising.isActive === 0) ?
                             <div>
-                                <div className={styles.money}>{"Zgłosiło się "}
+                                <div className={styles.volunteer}>{"Zgłosiło się "}
                                     {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
                                         {eventData.charityEventVolunteering.amountOfNeededVolunteers}
                                             {" potrzebnych wolontariuszy"}
@@ -115,7 +115,7 @@ const UserVolunteerView = () => {
                                         {eventData.charityEventFundraising.amountOfMoneyToCollect} zł
                                         <div className={styles.button}><DonationDialog props={eventData.charityEventFundraising.id} /></div>
                                 </div>
-                                <div className={styles.money}>{"Zgłosiło się "}
+                                <div className={styles.volunteer}>{"Zgłosiło się "}
                                     {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
                                         {eventData.charityEventVolunteering.amountOfNeededVolunteers}
                                             {" wolontariuszy"}

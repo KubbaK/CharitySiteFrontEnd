@@ -3,7 +3,7 @@ import axios from "axios";
 import styles from './AdminContainer.module.scss'
 import { useCookies } from "react-cookie";
 import { Skeleton } from "@mui/material";
-import GetEventsPerPage from "../GetEventsPerPage/GetEventsPerPage";
+import GetEventsPerAdminPage from "../GetEventsPerPage/GetEventsPerAdminPage";
 import Pagination from "../Pagination/Pagination";
 
 
@@ -43,7 +43,7 @@ const AdminContainer = (props) => {
             {loaded ? <Skeleton variant="rectangular"  className={styles.skeleton} /> : 
             <div>
               {allEvents.length === 0 && <div className={styles.brak}>BRAK AKCJI!</div>}
-              <GetEventsPerPage atype='verification' allEvents={allEvents} loaded={loaded}/>
+              <GetEventsPerAdminPage atype='verification' allEvents={allEvents} loaded={loaded}/>
               <Pagination eventsPerPage={eventsPerPage} totalEvents={totalPages} paginate={paginate} />
             </div>
           }

@@ -6,7 +6,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import {useCookies} from "react-cookie"
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer.jsx"
-import { Button } from "@mui/material";
+import EventAdd from '../ButtonPopUps/EventAdd';
 import axios from 'axios';
 
 const EditEvent = () => {
@@ -33,6 +33,25 @@ const EditEvent = () => {
     const goBack = () =>{
         navigate(-1)
       }
+    const unverify = async () => {
+        await unverifyVolunteering().then(await sleep(900)).then(await unverifyFundraising()).then(await sleep(700)).then(await unverifyAll())
+    }
+    const unverifyF = async () => {
+        await unverifyFundraising().then(await sleep(900)).then(await unverifyAll())
+    }
+    const unverifyV = async () => {
+        await unverifyVolunteering().then(await sleep(900)).then(await unverifyAll())
+    }
+    const unverifyAll = async () => {
+         axios({method:'patch',url:`http://localhost:5012/v1/CharityEvent/${eventData.idCharityEvent}?isVerified=false&isActive=false&isDenied=false`,headers:{Authorization: `Bearer ${token}`}})
+         
+    }
+    const unverifyFundraising = async () => {
+        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventFundraising/${eventData.fundraisingId}?isVerified=false&isActive=false&isDenied=false`,headers:{Authorization: `Bearer ${token}`}})
+    }
+    const unverifyVolunteering = async () => {
+        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventVolunteering/${eventData.volunteeringId}?isVerified=false&isActive=false&isDenied=false`,headers:{Authorization: `Bearer ${token}`}})
+    }
     const handleSubmit = async(e) => {
         e.preventDefault();
         const formdata = new FormData()
@@ -56,12 +75,15 @@ const EditEvent = () => {
         await axios({method:'put',url:"http://localhost:5012/v1/CharityEvent/"+Eventid,data:body,headers:{'Content-Type': 'application/json',Authorization: `Bearer ${token}`}})
         if(selectedFile !== null){
             await axios({method:'put',url:"http://localhost:5012/v1/CharityEvent/image/"+Eventid,data:formdata,headers:{'Content-Type': 'multipart/form-data',Authorization: `Bearer ${token}`}})
+            .then(await sleep(500)).then(await unverify())
         }
         if(eventData.fundraisingId !== null){
             await axios({method:'put',url:"http://localhost:5012/v1/CharityEventFundraising/"+eventData.fundraisingId,data:fundraisingBody,headers:{'Content-Type': 'application/json',Authorization: `Bearer ${token}`}})
+            .then(await sleep(500)).then(await unverifyF())
         }
         if(eventData.volunteeringId !== null){
             await axios({method:'put',url:"http://localhost:5012/v1/CharityEventVolunteering/"+eventData.volunteeringId,data:volunteeringBody,headers:{'Content-Type': 'application/json',Authorization: `Bearer ${token}`}})
+            .then(await sleep(500)).then(await unverifyV())
         }
         sleep(10000)
         navigate(-1)
@@ -91,6 +113,7 @@ const EditEvent = () => {
     }, []);
 
     return (
+        
         <div>
         <CloseIcon className={styles.close} onClick={goBack}/>
         <div className={styles.main_container}>
@@ -153,9 +176,9 @@ const EditEvent = () => {
                 accept="image/*"
             />
             </div>
-            <div style={{textAlign:'center'}}>   
-                {eventData.fundraisingId === null && <Button className={styles.add}>Dodaj moduł pieniężny</Button>}
-                {eventData.volunteeringId === null && <Button className={styles.add}>Dodaj moduł wolontariacki</Button>}
+            <div style={{textAlign:'center',marginRight:'60px'}}>   
+                {eventData.fundraisingId === null && <EventAdd/>}
+                {eventData.volunteeringId === null && <EventAdd/>}
             </div> 
             <button type = "submit" id= "submitBtn" className ={styles.sub_btn}> Edytuj Ogłoszenie</button>
             <div className={styles.message}>{message ? <p>{message}</p> : null}</div>
@@ -163,11 +186,12 @@ const EditEvent = () => {
         
     </div>
     </div>
-    <Footer/>
     
+    <Footer/>
 </div>
-
 </div>
+    
+    
 )
 }
 

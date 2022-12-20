@@ -47,14 +47,14 @@ const UserDeniedView = () => {
             {eventData.length !== 0 && <div>
                 {(eventData.charityEventFundraising !== null && eventData.charityEventVolunteering !== null) ?
                 <div className={styles.verification}>  
-                        <Link to={`/editEvent/${eventData.idCharityEvent}`}><div className={styles.button}><Button onClick={''} variant="contained" style={{width:'280px',fontWeight:'bold',height:'50px'}}  color="success" >Edytuj akcję</Button></div></Link>
+                        <Link to={`/editEvent/${eventData.idCharityEvent}`}><div className={styles.button}><Button onClick={''} variant="contained" style={{width:'280px',fontWeight:'bold',height:'50px'}}  color="warning" >Edytuj akcję</Button></div></Link>
                 </div>:
                 (eventData.charityEventFundraising === null && eventData.charityEventVolunteering !== null) ?
                 <div className={styles.verification}>    
-                        <Link to={`/editEvent/${eventData.idCharityEvent}`}><div className={styles.button}><Button onClick={''} variant="contained" style={{width:'280px',fontWeight:'bold',height:'50px'}}  color="success" >Edytuj akcję</Button></div></Link>
+                        <Link to={`/editEvent/${eventData.idCharityEvent}`}><div className={styles.button}><Button onClick={''} variant="contained" style={{width:'280px',fontWeight:'bold',height:'50px'}}  color="warning" >Edytuj akcję</Button></div></Link>
                 </div>:
                 <div className={styles.verification}>
-                       <Link to={`/editEvent/${eventData.idCharityEvent}`}><div className={styles.button}><Button onClick={''} variant="contained" style={{width:'280px',fontWeight:'bold',height:'50px'}}  color="success" >Edytuj akcję</Button></div></Link> 
+                       <Link to={`/editEvent/${eventData.idCharityEvent}`}><div className={styles.button}><Button onClick={''} variant="contained" style={{width:'280px',fontWeight:'bold',height:'50px'}}  color="warning" >Edytuj akcję</Button></div></Link> 
                 </div>}
              <div className={styles.display}>
                 <CloseIcon className={styles.close} onClick={goBack}/>
@@ -73,7 +73,7 @@ const UserDeniedView = () => {
                             </div>:
                         (eventData.charityEventVolunteering !== null && eventData.charityEventFundraising === null) ?
                             <div>
-                                <div className={styles.money}>{"Zgłosiło się "}
+                                <div className={styles.volunteer}>{"Zgłosiło się "}
                                     {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
                                         {eventData.charityEventVolunteering.amountOfNeededVolunteers}
                                             {" potrzebnych wolontariuszy"}
@@ -83,7 +83,7 @@ const UserDeniedView = () => {
                             </div>:
                         (eventData.charityEventVolunteering !== null && eventData.charityEventFundraising !== null && eventData.charityEventVolunteering.isActive === 0 && eventData.charityEventFundraising.isActive === 1) ?
                             <div>
-                                <div className={styles.money}>{"Zgłosiło się "}
+                                <div className={styles.volunteer}>{"Zgłosiło się "}
                                     {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
                                         {eventData.charityEventVolunteering.amountOfNeededVolunteers}
                                             {" potrzebnych wolontariuszy"}
@@ -106,7 +106,7 @@ const UserDeniedView = () => {
                                     {eventData.charityEventFundraising.amountOfAlreadyCollectedMoney}/
                                         {eventData.charityEventFundraising.amountOfMoneyToCollect} zł
                                 </div>
-                                <div className={styles.money}>{"Zgłosiło się "}
+                                <div className={styles.volunteer}>{"Zgłosiło się "}
                                     {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
                                         {eventData.charityEventVolunteering.amountOfNeededVolunteers}
                                             {" wolontariuszy"}
