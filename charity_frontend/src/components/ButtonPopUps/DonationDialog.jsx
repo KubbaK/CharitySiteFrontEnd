@@ -11,7 +11,7 @@ const DonationDialog = (props) => {
     const [donate,setDonate] = useState(0);
     const [description,setDescription] = useState("...");
     const token = jwtcookie.jwt
-    let id = 0
+    let id = null
     if(token !== undefined){
         const decoded = jwtDecode(token)
         id = decoded.Id
@@ -33,13 +33,13 @@ const DonationDialog = (props) => {
         window.open("/successDonate")
     }
     return(
-        <><Button variant="contained" style={{width:'300px',fontWeight:'bold',height:'50px'}}onClick={() => setOpen(true)} color="success" >Wpłać Darowiznę</Button>
+        <><Button variant="contained" style={{width:'300px',fontWeight:'bold',height:'50px'}}onClick={() => setOpen(true)} color='info' >Wpłać Darowiznę</Button>
             <Dialog aria-labelledby='dialog-title' aria-describedby='dialog-description' 
                 open={open} onClose={() => setOpen(false)}>
-                <DialogTitle id='dialog-title'>Pomoc finansowa</DialogTitle>
+                <DialogTitle style={{textAlign:'center'}} id='dialog-title'>Pomoc finansowa</DialogTitle>
                 <DialogContent>
                     <DialogContentText id='dialog-description'>
-                        <div style={{width:"450px",height:"50px"}}>Jaką kwotą chcesz wspomóc wybraną akcję?</div><br/>
+                        <div style={{width:"450px",height:"50px",textAlign:'center'}}>Jaką kwotą chcesz wspomóc wybraną akcję?</div><br/>
                         <form>
                             <textarea style={{width:'350px',height:'80px',fontWeight:'bold', marginLeft:'45px'}}
                                 placeholder="Podaj wiadomość do donacji" 
@@ -59,8 +59,8 @@ const DonationDialog = (props) => {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={() => setOpen(false)}>Cofnij</Button>
-                    <Button onClick={fetchDonation}>Dodaj donację</Button>
+                    <Button variant="contained" color="warning" onClick={() => setOpen(false)}>Cofnij</Button>
+                    <Button variant="contained" color="success" onClick={fetchDonation}>Dodaj donację</Button>
                 </DialogActions>
             </Dialog>
         </>

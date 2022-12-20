@@ -63,15 +63,14 @@
 }
 
 .verification{
-    margin-top: 30px;
-    margin-bottom: 50px;
-    height:150px;
-    width:90%;
     left: 0;
     right:0;
     margin: 0 auto;
+    margin-top: 80px;
+    margin-bottom: 50px;
+    height:150px;
+    width:90%;
     position:relative;
-    margin-top: 30px;
     white-space: nowrap;
     overflow:hidden;
     text-align: center;
@@ -87,3 +86,6 @@
     margin-left: 25px;
 }
 
+.fixfooter{
+    min-height: calc(100vh - 174px);
+}

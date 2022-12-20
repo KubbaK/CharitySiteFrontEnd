@@ -36,7 +36,6 @@ const EventFormDonation = () => {
         }
         formdata.append("fundTarget",fundTarget)
         formdata.append("amountOfMoneyToCollect",money)
-        formdata.append("amountOfNeededVolunteers",0)
         console.log(formdata)
         try{
             let res = await axios.post("http://localhost:5012/v1/CharityEvent",formdata,
@@ -85,7 +84,7 @@ const EventFormDonation = () => {
 
             <div className={styles.field4}>    
             <div><label className={styles.field4_label}>Kwota do zebrania</label></div>
-            <input type="number" onKeyPress={(event) => {if (!/[0-9]/.test(event.key)) {
+            <input type="number" min="1" onKeyPress={(event) => {if (!/[0-9]/.test(event.key)) {
                 event.preventDefault();}}} 
                 className={styles.input4} placeholder="Podaj kwotę"
                 value={money}

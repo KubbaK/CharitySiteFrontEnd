@@ -51,7 +51,7 @@
 }
 
 .display{
-    background-color: white;
+    background-color: #f4f3f3;
     width: 95%;
     right: 0;
     left: 0;
@@ -63,21 +63,20 @@
 }
 
 .verification{
-    margin-top: 30px;
-    margin-bottom: 50px;
-    height:150px;
-    width:90%;
     left: 0;
     right:0;
     margin: 0 auto;
+    margin-top: 80px;
+    margin-bottom: 50px;
+    height:150px;
+    width:90%;
     position:relative;
-    margin-top: 30px;
     white-space: nowrap;
     overflow:hidden;
     text-align: center;
-    background-color: aquamarine;
+    background-color:rgb(168, 164, 164);
     border-radius: 30px;
-    border: 2px solid black;
+    border: 3px solid rgb(134, 129, 129);
 }
 
 .button{
@@ -87,3 +86,6 @@
     margin-left: 25px;
 }
 
+.fixfooter{
+    min-height: calc(100vh - 174px);
+}

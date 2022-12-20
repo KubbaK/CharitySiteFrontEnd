@@ -46,16 +46,38 @@ useEffect(() => {
             {
                 
             donation.map((val, key) => {
-                return (
-            
+                
+            return (
+                (val.userIdUser === null && val.description !== "") ?
            <div className={styles.element} key={key}> 
-          <div> <div className={styles.name} >Użytkownik: </div> <div>  {val.user.login} </div>  </div> 
-          <div> <div className={styles.name}>Data donacji: </div> <div>  {convertDate(val.donationDate)} </div> </div> 
-          <div> <div className={styles.name}>Kwota: </div> <div>  {val.amountOfDonation} </div> </div> 
-          <div>  <div className={styles.name}>Opis: </div> <div>  {val.description}</div>  </div> 
-           </div>
-
-            )}).reverse()
+                <div> <div className={styles.name} >Użytkownik: </div> <div style={{fontWeight:'bold'}}>  anonimowy </div>  </div> 
+                <div> <div className={styles.name}>Data donacji: </div> <div>  {convertDate(val.donationDate)} </div> </div> 
+                <div> <div className={styles.name}>Kwota: </div> <div>  {val.amountOfDonation} </div> </div> 
+                <div>  <div className={styles.name}>Opis: </div> <div>  {val.description}</div>  </div> 
+           </div>:
+           (val.userIdUser !== null && val.description !== "") ?
+           <div className={styles.element } key={key}> 
+                <div> <div className={styles.name} >Użytkownik: </div> <div>  {val.user.login} </div>  </div> 
+                <div> <div className={styles.name}>Data donacji: </div> <div>  {convertDate(val.donationDate)} </div> </div> 
+                <div> <div className={styles.name}>Kwota: </div> <div>  {val.amountOfDonation} </div> </div> 
+                <div>  <div className={styles.name}>Opis: </div> <div>   {val.description}</div>  </div> 
+            </div>:
+            (val.userIdUser === null && val.description === "") ?
+            <div className={styles.element } key={key}> 
+                <div> <div className={styles.name} >Użytkownik: </div> <div style={{fontWeight:'bold'}}>  anonimowy </div> </div> 
+                <div> <div className={styles.name}>Data donacji: </div> <div>  {convertDate(val.donationDate)} </div> </div> 
+                <div> <div className={styles.name}>Kwota: </div> <div>  {val.amountOfDonation} </div> </div> 
+                <div>  <div className={styles.name}>Opis: </div> <div> {"brak"}</div>  </div> 
+            </div>:
+            <div className={styles.element } key={key}> 
+                <div> <div className={styles.name} >Użytkownik: </div> <div>  {val.user.login} </div>  </div> 
+                <div> <div className={styles.name}>Data donacji: </div> <div>  {convertDate(val.donationDate)} </div> </div> 
+                <div> <div className={styles.name}>Kwota: </div> <div>  {val.amountOfDonation} </div> </div> 
+                <div>  <div className={styles.name}>Opis: </div> <div> {"brak"}</div>  </div> 
+        </div>
+      )
+        
+            }).reverse()
             } 
             </div> ) : ( <div>Nie dokonano jeszcze żadnej donacji</div> )
             }

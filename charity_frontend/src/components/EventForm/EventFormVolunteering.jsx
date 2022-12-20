@@ -76,7 +76,7 @@ const EventFormVolunteering = () => {
 
             <div className={styles.field4}>    
             <div><label className={styles.field4_label}>Ilość potrzebnych wolontariuszy</label></div>
-            <input type="number" onKeyPress={(event) => {if (!/[0-9]/.test(event.key)) {
+            <input type="number" min="1" onKeyPress={(event) => {if (!/[0-9]/.test(event.key)) {
                 event.preventDefault();}}} 
                 className={styles.input4} placeholder="Podaj ilość"
                 value={volunteers}

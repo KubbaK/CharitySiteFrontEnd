@@ -50,7 +50,6 @@ const Login = () => {
                     <form className={styles.form_container}
                         onSubmit={handleSubmit}>
                         <h1>Logowanie</h1>
-                        
                         <input 
                             type="text"
                             placeholder="Login/Email"

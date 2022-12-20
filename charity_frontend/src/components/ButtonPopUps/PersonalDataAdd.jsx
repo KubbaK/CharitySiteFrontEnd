@@ -44,10 +44,10 @@ const PersonalDataAdd = () => {
     }
     return(
         
-        <><Button variant="outlined" onClick={() => setOpen(true)} color="success" style={{marginTop:'20px',marginLeft:'30px',backgroundColor:'yellowgreen'}}>Podaj swoje dane</Button>
+        <><Button variant="outlined" onClick={() => setOpen(true)} color="success" style={{marginTop:'20px',marginLeft:'65px',backgroundColor:'yellowgreen',color:'black'}}>Podaj swoje dane</Button>
             <Dialog aria-labelledby='dialog-title' aria-describedby='dialog-description' 
                 open={open} onClose={() => setOpen(false)}>
-                <DialogTitle id='dialog-title'>Podaj dane osobowe</DialogTitle>
+                <DialogTitle style={{textAlign:'center'}} id='dialog-title'>Podaj dane osobowe</DialogTitle>
                 <DialogContent>
                     <DialogContentText id='dialog-description'>
                         <div style={{width:"500px",height:"50px",textAlign:'center'}}>Uzupełnij swoje dane osobowe. Będą ułatwiały zidentyfikowanie Cię,
@@ -123,8 +123,8 @@ const PersonalDataAdd = () => {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={() => setOpen(false)}>Zamknij</Button>
-                    <Button onClick={fetchUserData}>Dodaj swoje dane</Button>
+                    <Button variant='contained' color='warning' onClick={() => setOpen(false)}>Zamknij</Button>
+                    <Button variant='contained' color='success' onClick={fetchUserData}>Dodaj swoje dane</Button>
                 </DialogActions>
             </Dialog>
         </>

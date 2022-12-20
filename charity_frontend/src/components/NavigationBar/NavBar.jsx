@@ -1,12 +1,12 @@
 import React,{useState} from 'react';
 import {Link} from 'react-router-dom';
 import styles from './NavBar.module.scss'
-import SettingsIcon from '@mui/icons-material/Settings';
 import DropdownList from "../DropdownList/DropdownList";
 import UserPanel from "../UserPanel/UserPanel";
 import jwtDecode from 'jwt-decode'
 import {useCookies} from "react-cookie"
 import MyDialog from '../Dialog/MyDialog';
+import Logo from '../images/pageLogo.png'
 
 const NavBar = () =>{
     const [opened, setShowOpened] = useState(false);
@@ -47,8 +47,8 @@ const NavBar = () =>{
                     <li className={styles.lis}><Link to="/" style={{textDecoration: 'none'}}>Strona główna</Link></li>
                      
                 </ul>
+                <img style={{marginTop:'10px',marginRight:'100px'}} src={Logo} alt="logo" width="300" height="190"/>
                 <UserPanel/>
-                <SettingsIcon className={styles.sicon}></SettingsIcon>
                 <MyDialog open={opened} setShowOpened={setShowOpened}/>
             </nav>
         );

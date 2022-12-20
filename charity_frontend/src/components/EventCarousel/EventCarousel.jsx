@@ -19,7 +19,7 @@ const contentStyle = {
   color: '#fff',
   lineHeight: '160px',
   textAlign: 'center',
-  background: 'white',
+  background: '#f4f3f3',
   position:'relative',
  
 };

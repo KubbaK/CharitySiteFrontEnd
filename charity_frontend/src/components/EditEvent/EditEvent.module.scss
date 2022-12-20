@@ -12,22 +12,22 @@
 	font-weight: bold;
 	font-size: 14px;
 	cursor: pointer;
-    position:relative;
-    top:0; left:0; right:0; bottom:0; 
-    margin: 0 auto;
     margin-bottom: 30px;
-    margin-left: 320px;
-    
+    position: relative;
+    left:41%;
+}
+.page_title{
+	position: relative;
+    left:40%;
+    margin-top: 80px;
 }
 
 .form_box{
-	margin-left: 250px;
-    width: 800px;
+    margin-top: 20px;
+	margin-left: 290px;
+    width: 60%;
     background-color: #ebebeb;
     border-radius: 40px;
-    position: relative;
-    top:0; left:0; right:0; bottom:0; 
-    margin: 0 auto;
 }
 
 .form_footer{
@@ -38,13 +38,18 @@
     position: relative;
     text-align: center;
 }
+
+.field1{
+    padding-top: 20px;
+}
+
 .field1_label{
 	margin-bottom: 200px;
 }
 
 .input{
 	width: 500px;
-	height: 50px;
+	height: 40px;
     font-size: 20px;
     background-color: white;
     border: 3px solid rgba(42, 91, 195, 0.3);
@@ -55,7 +60,7 @@
 .input2{
 	width: 500px;
 	height: 150px;
-    font-size: 20px;
+    font-size: 18px;
     background-color: white;
     border: 3px solid rgba(42, 91, 195, 0.3);
     color: black;
@@ -69,11 +74,10 @@
     border: 3px solid rgba(42, 91, 195, 0.3);
     color: black;
     border-radius: 5px;
-    font-size: 20px;
 }
 
 .input4{
-	width: 200px;
+	width: 500px;
 	height: 50px;
     background-color: white;
     border: 3px solid rgba(42, 91, 195, 0.3);
@@ -81,16 +85,17 @@
     border-radius: 5px;
 }
 
-.inputIm{
-	width: 250px;
-	height: 25px;
-    margin-top: 10px;
+.input5{
+	width: 500px;
+	height: 50px;
+    background-color: white;
+    border: 3px solid rgba(42, 91, 195, 0.3);
     color: black;
     border-radius: 5px;
 }
 
 .message{
-    margin-right: 3px;
+	margin-left: 80px;
     text-align: center;
 }
 
@@ -99,51 +104,51 @@
 	height: 100vh;
 }
 
+
 .select{
-	width: 310px;
-	margin-bottom: 20px;
+    width: 310px;
     text-align: center;
     position:relative;
-    left: 27.7%;
+	width: 310px;
+    height: 50px;
+	margin-bottom: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #ebebeb;
+    color: #001730;
+    border: 3px solid rgba(42, 91, 195, 0.3);
 }
 
 
 .selectLabel{
-    left: 28%;
+    text-align: center;
+    left:0;
+    right: 0;
+    margin: 0 auto;
     position: relative;
+    font-weight: bold;
+    margin-bottom: 3px;
 }
 
-textarea {
-    resize: none;
-  }
+.brak{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
 
-  textarea,
-  input[type=text] {
-      font-family:Arial;
-      font-size: 30px;
-  }
+.close{
+    float:right;
+    margin-right: 20px;
+    margin-top: 20px;
+    font-size: 80px !important;
+    border-radius: 30px;
+}
 
-  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    font-size: 19px;
-    font-weight: bold;
-    color:grey;
-    line-height: 1.5em;
-  }
-  ::-moz-placeholder { /* Firefox 19+ */
-    font-size: 19px;
-    font-weight: bold;
-    color:grey;
-    line-height: 1.5em;
-  }
-  :-ms-input-placeholder { /* IE 10+ */
-    font-size: 19px;
-    font-weight: bold;
-    color:grey;
-    line-height: 1.5em;
-  }
-  :-moz-placeholder { /* Firefox 18- */
-    font-size: 19px;
-    font-weight: bold;
-    color:grey;
-    line-height: 1.5em;
-  }
+.close:hover{
+    background-color: rgb(128, 128, 128,0.1);
+}
+
+.add{
+    margin-top: 30px;
+    margin-bottom: 50px;
+}

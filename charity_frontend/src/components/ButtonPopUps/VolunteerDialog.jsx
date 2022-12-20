@@ -63,19 +63,19 @@ const VolunteerDialog = (props) => {
     }
     }
     return(
-        <><Button variant="contained" style={{width:'300px',fontWeight:'bold',height:'50px'}}onClick={() => setOpen(true)} color="error">Zostań wolontariuszem</Button>
+        <><Button variant="contained" style={{width:'300px',fontWeight:'bold',height:'50px'}}onClick={() => setOpen(true)} color="success">Zostań wolontariuszem</Button>
             <Dialog aria-labelledby='dialog-title' aria-describedby='dialog-description' 
                 open={open} onClose={() => setOpen(false)}>
-                <DialogTitle id='dialog-title'>Czy jesteś pewien?</DialogTitle>
+                <DialogTitle style={{textAlign:'center'}} id='dialog-title'>Czy jesteś pewien?</DialogTitle>
                 <DialogContent>
                     <DialogContentText id='dialog-description'>
-                        <div style={{width:"350px"}}>Czy chcesz zapisać się jako wolontariusz?</div><br/>
-                        <div style={{color:'red',fontWeight:'bold'}}>{errorT.length > 0 && errorT}</div>
+                        <div style={{width:"350px",textAlign:'center'}}>Czy chcesz zapisać się jako wolontariusz?</div><br/>
+                        <div style={{color:'red',fontWeight:'bold',textAlign:'center'}}>{errorT.length > 0 && errorT}</div>
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={() => setOpen(false)}>Cofnij</Button>
-                    <Button onClick={fetchVolunteer}>Zapisz mnie!</Button>
+                    <Button variant='contained' color='warning' onClick={() => setOpen(false)}>Cofnij</Button>
+                    <Button variant='contained' color='success' onClick={fetchVolunteer}>Zapisz mnie!</Button>
                 </DialogActions>
             </Dialog>
         </>

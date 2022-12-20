@@ -57,7 +57,7 @@
     left: 0;
     margin: 0 auto;
     margin-bottom: 20px;
-    margin-top: 20px;
+    margin-top: 80px;
     border-radius: 5px;
     border: 1px solid black;
 }
@@ -73,4 +73,8 @@
     display:flex;
     justify-content: center;
     column-gap: 50px;
+}
+
+.fixfooter{
+    min-height: calc(100vh - 174px);
 }

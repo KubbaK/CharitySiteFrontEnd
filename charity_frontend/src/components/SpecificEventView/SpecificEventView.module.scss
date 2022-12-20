@@ -27,7 +27,18 @@
 }
 .money{
     font-weight: bold;
-    color:red;
+    color:rgb(45, 134, 212);
+    font-size: 30px;
+    width:80%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.volunteer{
+    font-weight: bold;
+    color:green;
     font-size: 30px;
     width:80%;
     left: 0;
@@ -51,15 +62,17 @@
 }
 
 .display{
-    background-color: white;
+    background-color: #f4f3f3; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     width: 95%;
     right: 0;
     left: 0;
     margin: 0 auto;
     margin-bottom: 20px;
-    margin-top: 20px;
+    margin-top: 80px;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 3px solid black;
+    box-shadow: 0px 10px 10px -5px rgb(0 0 0 / 20%),
+		0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
 }
 
 .button{
@@ -73,4 +86,8 @@
     display:flex;
     justify-content: center;
     column-gap: 50px;
+}
+
+.fixfooter{
+    min-height: calc(100vh - 174px);
 }

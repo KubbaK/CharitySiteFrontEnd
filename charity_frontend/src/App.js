@@ -18,6 +18,7 @@ import UserView from './components/UserView/UserView';
 import UserDeactivatedView from './components/UserDeactivatedView/UserDeactivatedView';
 import UserVolunteerView from './components/UserVolunteerView/UserVolunteerView';
 import UserDeniedView from './components/UserDeniedView/UserDeniedView';
+import EditEvent from './components/EditEvent/EditEvent';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
       <Route path="/deactivatedEvent/:id" exact element={<UserDeactivatedView/>}/>
       <Route path="/volunteerEvent/:id" exact element={<UserVolunteerView/>}/>
       <Route path="/deniedEvent/:id" exact element={<UserDeniedView/>}/>
+      <Route path="/editEvent/:id" exact element={<EditEvent/>}/>
     </Routes>
   );
 }

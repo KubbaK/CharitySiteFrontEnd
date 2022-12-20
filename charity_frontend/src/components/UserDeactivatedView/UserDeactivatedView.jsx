@@ -2,11 +2,13 @@ import React,{useState,useEffect} from "react";
 import axios from "axios";
 import {useCookies} from "react-cookie";
 import styles from "./UserDeactivatedView.module.scss"
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import EventCarousel from "../EventCarousel/EventCarousel";
 import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
+import Footer from "../Footer/Footer.jsx";
+import NavBar from "../NavigationBar/NavBar";
 
 const UserDeactivatedView = () => {
     const params = useParams();
@@ -59,21 +61,23 @@ const UserDeactivatedView = () => {
     }
     return(
         <div>
+            <div className={styles.fixfooter}>
+                <NavBar/>
             {eventData.length !== 0 && <div>
                 {(eventData.charityEventFundraising !== null && eventData.charityEventVolunteering !== null) ?
                 <div className={styles.verification}>  
-                        <div className={styles.button}><Button onClick={''} variant="contained" style={{width:'280px',fontWeight:'bold',height:'50px'}}  color="success" >Edytuj akcję</Button></div>  
+                        <Link to={`/editEvent/${eventData.idCharityEvent}`}><div className={styles.button}><Button onClick={''} variant="contained" style={{width:'280px',fontWeight:'bold',height:'50px'}}  color="success" >Edytuj akcję</Button></div></Link>
                         <div className={styles.button}><Button onClick={activate} variant="contained" style={{width:'300px',fontWeight:'bold',height:'50px'}}  color="success" >Aktywuj całą akcję</Button></div>
                         <div className={styles.button}><Button onClick={activateF} variant="contained" style={{width:'300px',fontWeight:'bold',height:'50px'}}  color="success" >Aktywuj akcję pieniężną</Button></div>
                         <div className={styles.button}><Button onClick={activateV} variant="contained" style={{width:'300px',fontWeight:'bold',height:'50px'}}  color="success" >Aktywuj akcję wolontariacką</Button></div>
                 </div>:
                 (eventData.charityEventFundraising === null && eventData.charityEventVolunteering !== null) ?
                 <div className={styles.verification}>    
-                        <div className={styles.button}><Button onClick={activateV} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Edytuj akcję</Button></div>
+                        <Link to={`/editEvent/${eventData.idCharityEvent}`}><div className={styles.button}><Button onClick={''} variant="contained" style={{width:'280px',fontWeight:'bold',height:'50px'}}  color="success" >Edytuj akcję</Button></div></Link>
                         <div className={styles.button}><Button onClick={activateV} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Aktywuj akcję</Button></div>
                 </div>:
                 <div className={styles.verification}>
-                        <div className={styles.button}><Button onClick={activateF} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Edytuj akcję</Button></div>
+                        <Link to={`/editEvent/${eventData.idCharityEvent}`}><div className={styles.button}><Button onClick={''} variant="contained" style={{width:'280px',fontWeight:'bold',height:'50px'}}  color="success" >Edytuj akcję</Button></div></Link>
                         <div className={styles.button}><Button onClick={activateF} variant="contained" style={{width:'320px',fontWeight:'bold',height:'50px'}}  color="success" >Aktywuj akcję</Button></div>
                 </div>}
              <div className={styles.display}>
@@ -138,6 +142,8 @@ const UserDeactivatedView = () => {
              </div>
              </div>
             }
+        </div>
+        <Footer/>
         </div>
     );
 }   

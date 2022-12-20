@@ -10,6 +10,8 @@ import VolunteerDialog from "../ButtonPopUps/VolunteerDialog";
 import DonationDialog from "../ButtonPopUps/DonationDialog";
 import GetDonationsById from "../GetDonationsById/GetDonationsById";
 import GetVolunteersById from "../GetVolunteersById/GetVolunteersById";
+import Footer from "../Footer/Footer";
+import NavBar from "../NavigationBar/NavBar";
 
 const SpecificEventView = () => {
     const params = useParams();
@@ -41,6 +43,8 @@ const SpecificEventView = () => {
     console.log(eventData)
     return(
         <div>
+        <div className={styles.fixfooter}>
+            <NavBar/>
             {eventData.length !== 0 && 
              <div className={styles.display}>
                 <CloseIcon className={styles.close} onClick={goBack}/>
@@ -61,7 +65,7 @@ const SpecificEventView = () => {
                             </div>:
                         (eventData.charityEventVolunteering !== null && eventData.charityEventFundraising === null) ?
                             <div>
-                                <div className={styles.money}>{"Zgłosiło się "}
+                                <div className={styles.volunteer}>{"Zgłosiło się "}
                                     {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
                                         {eventData.charityEventVolunteering.amountOfNeededVolunteers}
                                             {" potrzebnych wolontariuszy"}
@@ -72,7 +76,7 @@ const SpecificEventView = () => {
                             </div>:
                         (eventData.charityEventVolunteering !== null && eventData.charityEventFundraising !== null && eventData.charityEventVolunteering.isActive === 1 && eventData.charityEventFundraising.isActive === 0) ?
                             <div>
-                                <div className={styles.money}>{"Zgłosiło się "}
+                                <div className={styles.volunteer}>{"Zgłosiło się "}
                                     {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
                                         {eventData.charityEventVolunteering.amountOfNeededVolunteers}
                                             {" potrzebnych wolontariuszy"}
@@ -99,7 +103,7 @@ const SpecificEventView = () => {
                                         {eventData.charityEventFundraising.amountOfMoneyToCollect} zł
                                         <div className={styles.button}><DonationDialog props={eventData.charityEventFundraising.id} /></div>
                                 </div>
-                                <div className={styles.money}>{"Zgłosiło się "}
+                                <div className={styles.volunteer}>{"Zgłosiło się "}
                                     {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
                                         {eventData.charityEventVolunteering.amountOfNeededVolunteers}
                                             {" wolontariuszy"}
@@ -113,6 +117,9 @@ const SpecificEventView = () => {
                 </div>
              </div>
             }
+            
+        </div>
+        <Footer/>
         </div>
     );
 }   

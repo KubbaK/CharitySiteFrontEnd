@@ -2,11 +2,13 @@ import React,{useState,useEffect} from "react";
 import axios from "axios";
 import {useCookies} from "react-cookie";
 import styles from "./UserDeniedView.module.scss"
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import EventCarousel from "../EventCarousel/EventCarousel";
 import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
+import Footer from "../Footer/Footer";
+import NavBar from "../NavigationBar/NavBar";
 
 const UserDeniedView = () => {
     const params = useParams();
@@ -40,17 +42,19 @@ const UserDeniedView = () => {
     },[]);
     return(
         <div>
+            <div className={styles.fixfooter}>
+            <NavBar/>
             {eventData.length !== 0 && <div>
                 {(eventData.charityEventFundraising !== null && eventData.charityEventVolunteering !== null) ?
                 <div className={styles.verification}>  
-                        <div className={styles.button}><Button onClick={''} variant="contained" style={{width:'280px',fontWeight:'bold',height:'50px'}}  color="success" >Edytuj akcję</Button></div>  
+                        <Link to={`/editEvent/${eventData.idCharityEvent}`}><div className={styles.button}><Button onClick={''} variant="contained" style={{width:'280px',fontWeight:'bold',height:'50px'}}  color="success" >Edytuj akcję</Button></div></Link>
                 </div>:
                 (eventData.charityEventFundraising === null && eventData.charityEventVolunteering !== null) ?
                 <div className={styles.verification}>    
-                        <div className={styles.button}><Button onClick={''} variant="contained" style={{width:'280px',fontWeight:'bold',height:'50px'}}  color="success" >Edytuj akcję</Button></div>  
+                        <Link to={`/editEvent/${eventData.idCharityEvent}`}><div className={styles.button}><Button onClick={''} variant="contained" style={{width:'280px',fontWeight:'bold',height:'50px'}}  color="success" >Edytuj akcję</Button></div></Link>
                 </div>:
                 <div className={styles.verification}>
-                        <div className={styles.button}><Button onClick={''} variant="contained" style={{width:'280px',fontWeight:'bold',height:'50px'}}  color="success" >Edytuj akcję</Button></div>  
+                       <Link to={`/editEvent/${eventData.idCharityEvent}`}><div className={styles.button}><Button onClick={''} variant="contained" style={{width:'280px',fontWeight:'bold',height:'50px'}}  color="success" >Edytuj akcję</Button></div></Link> 
                 </div>}
              <div className={styles.display}>
                 <CloseIcon className={styles.close} onClick={goBack}/>
@@ -114,6 +118,8 @@ const UserDeniedView = () => {
              </div>
              </div>
             }
+        </div>
+        <Footer/>
         </div>
     );
 }   

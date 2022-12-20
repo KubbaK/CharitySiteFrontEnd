@@ -11,6 +11,8 @@ import DonationDialog from "../ButtonPopUps/DonationDialog";
 import GetDonationsById from "../GetDonationsById/GetDonationsById";
 import GetVolunteersById from "../GetVolunteersById/GetVolunteersById";
 import { Button } from "@mui/material";
+import Footer from "../Footer/Footer";
+import NavBar from "../NavigationBar/NavBar";
 
 const UserVolunteerView = () => {
     const params = useParams();
@@ -53,6 +55,8 @@ const UserVolunteerView = () => {
     console.log(eventData)
     return(
         <div>
+            <div className={styles.fixfooter}>
+                <NavBar/>
             {eventData.length !== 0 && 
              <div className={styles.display}>
                 <CloseIcon className={styles.close} onClick={goBack}/>
@@ -125,6 +129,8 @@ const UserVolunteerView = () => {
                 </div>
              </div>
             }
+        </div>
+        <Footer/>
         </div>
     );
 }   

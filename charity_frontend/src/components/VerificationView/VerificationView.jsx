@@ -39,13 +39,13 @@ const VerificationView = () => {
      fetchPhotos()
     },[]);
     const verify = async () => {
-        await verifyAll().then(await sleep(700)).then(await verifyFundraising()).then(await sleep(500)).then(await verifyVolunteering()).then(navigate(-2).then(sleep(300)).then(navigate(0)))
+        await verifyAll().then(await sleep(900)).then(await verifyFundraising()).then(await sleep(700)).then(await verifyVolunteering()).then(navigate(-2).then(sleep(500)).then(navigate(0)))
     }
     const verifyF = async () => {
-        await verifyAll().then(await sleep(700)).then(await verifyFundraising()).then(await sleep(500)).then(navigate(-2).then(sleep(300)).then(navigate(0)))
+        await verifyAll().then(await sleep(900)).then(await verifyFundraising()).then(await sleep(700)).then(navigate(-2).then(sleep(500)).then(navigate(0)))
     }
     const verifyV = async () => {
-        await verifyAll().then(await sleep(700)).then(await verifyVolunteering()).then(await sleep(500)).then(navigate(-2).then(sleep(300)).then(navigate(0)))
+        await verifyAll().then(await sleep(900)).then(await verifyVolunteering()).then(await sleep(700)).then(navigate(-2).then(sleep(500)).then(navigate(0)))
     }
     const verifyAll = async () => {
          axios({method:'patch',url:`http://localhost:5012/v1/CharityEvent/${eventData.idCharityEvent}?isVerified=true&isActive=true`,headers:{Authorization: `Bearer ${token}`}})
@@ -59,13 +59,13 @@ const VerificationView = () => {
     }
 
     const denied = async () => {
-        await deniedAll().then(await sleep(700)).then(await deniedFundraising()).then(await sleep(500)).then(await deniedVolunteering()).then(navigate(-2).then(sleep(300)).then(navigate(0)))
+        await deniedAll().then(await sleep(900)).then(await deniedFundraising()).then(await sleep(700)).then(await deniedVolunteering()).then(navigate(-2).then(sleep(500)).then(navigate(0)))
     }
     const deniedF = async () => {
-        await deniedAll().then(await sleep(700)).then(await deniedFundraising()).then(await sleep(500)).then(navigate(-2).then(sleep(300)).then(navigate(0)))
+        await deniedAll().then(await sleep(900)).then(await deniedFundraising()).then(await sleep(700)).then(navigate(-2).then(sleep(500)).then(navigate(0)))
     }
     const deniedV = async () => {
-        await deniedAll().then(await sleep(700)).then(await deniedVolunteering()).then(await sleep(500)).then(navigate(-2).then(sleep(300)).then(navigate(0)))
+        await deniedAll().then(await sleep(900)).then(await deniedVolunteering()).then(await sleep(700)).then(navigate(-2).then(sleep(500)).then(navigate(0)))
     }
     const deniedAll = async () => {
          axios({method:'patch',url:`http://localhost:5012/v1/CharityEvent/${eventData.idCharityEvent}?isVerified=true&isDenied=true`,headers:{Authorization: `Bearer ${token}`}})

@@ -63,7 +63,7 @@ const PersonalDataEdit = () => {
         <><Button variant="outlined" onClick={() => setOpen(true)} color="success" style={{marginTop:'20px',marginLeft:'60px',backgroundColor:'yellowgreen',width:'200px',height:'50px',color:'black'}}>Edytuj swoje dane</Button>
             <Dialog aria-labelledby='dialog-title' aria-describedby='dialog-description' 
                 open={open} onClose={() => setOpen(false)}>
-                <DialogTitle id='dialog-title'>Edytuj podane dane osobowe</DialogTitle>
+                <DialogTitle style={{textAlign:'center'}} id='dialog-title'>Edytuj podane dane osobowe</DialogTitle>
                 <DialogContent>
                     <DialogContentText id='dialog-description'>
                         <div style={{width:"500px",height:"50px",textAlign:'center'}}>Coś się zmieniło? Uzupełnij informacje o sobie, byśmy mogli pozostać z tobą w kontakcie.</div><br/>
@@ -112,8 +112,8 @@ const PersonalDataEdit = () => {
                             </div>
                             <div>
                             
-                                <div><label style={{fontSize:'13px',marginLeft:'95px'}}>Podaj ulicę:</label>
-                                <label style={{fontSize:'13px',marginLeft:'85px'}}>Nr domu:</label>
+                                <div><label style={{fontSize:'13px',marginLeft:'45px'}}>Podaj ulicę:</label>
+                                <label style={{fontSize:'13px',marginLeft:'130px'}}>Nr domu:</label>
                                 <label style={{fontSize:'13px',marginLeft:'39px'}}>Nr mieszkania*:</label></div>
                             <textarea style={{width:'150px',height:'20px',fontWeight:'bold', marginLeft:'45px',fontSize:'20px'}}
                                 value={street} spellcheck="false"
@@ -137,8 +137,8 @@ const PersonalDataEdit = () => {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={() => setOpen(false)}>Zamknij</Button>
-                    <Button onClick={fetchUserData}>Dodaj swoje dane</Button>
+                    <Button variant='contained' color='warning' onClick={() => setOpen(false)}>Zamknij</Button>
+                    <Button variant='contained' color='success' onClick={fetchUserData}>Dodaj swoje dane</Button>
                 </DialogActions>
             </Dialog>
         </>
