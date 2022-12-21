@@ -10,7 +10,7 @@ const SignUp = () => {
         password: "",
         confirmPassword: "",
     })
-    const [error, setError] = useState("")
+    const [errorT, setError] = useState("")
     const navigate = useNavigate()
     const handleChange = ({ currentTarget: input }) => {
         setData({ ...data, [input.name]: input.value })
@@ -28,7 +28,19 @@ const SignUp = () => {
                 error.response.status >= 400 &&
                 error.response.status <= 500
             ) {
-                setError(error.response.data.message)
+                if (error.response.data.errors.Login){
+                    setError(error.response.data.errors.Login[0])
+                }
+                else if (error.response.data.errors.Email){
+                    setError(error.response.data.errors.Email[0])
+                }
+                else if (error.response.data.errors.Password){
+                    setError(error.response.data.errors.Password[0])
+                }
+                else if (error.response.data.errors.ConfirmPassword){
+                    setError(error.response.data.errors.ConfirmPassword[0])
+                }
+                
             }
         }
     }
@@ -78,12 +90,13 @@ const SignUp = () => {
                             required
                             className={styles.input}
                         />
-                        {error && <div
-                            className={styles.error_msg}>{error}</div>}
+                        
                         <button type="submit"
-                            className={styles.blue_btn}>
+                            className={styles.blue_btn} onClick={() => setError("")}>
                             Zarejestruj się
                         </button>
+                        {errorT && <div
+                            className={styles.error_msg}>{errorT}</div>}
                     </form>
                 </div>
                 <div className={styles.bottom}>

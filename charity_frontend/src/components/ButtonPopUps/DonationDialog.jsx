@@ -43,7 +43,7 @@ const DonationDialog = (props) => {
                         <form>
                             <textarea style={{width:'350px',height:'80px',fontWeight:'bold', marginLeft:'45px'}}
                                 placeholder="Podaj wiadomość do donacji" 
-                                value={description}
+                                value={description} spellcheck="false"
                                 onChange={(e) => setDescription(e.target.value)} 
                             />
                             <div style={{marginLeft:'65px',marginBottom:'20px',marginTop:'20px'}} ><Button variant="contained" color="success" style={{fontWeight:'bold',marginRight:'20px'}} onClick={() => setDonate(10)} >10</Button>
@@ -51,7 +51,7 @@ const DonationDialog = (props) => {
                             <Button variant="contained" color="success" style={{fontWeight:'bold',marginRight:'20px'}} onClick={() => setDonate(50)} >50</Button>
                             <Button variant="contained" color="success" style={{fontWeight:'bold',marginRight:'20px'}} onClick={() => setDonate(100)} >100</Button></div>
                             <textarea style={{width:'150px',height:'30px',fontWeight:'bold', marginLeft:'140px'}} type='number' onKeyPress={(event) => {if (!/[0-9]/.test(event.key)) {
-                                event.preventDefault();}}} 
+                                event.preventDefault();}}}  
                                 value={donate}
                                 onChange={(e) => setDonate(e.target.value)} 
                             /> zł

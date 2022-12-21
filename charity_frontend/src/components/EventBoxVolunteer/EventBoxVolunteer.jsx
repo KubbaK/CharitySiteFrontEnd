@@ -12,7 +12,7 @@ const EventBoxVolunteer = (props) =>{
     }
     const truncate = (input) =>
       (input?.length > 200 && props.title.length > 60) ? `${input.substring(0, 250)}...` :
-      (input?.length > 200 && props.title.length <= 60) ? `${input.substring(0, 180)}...` : input;
+      (input?.length > 200 && props.title.length <= 60) ? `${input.substring(0, 150)}...` : input;
 
     return(
         <div>

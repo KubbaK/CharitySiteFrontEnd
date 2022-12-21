@@ -12,12 +12,12 @@ const EventBox = (props) =>{
     const handleClick = () => {
         navigate("/login")
     }
-    console.log(props.atype)
 
     const truncate = (input) =>
-      (input?.length > 200 && props.title.length > 60) ? `${input.substring(0, 250)}...` :
-      (input?.length > 200 && props.title.length <= 60) ? `${input.substring(0, 180)}...` : input;
-    return(
+        (input?.length > 200 && props.title.length > 60) ? `${input.substring(0, 177)}...` :
+        (input?.length > 200 && props.title.length > 40) ? `${input.substring(0, 150)}...` :
+        (input?.length > 200 && props.title.length <= 60) ? `${input.substring(0, 150)}...` : input;
+      return(
         <div>
         {
         props.atype === "normal" &&

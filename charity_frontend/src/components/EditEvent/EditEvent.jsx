@@ -125,7 +125,7 @@ const EditEvent = () => {
             <div className ={styles.field1}>
                 <div><label className={styles.field1_label}> Tytuł akcji  </label></div>
                 <textarea className={styles.input} placeholder="Podaj tytuł"
-                    value={title}
+                    value={title} spellcheck="false"
                     onChange={(e) => setTitle(e.target.value)} 
                 />
             </div>
@@ -133,7 +133,7 @@ const EditEvent = () => {
             <div className={styles.field2}>
             <div><label className={styles.field2_label}> Opis akcji </label> </div>
             <textarea className={styles.input2} placeholder="Podaj opis" 
-                value={description}
+                value={description} spellcheck="false"
                 onChange={(e) => setDescription(e.target.value)} 
              />
             </div>
@@ -142,7 +142,7 @@ const EditEvent = () => {
             <div className={styles.field3}>    
             <div><label className={styles.field3_label}> Cel zbiórki</label></div>
             <textarea className={styles.input3} placeholder="Podaj cel"
-                value={fundTarget}
+                value={fundTarget} spellcheck="false"
                 onChange={(e) => setFundTarget(e.target.value)} 
              />
             </div>}

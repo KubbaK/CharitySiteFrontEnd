@@ -61,7 +61,7 @@ const EventFormVolunteering = () => {
             <div className ={styles.field1}>
                 <div><label className={styles.field1_label}> Tytuł akcji  </label></div>
                 <textarea className={styles.input} placeholder="Podaj tytuł"
-                    value={title}
+                    value={title} spellcheck="false"
                     onChange={(e) => setTitle(e.target.value)} 
                 />
             </div>
@@ -69,7 +69,7 @@ const EventFormVolunteering = () => {
             <div className={styles.field2}>
             <div><label className={styles.field2_label}> Opis akcji </label> </div>
             <textarea className={styles.input2} placeholder="Podaj opis" 
-                value={description}
+                value={description} spellcheck="false"
                 onChange={(e) => setDescription(e.target.value)} 
              />
             </div>
@@ -77,7 +77,7 @@ const EventFormVolunteering = () => {
             <div className={styles.field4}>    
             <div><label className={styles.field4_label}>Ilość potrzebnych wolontariuszy</label></div>
             <input type="number" min="1" onKeyPress={(event) => {if (!/[0-9]/.test(event.key)) {
-                event.preventDefault();}}} 
+                event.preventDefault();}}}  spellcheck="false"
                 className={styles.input4} placeholder="Podaj ilość"
                 value={volunteers}
                 onChange={(e) => setVolunteers(e.target.value)} 

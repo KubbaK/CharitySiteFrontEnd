@@ -7,6 +7,7 @@ import {useCookies} from "react-cookie"
 import { useNavigate } from 'react-router-dom';
 
 const EventFormDonation = () => {
+    const [errorT, setError] = useState("")
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [fundTarget, setFundTarget] = useState("");
@@ -49,8 +50,26 @@ const EventFormDonation = () => {
                 setMessage("Spróbuj jeszcze raz");
                 
               }
-            } catch (err) {
-              console.log(err);
+            } catch (error) {
+                if (
+                    error.response &&
+                    error.response.status >= 400 &&
+                    error.response.status <= 500
+                ) {
+                    if (error.response.data.errors.Login){
+                        setError(error.response.data.errors.Login[0])
+                    }
+                    else if (error.response.data.errors.Email){
+                        setError(error.response.data.errors.Email[0])
+                    }
+                    else if (error.response.data.errors.Password){
+                        setError(error.response.data.errors.Password[0])
+                    }
+                    else if (error.response.data.errors.ConfirmPassword){
+                        setError(error.response.data.errors.ConfirmPassword[0])
+                    }
+                    
+                }
             }
     }
     return (
@@ -61,7 +80,7 @@ const EventFormDonation = () => {
             <div className ={styles.field1}>
                 <div><label className={styles.field1_label}> Tytuł akcji  </label></div>
                 <textarea className={styles.input} placeholder="Podaj tytuł"
-                    value={title}
+                    value={title} spellcheck="false"
                     onChange={(e) => setTitle(e.target.value)} 
                 />
             </div>
@@ -69,7 +88,7 @@ const EventFormDonation = () => {
             <div className={styles.field2}>
             <div><label className={styles.field2_label}> Opis akcji </label> </div>
             <textarea className={styles.input2} placeholder="Podaj opis" 
-                value={description}
+                value={description} spellcheck="false"
                 onChange={(e) => setDescription(e.target.value)} 
              />
             </div>
@@ -77,7 +96,7 @@ const EventFormDonation = () => {
             <div className={styles.field3}>    
             <div><label className={styles.field3_label}> Cel zbiórki</label></div>
             <textarea className={styles.input3} placeholder="Podaj cel"
-                value={fundTarget}
+                value={fundTarget} spellcheck="false"
                 onChange={(e) => setFundTarget(e.target.value)} 
              />
             </div>
@@ -85,7 +104,7 @@ const EventFormDonation = () => {
             <div className={styles.field4}>    
             <div><label className={styles.field4_label}>Kwota do zebrania</label></div>
             <input type="number" min="1" onKeyPress={(event) => {if (!/[0-9]/.test(event.key)) {
-                event.preventDefault();}}} 
+                event.preventDefault();}}}  spellcheck="false"
                 className={styles.input4} placeholder="Podaj kwotę"
                 value={money}
                 onChange={(e) => setMoney(e.target.value)} 

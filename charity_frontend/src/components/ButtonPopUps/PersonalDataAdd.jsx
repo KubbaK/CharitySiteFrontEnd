@@ -62,8 +62,7 @@ const PersonalDataAdd = () => {
                                 onChange={(e) => setName(e.target.value)} 
                             />
                             
-                            <textarea style={{width:'200px',height:'20px',fontWeight:'bold', marginLeft:'45px',fontSize:'20px'}} type='number' onKeyPress={(event) => {if (!/[0-9]/.test(event.key)) {
-                                event.preventDefault();}}} 
+                            <textarea style={{width:'200px',height:'20px',fontWeight:'bold', marginLeft:'45px',fontSize:'20px'}} type='number'
                                 value={surname} spellcheck="false"
                                 onChange={(e) => setSurname(e.target.value)} 
                             />
