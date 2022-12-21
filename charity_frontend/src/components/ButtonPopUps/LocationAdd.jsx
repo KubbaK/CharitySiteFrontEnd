@@ -56,7 +56,7 @@ const LocationAdd = (props) => {
                             <div>
                                 <div><label style={{fontSize:'15px',marginLeft:'185px'}}>Podaj kod pocztowy:</label></div>
                             <textarea style={{width:'300px',height:'20px',fontWeight:'bold', marginLeft:'100px',fontSize:'20px',borderRadius:'5px',marginBottom:'10px'}}
-                                value={postalCode} spellcheck="false"
+                                value={postalCode} spellcheck="false" maxLength={10}
                                 onChange={(e) => setPostalCode(e.target.value)} 
                             />
                             </div>
@@ -64,7 +64,8 @@ const LocationAdd = (props) => {
                             <div>
                                 <div><label style={{fontSize:'15px',marginLeft:'210px'}}>Podaj miasto:</label></div>
                             <textarea style={{width:'300px',height:'20px',fontWeight:'bold', marginLeft:'100px',fontSize:'20px',borderRadius:'5px',marginBottom:'10px'}}
-                                value={town} spellcheck="false"
+                                value={town} spellcheck="false" onKeyPress={(event) => {if (!/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/.test(event.key)) {
+                                    event.preventDefault();}}}
                                 onChange={(e) => setTown(e.target.value)} 
                             />
                             </div>

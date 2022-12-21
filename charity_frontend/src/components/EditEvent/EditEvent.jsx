@@ -14,6 +14,7 @@ const EditEvent = () => {
     const Eventid = params.id
     const [eventData,setEventData] = useState("")
 
+    const [errorT, setError] = useState("")
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [fundTarget, setFundTarget] = useState("");

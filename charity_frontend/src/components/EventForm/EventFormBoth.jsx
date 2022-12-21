@@ -7,6 +7,7 @@ import Footer from "../Footer/Footer.jsx"
 import axios from 'axios';
 
 const EventFormDonation = () => {
+    const [errorT, setError] = useState("")
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [fundTarget, setFundTarget] = useState("");
@@ -24,6 +25,9 @@ const EventFormDonation = () => {
         resolve => setTimeout(resolve, ms)
       );
     const handleSubmit = async(e) => {
+        if (selectedFile === null) {
+            setError("Musisz dodać tytułowe zdjęcie do akcji!")
+        }
         e.preventDefault();
         const formdata = new FormData()
         formdata.append("isVolunteering",true)
@@ -51,8 +55,29 @@ const EventFormDonation = () => {
                 setMessage("Spróbuj jeszcze raz");
                 
               }
-            } catch (err) {
-              console.log(err);
+            } catch (error) {
+                if (
+                    error.response &&
+                    error.response.status >= 400 &&
+                    error.response.status <= 500
+                ) {
+                    if (error.response.data.errors.Title){
+                        setError(error.response.data.errors.Title[0])
+                    }
+                    else if (error.response.data.errors.FundTarget){
+                        setError(error.response.data.errors.FundTarget[0])
+                    }
+                    else if (error.response.data.errors.AmountOfMoneyToCollect){
+                        setError(error.response.data.errors.AmountOfMoneyToCollect[0])
+                    }
+                    else if (error.response.data.errors.AmountOfNeededVolunteers){
+                        setError(error.response.data.errors.AmountOfNeededVolunteers[0])
+                    }
+                    else if (error.response.data.errors.Image){
+                        setError(error.response.data.errors.Image[0])
+                    }
+                   
+                }
             }
     }
     return (
@@ -123,8 +148,11 @@ const EventFormDonation = () => {
             />
             </div>
 
-            <button type = "submit" id= "submitBtn" className ={styles.sub_btn}> Dodaj Ogłoszenie</button>
-            <div className={styles.message}>{message ? <p>{message}</p> : null}</div>
+            <button type = "submit" id= "submitBtn" className ={styles.sub_btn} onClick={() => setError("")}> Dodaj Ogłoszenie</button>
+            {errorT && <div
+                            className={styles.error_msg}>{errorT}</div>
+            }
+            {/* <div className={styles.message}>{message ? <p>{message}</p> : null}</div> */}
         </form>
         
     </div>

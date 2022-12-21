@@ -7,9 +7,9 @@ import {useCookies} from "react-cookie"
 import { useNavigate } from 'react-router-dom';
 
 const EventFormVolunteering = () => {
+    const [errorT, setError] = useState("")
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [fundTarget, setFundTarget] = useState("");
     const [volunteers, setVolunteers] = useState("");
     const [message, setMessage] = useState("");
     const [selectedFile, setSelectedFile] = useState(null);
@@ -25,6 +25,9 @@ const EventFormVolunteering = () => {
       );
 
       const handleSubmit = async(e) => {
+        if (selectedFile === null) {
+            setError("Musisz dodać tytułowe zdjęcie do akcji!")
+        }
         e.preventDefault();
         const formdata = new FormData()
         formdata.append("isVolunteering",true)
@@ -49,8 +52,23 @@ const EventFormVolunteering = () => {
                 setMessage("Spróbuj jeszcze raz");
                 
               }
-            } catch (err) {
-              console.log(err);
+            } catch (error) {
+                if (
+                    error.response &&
+                    error.response.status >= 400 &&
+                    error.response.status <= 500
+                ) {
+                    if (error.response.data.errors.Title){
+                        setError(error.response.data.errors.Title[0])
+                    }
+                    else if (error.response.data.errors.AmountOfNeededVolunteers){
+                        setError(error.response.data.errors.AmountOfNeededVolunteers[0])
+                    }
+                    else if (error.response.data.errors.Image){
+                        setError(error.response.data.errors.Image[0])
+                    }
+                   
+                }
             }
     }
     return (
@@ -102,8 +120,11 @@ const EventFormVolunteering = () => {
             />
             </div>
 
-            <button type = "submit" id= "submitBtn" className ={styles.sub_btn}> Zamieść akcję</button>
-            <div className={styles.message}>{message ? <p>{message}</p> : null}</div>
+            <button type = "submit" id= "submitBtn" className ={styles.sub_btn} onClick={() => setError("")}> Zamieść akcję</button>
+            {errorT && <div
+                            className={styles.error_msg}>{errorT}</div>
+            }
+            {/* <div className={styles.message}>{message ? <p>{message}</p> : null}</div> */}
         </form>
         
     </div>

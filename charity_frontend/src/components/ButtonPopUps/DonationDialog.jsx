@@ -6,9 +6,23 @@ import { useCookies } from 'react-cookie'
 import jwtDecode from 'jwt-decode'
 
 const DonationDialog = (props) => {
+
+    const error_msg = {
+        width: "772px",
+        padding: '14px',
+        margin: '-15px 0',
+        fontSize: '14px',
+        backgroundColor: '#f34646',
+        color: 'white',
+        borderRadius: '0px 0px 10px 10px',
+        textAlign: 'center'
+    };
+
+
+    const [errorT, setError] = useState("")
     const [open,setOpen] = useState(false)
     const [jwtcookie,,] = useCookies(["jwt"]);
-    const [donate,setDonate] = useState(0);
+    const [donate,setDonate] = useState(1);
     const [description,setDescription] = useState("...");
     const token = jwtcookie.jwt
     let id = null
@@ -17,6 +31,7 @@ const DonationDialog = (props) => {
         id = decoded.Id
     }
     const fetchDonation = async () => {
+    
         let res = axios.post("http://localhost:5012/v1/Donation",
         {
             amountOfDonation:donate,
@@ -25,13 +40,13 @@ const DonationDialog = (props) => {
             charityFundraisingIdCharityFundraising:props.props
     },{headers:{Authorization: `Bearer ${token}`}})
             if(res.status === 200){
-                console.log("Udało się")
+                
             }
-        setOpen(false)
-        setDescription("")
-        setDonate(0)
-        window.open("/successDonate")
-    }
+            setOpen(false)
+            setDescription("")
+            setDonate(0)
+            window.open("/successDonate")
+}
     return(
         <><Button variant="contained" style={{width:'300px',fontWeight:'bold',height:'50px'}}onClick={() => setOpen(true)} color='info' >Wpłać Darowiznę</Button>
             <Dialog aria-labelledby='dialog-title' aria-describedby='dialog-description' 
@@ -50,7 +65,7 @@ const DonationDialog = (props) => {
                             <Button variant="contained" color="success" style={{fontWeight:'bold',marginRight:'20px'}} onClick={() => setDonate(20)} >20</Button>
                             <Button variant="contained" color="success" style={{fontWeight:'bold',marginRight:'20px'}} onClick={() => setDonate(50)} >50</Button>
                             <Button variant="contained" color="success" style={{fontWeight:'bold',marginRight:'20px'}} onClick={() => setDonate(100)} >100</Button></div>
-                            <textarea style={{width:'150px',height:'30px',fontWeight:'bold', marginLeft:'140px'}} type='number' onKeyPress={(event) => {if (!/[0-9]/.test(event.key)) {
+                            <input style={{width:'150px',height:'35px',fontWeight:'bold', marginLeft:'140px'}} type='number' min={1} onKeyPress={(event) => {if (!/[0-9]/.test(event.key)) {
                                 event.preventDefault();}}}  
                                 value={donate}
                                 onChange={(e) => setDonate(e.target.value)} 
@@ -62,6 +77,9 @@ const DonationDialog = (props) => {
                     <Button variant="contained" color="warning" onClick={() => setOpen(false)}>Cofnij</Button>
                     <Button variant="contained" color="success" onClick={fetchDonation}>Dodaj donację</Button>
                 </DialogActions>
+                {errorT && <div
+                            style={error_msg}>{errorT}</div>
+            }
             </Dialog>
         </>
     )
