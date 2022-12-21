@@ -39,10 +39,13 @@ useEffect(() => {
           volunteers.map((val, key) => {
                 return (
            <div className={styles.element} key={key}> 
+                <div className={styles.name} style={{marginLeft:'80px'}}> Login:</div> <div>  {val.login} </div>
+                {props.extended !== undefined && 
+                <div>
                 <div style={{display:'flex'}}> <div className={styles.name}>Imię i Nazwisko: </div> <div>{val.allPersonalData.name} {val.allPersonalData.surname} </div> 
                 <div className={styles.name} style={{marginLeft:'20px'}}> Login:</div> <div>  {val.login} </div></div>
-                {props.extended !== undefined && <div style={{display:'flex'}}><div className={styles.name}> Email:</div> <div>  {val.allPersonalData.email} </div>
-                    <div className={styles.name} style={{marginLeft:'20px'}}> Numer telefonu:</div> <div>  {val.allPersonalData.phoneNumber} </div></div> }
+                <div style={{display:'flex'}}><div className={styles.name}> Email:</div> <div>  {val.allPersonalData.email} </div>
+                    <div className={styles.name} style={{marginLeft:'20px'}}> Numer telefonu:</div> <div>  {val.allPersonalData.phoneNumber} </div></div></div> }
            </div>)}).reverse()
             } 
                 </div> ) : ( <div>Brak wolontariuszy</div> )
