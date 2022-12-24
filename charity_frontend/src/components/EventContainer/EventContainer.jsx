@@ -1,14 +1,12 @@
 import React,{useEffect,useState} from "react";
 import axios from "axios";
 import styles from './EventContainer.module.scss'
-import {useNavigate} from 'react-router-dom';
 import { useCookies } from "react-cookie";
 import { Skeleton } from "@mui/material";
 import GetEventsPerPage from "../GetEventsPerPage/GetEventsPerPage";
 
 
 const EventContainer= () => {
-    const navigate = useNavigate()
     const [loaded,setLoaded] = useState(true)
     const [allEvents, setAllEvents] = useState([]);
     const [jwtcookie,,] = useCookies(["jwt"]);

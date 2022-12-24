@@ -48,10 +48,10 @@ const EditEvent = () => {
          
     }
     const unverifyFundraising = async () => {
-        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventFundraising/${eventData.fundraisingId}?isVerified=false&isActive=false&isDenied=false`,headers:{Authorization: `Bearer ${token}`}})
+        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventFundraising/${eventData.idCharityFundraising}?isVerified=false&isActive=false&isDenied=false`,headers:{Authorization: `Bearer ${token}`}})
     }
     const unverifyVolunteering = async () => {
-        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventVolunteering/${eventData.volunteeringId}?isVerified=false&isActive=false&isDenied=false`,headers:{Authorization: `Bearer ${token}`}})
+        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventVolunteering/${eventData.idCharityVolunteering}?isVerified=false&isActive=false&isDenied=false`,headers:{Authorization: `Bearer ${token}`}})
     }
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -62,7 +62,7 @@ const EditEvent = () => {
         const body = {
             title:title,
             description:description,
-            organizerId:id
+            idOrganizer:id
         }
 
         const fundraisingBody = {
@@ -79,12 +79,12 @@ const EditEvent = () => {
             await axios({method:'put',url:"http://localhost:5012/v1/CharityEvent/image/"+Eventid,data:formdata,headers:{'Content-Type': 'multipart/form-data',Authorization: `Bearer ${token}`}})
             .then(await sleep(500)).then(await unverify())
         }
-        if(eventData.fundraisingId !== null){
-            await axios({method:'put',url:"http://localhost:5012/v1/CharityEventFundraising/"+eventData.fundraisingId,data:fundraisingBody,headers:{'Content-Type': 'application/json',Authorization: `Bearer ${token}`}})
+        if(eventData.idCharityFundraising !== null){
+            await axios({method:'put',url:"http://localhost:5012/v1/CharityEventFundraising/"+eventData.idCharityFundraising,data:fundraisingBody,headers:{'Content-Type': 'application/json',Authorization: `Bearer ${token}`}})
             .then(await sleep(500)).then(await unverifyF())
         }
-        if(eventData.volunteeringId !== null){
-            await axios({method:'put',url:"http://localhost:5012/v1/CharityEventVolunteering/"+eventData.volunteeringId,data:volunteeringBody,headers:{'Content-Type': 'application/json',Authorization: `Bearer ${token}`}})
+        if(eventData.idCharityVolunteering !== null){
+            await axios({method:'put',url:"http://localhost:5012/v1/CharityEventVolunteering/"+eventData.idCharityVolunteering,data:volunteeringBody,headers:{'Content-Type': 'application/json',Authorization: `Bearer ${token}`}})
             .then(await sleep(500)).then(await unverifyV())
         }
         sleep(10000)
@@ -94,11 +94,11 @@ const EditEvent = () => {
     const renderData = async (response) =>{
         setTitle(response.title)
         setDescription(response.description)
-        if(response.fundraisingId !== null){
+        if(response.idCharityFundraising !== null){
             setFundTarget(response.charityEventFundraising.fundTarget)
             setMoney(response.charityEventFundraising.amountOfMoneyToCollect)
         }
-        if(response.volunteeringId !== null){
+        if(response.idCharityVolunteering !== null){
             setVolunteers(response.charityEventVolunteering.amountOfNeededVolunteers)
         }
     }
@@ -139,7 +139,7 @@ const EditEvent = () => {
              />
             </div>
 
-            {eventData.fundraisingId !== null &&
+            {eventData.idCharityFundraising !== null &&
             <div className={styles.field3}>    
             <div><label className={styles.field3_label}> Cel zbiórki</label></div>
             <textarea className={styles.input3} placeholder="Podaj cel"
@@ -148,7 +148,7 @@ const EditEvent = () => {
              />
             </div>}
             
-            {eventData.fundraisingId !== null &&
+            {eventData.idCharityFundraising !== null &&
             <div className={styles.field4}>    
             <div><label className={styles.field4_label}>Kwota do zebrania</label></div>
             <input type="number" min="1" onKeyPress={(event) => {if (!/[0-9]/.test(event.key)) {
@@ -159,7 +159,7 @@ const EditEvent = () => {
              />
             </div>}
             
-            {eventData.volunteeringId !== null &&
+            {eventData.idCharityVolunteering !== null &&
             <div className={styles.field4}>    
             <div><label className={styles.field4_label}>Ilość potrzebnych wolontariuszy</label></div>
             <input type="number" min="1" onKeyPress={(event) => {if (!/[0-9]/.test(event.key)) {
@@ -179,8 +179,8 @@ const EditEvent = () => {
             />
             </div>
             <div style={{textAlign:'center',marginRight:'60px'}}>   
-                {eventData.fundraisingId === null && <EventAdd/>}
-                {eventData.volunteeringId === null && <EventAdd/>}
+                {eventData.idCharityFundraising === null && <EventAdd/>}
+                {eventData.idCharityVolunteering === null && <EventAdd/>}
             </div> 
             <button type = "submit" id= "submitBtn" className ={styles.sub_btn}> Edytuj Ogłoszenie</button>
             <div className={styles.message}>{message ? <p>{message}</p> : null}</div>

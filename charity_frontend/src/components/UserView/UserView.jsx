@@ -58,10 +58,10 @@ const UserView = () => {
          
     }
     const deactivateFundraising = async () => {
-        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventFundraising/${eventData.fundraisingId}?isActive=false`,headers:{Authorization: `Bearer ${token}`}})
+        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventFundraising/${eventData.idCharityFundraising}?isActive=false`,headers:{Authorization: `Bearer ${token}`}})
     }
     const deactivateVolunteering = async () => {
-        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventVolunteering/${eventData.volunteeringId}?isActive=false`,headers:{Authorization: `Bearer ${token}`}})
+        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventVolunteering/${eventData.idCharityVolunteering}?isActive=false`,headers:{Authorization: `Bearer ${token}`}})
     }
     return(
         <div>
@@ -108,7 +108,7 @@ const UserView = () => {
                                         {eventData.charityEventFundraising.amountOfMoneyToCollect}
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
-                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.fundraisingId}/></div>
+                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.idCharityFundraising}/></div>
                             </div>:
                         (eventData.charityEventVolunteering !== null && eventData.charityEventFundraising === null) ?
                             <div>
@@ -119,8 +119,8 @@ const UserView = () => {
 
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
-                                <div ><div style={{marginTop:'30px',textAlign:'center',marginBottom:'30px',marginRight:'65px'}}><LocationAdd Eventid={eventData.volunteeringId}/></div><div  style={{marginTop:'0px',textAlign:'center'}}><GetLocationsByIdVolunteering id={eventData.volunteeringId}/></div></div>
-                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.volunteeringId} extended={true}/></div>
+                                <div ><div style={{marginTop:'30px',textAlign:'center',marginBottom:'30px',marginRight:'65px'}}><LocationAdd Eventid={eventData.idCharityVolunteering}/></div><div  style={{marginTop:'0px',textAlign:'center'}}><GetLocationsByIdVolunteering id={eventData.idCharityVolunteering}/></div></div>
+                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.idCharityVolunteering} extended={true}/></div>
                             </div>:
                         (eventData.charityEventVolunteering !== null && eventData.charityEventFundraising !== null && eventData.charityEventVolunteering.isActive === 0 && eventData.charityEventFundraising.isActive === 1) ?
                             <div>
@@ -130,7 +130,7 @@ const UserView = () => {
                                         {eventData.charityEventFundraising.amountOfMoneyToCollect}
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
-                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.fundraisingId}/></div>
+                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.idCharityFundraising}/></div>
                             </div>:
                         (eventData.charityEventFundraising !== null && eventData.charityEventVolunteering !== null && eventData.charityEventVolunteering.isActive === 1 && eventData.charityEventFundraising.isActive === 0 ) ?
                             <div>
@@ -141,8 +141,8 @@ const UserView = () => {
 
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
-                                <div ><div style={{marginTop:'40px',textAlign:'center',marginBottom:'30px',marginRight:'65px'}}><LocationAdd Eventid={eventData.volunteeringId}/></div><div  style={{marginTop:'0px',textAlign:'center'}}><GetLocationsByIdVolunteering id={eventData.volunteeringId}/></div></div>
-                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.volunteeringId} extended={true}/></div>
+                                <div ><div style={{marginTop:'40px',textAlign:'center',marginBottom:'30px',marginRight:'65px'}}><LocationAdd Eventid={eventData.idCharityVolunteering}/></div><div  style={{marginTop:'0px',textAlign:'center'}}><GetLocationsByIdVolunteering id={eventData.idCharityVolunteering}/></div></div>
+                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.idCharityVolunteering} extended={true}/></div>
                             </div>:
                             <div>
                                 <div className={styles.fundT}>Cel zbiórki: {eventData.charityEventFundraising.fundTarget}</div>
@@ -156,9 +156,9 @@ const UserView = () => {
                                             {" wolontariuszy"}
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
-                                <div ><div style={{marginTop:'40px',textAlign:'center',marginBottom:'30px',marginRight:'65px'}}><LocationAdd Eventid={eventData.volunteeringId}/></div><div  style={{marginTop:'0px',textAlign:'center'}}><GetLocationsByIdVolunteering id={eventData.volunteeringId}/></div></div>
-                                <div className={styles.stats}><div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.fundraisingId}/></div>
-                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.volunteeringId} extended={true}/></div></div>
+                                <div ><div style={{marginTop:'40px',textAlign:'center',marginBottom:'30px',marginRight:'65px'}}><LocationAdd Eventid={eventData.idCharityVolunteering}/></div><div  style={{marginTop:'0px',textAlign:'center'}}><GetLocationsByIdVolunteering id={eventData.idCharityVolunteering}/></div></div>
+                                <div className={styles.stats}><div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.idCharityFundraising}/></div>
+                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.idCharityVolunteering} extended={true}/></div></div>
                             </div>
                     }
                 </div>

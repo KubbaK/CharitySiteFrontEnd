@@ -24,7 +24,7 @@ const LocationAdd = (props) => {
     }
     const addLocation = async () =>{
         const body = {
-            idVolunteering: props.Eventid,
+            idCharityVolunteering: props.Eventid,
             postalCode: postalCode,
             town: town,
             street: street

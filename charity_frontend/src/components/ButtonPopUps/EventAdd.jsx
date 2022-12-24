@@ -26,7 +26,7 @@ const EventAdd = () => {
     }
     const addFundraising = async () =>{
         const formdata = new FormData()
-        formdata.append("CharityEventId",Eventid)
+        formdata.append("IdCharityEvent",Eventid)
         formdata.append("FundTarget",fundTarget)
         formdata.append("AmountOfMoneyToCollect",amountOfMoneyToCollect)
 
@@ -40,7 +40,7 @@ const EventAdd = () => {
     }
     const addVolunteering = async () =>{
         const formdata = new FormData()
-        formdata.append("CharityEventId",Eventid)
+        formdata.append("IdCharityEvent",Eventid)
         formdata.append("AmountOfNeededVolunteers",amountOfNeededVolunteers)
         
         let res = await axios.post("http://localhost:5012/v1/CharityEventVolunteering",formdata,
@@ -53,10 +53,10 @@ const EventAdd = () => {
     }
 
     const fetchUserData = async () => {
-        if(eventData.fundraisingId === null){
+        if(eventData.idCharityFundraising === null){
             addFundraising()
         }
-        if(eventData.volunteeringId === null){
+        if(eventData.idCharityVolunteering === null){
             addVolunteering()
         }
     }
@@ -82,7 +82,7 @@ const EventAdd = () => {
                         <div style={{width:"520px",height:"50px",textAlign:'center'}}> Twoja akcja zyskała nową funkcjonalność? Nie musisz tworzyć nowej! 
                             Uzupełnij informacje tutaj i przekaż administratorowi do weryfikacji.</div><br/>
                         <form>
-                            {eventData.fundraisingId === null &&
+                            {eventData.idCharityFundraising === null &&
                             <div>
                                 
                                 <div><label style={{fontSize:'15px',marginLeft:'200px'}}>Podaj cel zbiórki:</label></div>
@@ -91,7 +91,7 @@ const EventAdd = () => {
                                 onChange={(e) => setFundTarget(e.target.value)} 
                             />
                             </div>}
-                            {eventData.fundraisingId === null &&
+                            {eventData.idCharityFundraising === null &&
                             <div>
                                
                                 <div><label style={{fontSize:'15px',marginLeft:'155px'}}>Podaj ilość pieniędzy do zebrania:</label></div>
@@ -101,7 +101,7 @@ const EventAdd = () => {
                                 onChange={(e) => setAmountOfMoneyToCollect(e.target.value)} 
                             />
                             </div>}
-                            {eventData.volunteeringId === null && 
+                            {eventData.idCharityVolunteering === null && 
                             <div>
                                 
                                 <div><label style={{fontSize:'15px',marginLeft:'155px'}}>Podaj ilu wolontariuszy potrzeba:</label></div>

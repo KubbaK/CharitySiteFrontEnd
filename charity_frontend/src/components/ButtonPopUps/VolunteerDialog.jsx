@@ -33,7 +33,7 @@ const VolunteerDialog = (props) => {
     const fetchVolunteer = async () => { 
             setError("")
             if(dataExist === true){
-            let res = await axios.post("http://localhost:5012/v1/Volunteer",{idUser:id,idVolunteering:props.props},
+            let res = await axios.post("http://localhost:5012/v1/Volunteer",{idUser:id,idCharityVolunteering:props.props},
             {headers:{Authorization: `Bearer ${token}`}})
             .catch(function (error) {
             if(

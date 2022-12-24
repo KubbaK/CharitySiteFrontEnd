@@ -21,9 +21,6 @@ const UserDeniedView = () => {
     const goBack = () =>{
       navigate(-2)
     }
-    async function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
     useEffect(() => {
         const fetchEvents = async () => {
             axios.get("http://localhost:5012/v1/Search/"+id,{headers:{Authorization: `Bearer ${token}`}})

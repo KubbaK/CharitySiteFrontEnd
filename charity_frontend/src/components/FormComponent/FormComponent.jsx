@@ -5,7 +5,6 @@ import NavBar from "../NavigationBar/NavBar.jsx"
 import EventFormVolunteering from '../EventForm/EventFormVolunteering';
 import EventFormBoth from '../EventForm/EventFormBoth';
 import {useCookies} from "react-cookie"
-import Footer from '../Footer/Footer';
 
 
 const FormComponent = () =>{

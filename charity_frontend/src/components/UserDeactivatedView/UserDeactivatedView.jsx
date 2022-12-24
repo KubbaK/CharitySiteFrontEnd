@@ -58,10 +58,10 @@ const UserDeactivatedView = () => {
          
     }
     const activateFundraising = async () => {
-        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventFundraising/${eventData.fundraisingId}?isActive=true`,headers:{Authorization: `Bearer ${token}`}})
+        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventFundraising/${eventData.idCharityFundraising}?isActive=true`,headers:{Authorization: `Bearer ${token}`}})
     }
     const activateVolunteering = async () => {
-        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventVolunteering/${eventData.volunteeringId}?isActive=true`,headers:{Authorization: `Bearer ${token}`}})
+        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventVolunteering/${eventData.idCharityVolunteering}?isActive=true`,headers:{Authorization: `Bearer ${token}`}})
     }
     return(
         <div>
@@ -129,7 +129,7 @@ const UserDeactivatedView = () => {
                                         {eventData.charityEventFundraising.amountOfMoneyToCollect}
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
-                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.fundraisingId}/></div>
+                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.idCharityFundraising}/></div>
                             </div>:
                         (eventData.charityEventVolunteering !== null && eventData.charityEventFundraising === null) ?
                             <div>
@@ -140,8 +140,8 @@ const UserDeactivatedView = () => {
 
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
-                                <div className={styles.stats1} style={{justifyContent:'center'}}><div  style={{marginTop:'0px'}}><GetLocationsByIdVolunteering id={eventData.volunteeringId}/></div></div>
-                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.volunteeringId}/></div>
+                                <div className={styles.stats1} style={{justifyContent:'center'}}><div  style={{marginTop:'0px'}}><GetLocationsByIdVolunteering id={eventData.idCharityVolunteering}/></div></div>
+                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.idCharityVolunteering}/></div>
 
                             </div>:
                         (eventData.charityEventVolunteering !== null && eventData.charityEventFundraising !== null && eventData.charityEventVolunteering.isActive === 0 && eventData.charityEventFundraising.isActive === 1) ?
@@ -153,8 +153,8 @@ const UserDeactivatedView = () => {
 
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
-                                <div className={styles.stats1} style={{justifyContent:'center'}}><div  style={{marginTop:'0px'}}><GetLocationsByIdVolunteering id={eventData.volunteeringId}/></div></div>
-                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.volunteeringId}/></div>
+                                <div className={styles.stats1} style={{justifyContent:'center'}}><div  style={{marginTop:'0px'}}><GetLocationsByIdVolunteering id={eventData.idCharityVolunteering}/></div></div>
+                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.idCharityVolunteering}/></div>
 
                             </div>:
                         (eventData.charityEventFundraising !== null && eventData.charityEventVolunteering !== null && eventData.charityEventVolunteering.isActive === 1 && eventData.charityEventFundraising.isActive === 0 ) ?
@@ -165,7 +165,7 @@ const UserDeactivatedView = () => {
                                         {eventData.charityEventFundraising.amountOfMoneyToCollect}
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
-                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.fundraisingId}/></div>
+                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.idCharityFundraising}/></div>
 
                             </div>:
                             <div>
@@ -180,9 +180,9 @@ const UserDeactivatedView = () => {
                                             {" wolontariuszy"}
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
-                                <div className={styles.stats}><div style={{marginTop:'0px',marginBottom:'30px',marginTop:'20px'}}><GetLocationsByIdVolunteering id={eventData.volunteeringId}/></div></div>
-                                <div className={styles.stats}><div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.fundraisingId}/></div>
-                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.volunteeringId}/></div></div>
+                                <div className={styles.stats}><div style={{marginTop:'0px',marginBottom:'30px',marginTop:'20px'}}><GetLocationsByIdVolunteering id={eventData.idCharityVolunteering}/></div></div>
+                                <div className={styles.stats}><div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.idCharityFundraising}/></div>
+                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.idCharityVolunteering}/></div></div>
                             </div>
                     }
                 </div>

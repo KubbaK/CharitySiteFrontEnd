@@ -29,18 +29,17 @@ const EventFormDonation = () => {
         }
         e.preventDefault();
         const formdata = new FormData()
-        formdata.append("isVolunteering",false)
-        formdata.append("isFundraising",true)
-        formdata.append("title",title)
-        formdata.append("description",description)
-        formdata.append("organizerId",id)
-        formdata.append("imageCharityEvent",selectedFile,selectedFile.name)
+        formdata.append("IsVolunteering",false)
+        formdata.append("IsFundraising",true)
+        formdata.append("Title",title)
+        formdata.append("Description",description)
+        formdata.append("IdOrganizer",id)
+        formdata.append("ImageCharityEvent",selectedFile,selectedFile.name)
         for (let i = 0; i < files.length; i++) {
-            formdata.append("imagesCharityEvent", files[i])
+            formdata.append("ImagesCharityEvent", files[i])
         }
-        formdata.append("fundTarget",fundTarget)
-        formdata.append("amountOfMoneyToCollect",money)
-        console.log(formdata)
+        formdata.append("FundTarget",fundTarget)
+        formdata.append("AmountOfMoneyToCollect",money)
         try{
             let res = await axios.post("http://localhost:5012/v1/CharityEvent",formdata,
             {headers:{'Content-Type': 'multipart/form-data',Authorization: `Bearer ${token}`}})

@@ -4,7 +4,6 @@ import {RotatingLines} from 'react-loader-spinner'
 import { useNavigate } from "react-router-dom";
 
 const SuccessfullDonate = () => {
-    const navigate = useNavigate();
     const close = () =>{
         window.close()
     }

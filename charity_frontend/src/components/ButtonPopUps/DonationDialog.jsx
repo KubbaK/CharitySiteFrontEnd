@@ -36,8 +36,8 @@ const DonationDialog = (props) => {
         {
             amountOfDonation:donate,
             description:description,
-            userIdUser:id,
-            charityFundraisingIdCharityFundraising:props.props
+            idUser:id,
+            idCharityFundraising:props.props
     },{headers:{Authorization: `Bearer ${token}`}})
             if(res.status === 200){
                 

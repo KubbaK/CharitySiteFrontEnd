@@ -52,10 +52,10 @@ const VerificationView = () => {
          
     }
     const verifyFundraising = async () => {
-        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventFundraising/${eventData.fundraisingId}?isVerified=true&isActive=true`,headers:{Authorization: `Bearer ${token}`}})
+        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventFundraising/${eventData.idCharityFundraising}?isVerified=true&isActive=true`,headers:{Authorization: `Bearer ${token}`}})
     }
     const verifyVolunteering = async () => {
-        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventVolunteering/${eventData.volunteeringId}?isVerified=true&isActive=true`,headers:{Authorization: `Bearer ${token}`}})
+        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventVolunteering/${eventData.idCharityVolunteering}?isVerified=true&isActive=true`,headers:{Authorization: `Bearer ${token}`}})
     }
 
     const denied = async () => {
@@ -72,10 +72,10 @@ const VerificationView = () => {
          
     }
     const deniedFundraising = async () => {
-        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventFundraising/${eventData.fundraisingId}?isVerified=true&isDenied=true`,headers:{Authorization: `Bearer ${token}`}})
+        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventFundraising/${eventData.idCharityFundraising}?isVerified=true&isDenied=true`,headers:{Authorization: `Bearer ${token}`}})
     }
     const deniedVolunteering = async () => {
-        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventVolunteering/${eventData.volunteeringId}?isVerified=true&isDenied=true`,headers:{Authorization: `Bearer ${token}`}})
+        axios({method:'patch',url:`http://localhost:5012/v1/CharityEventVolunteering/${eventData.idCharityVolunteering}?isVerified=true&isDenied=true`,headers:{Authorization: `Bearer ${token}`}})
     }
     return(
         <div>

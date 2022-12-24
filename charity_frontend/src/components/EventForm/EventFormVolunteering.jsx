@@ -30,16 +30,16 @@ const EventFormVolunteering = () => {
         }
         e.preventDefault();
         const formdata = new FormData()
-        formdata.append("isVolunteering",true)
-        formdata.append("isFundraising",false)
-        formdata.append("title",title)
-        formdata.append("description",description)
-        formdata.append("organizerId",id)
-        formdata.append("imageCharityEvent",selectedFile,selectedFile.name)
+        formdata.append("IsVolunteering",true)
+        formdata.append("IsFundraising",false)
+        formdata.append("Title",title)
+        formdata.append("Description",description)
+        formdata.append("IdOrganizer",id)
+        formdata.append("ImageCharityEvent",selectedFile,selectedFile.name)
         for (let i = 0; i < files.length; i++) {
-            formdata.append("imagesCharityEvent", files[i])
+            formdata.append("ImagesCharityEvent", files[i])
         }
-        formdata.append("amountOfNeededVolunteers",volunteers)
+        formdata.append("AmountOfNeededVolunteers",volunteers)
         try{
             let res = await axios.post("http://localhost:5012/v1/CharityEvent",formdata,
             {headers:{'Content-Type': 'multipart/form-data',Authorization: `Bearer ${token}`}})

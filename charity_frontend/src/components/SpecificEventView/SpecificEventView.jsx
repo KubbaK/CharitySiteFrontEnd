@@ -42,7 +42,6 @@ const SpecificEventView = () => {
      fetchEvents()
      fetchPhotos()
     },[]);
-    console.log(eventData)
     return(
         <div>
         <div className={styles.fixfooter}>
@@ -60,10 +59,10 @@ const SpecificEventView = () => {
                                 <div className={styles.money}>{"Obecnie zebrano: "}
                                     {eventData.charityEventFundraising.amountOfAlreadyCollectedMoney}/
                                         {eventData.charityEventFundraising.amountOfMoneyToCollect}
-                                        <div className={styles.button}><DonationDialog props={eventData.charityEventFundraising.id} /></div>
+                                        <div className={styles.button}><DonationDialog props={eventData.idCharityFundraising} /></div>
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
-                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.fundraisingId}/></div>
+                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.idCharityFundraising}/></div>
                             </div>:
                         (eventData.charityEventVolunteering !== null && eventData.charityEventFundraising === null) ?
                             <div>
@@ -71,11 +70,11 @@ const SpecificEventView = () => {
                                     {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
                                         {eventData.charityEventVolunteering.amountOfNeededVolunteers}
                                             {" potrzebnych wolontariuszy"}
-                                    <div className={styles.button}><VolunteerDialog props={eventData.charityEventVolunteering.id} /></div>
+                                    <div className={styles.button}><VolunteerDialog props={eventData.idCharityVolunteering} /></div>
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
-                                <div className={styles.stats1} style={{justifyContent:'center'}}><div  style={{marginTop:'0px'}}><GetLocationsByIdVolunteering id={eventData.volunteeringId}/></div></div>
-                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.volunteeringId}/></div>
+                                <div className={styles.stats1} style={{justifyContent:'center'}}><div  style={{marginTop:'0px'}}><GetLocationsByIdVolunteering id={eventData.idCharityVolunteering}/></div></div>
+                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.idCharityVolunteering}/></div>
                             </div>:
                         (eventData.charityEventVolunteering !== null && eventData.charityEventFundraising !== null && eventData.charityEventVolunteering.isActive === 1 && eventData.charityEventFundraising.isActive === 0) ?
                             <div>
@@ -83,11 +82,11 @@ const SpecificEventView = () => {
                                     {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
                                         {eventData.charityEventVolunteering.amountOfNeededVolunteers}
                                             {" potrzebnych wolontariuszy"}
-                                    <div className={styles.button}><VolunteerDialog props={eventData.charityEventVolunteering.id} /></div>
+                                    <div className={styles.button}><VolunteerDialog props={eventData.idCharityVolunteering} /></div>
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
-                                <div className={styles.stats1} style={{justifyContent:'center'}}><div  style={{marginTop:'0px'}}><GetLocationsByIdVolunteering id={eventData.volunteeringId}/></div></div>
-                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.volunteeringId}/></div>
+                                <div className={styles.stats1} style={{justifyContent:'center'}}><div  style={{marginTop:'0px'}}><GetLocationsByIdVolunteering id={eventData.idCharityVolunteering}/></div></div>
+                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.idCharityVolunteering}/></div>
                             </div>:
                         (eventData.charityEventFundraising !== null && eventData.charityEventVolunteering !== null && eventData.charityEventVolunteering.isActive === 0 && eventData.charityEventFundraising.isActive === 1 ) ?
                             <div>
@@ -95,28 +94,28 @@ const SpecificEventView = () => {
                                 <div className={styles.money}>{"Obecnie zebrano: "}
                                     {eventData.charityEventFundraising.amountOfAlreadyCollectedMoney}/
                                         {eventData.charityEventFundraising.amountOfMoneyToCollect}
-                                        <div className={styles.button}><DonationDialog props={eventData.charityEventFundraising.id} /></div>
+                                        <div className={styles.button}><DonationDialog props={eventData.idCharityFundraising} /></div>
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
-                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.fundraisingId}/></div>
+                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.idCharityFundraising}/></div>
                             </div>:
                             <div>
                                 <div className={styles.fundT}>Cel zbiórki: {eventData.charityEventFundraising.fundTarget}</div>
                                 <div className={styles.money}>{"Obecnie zebrano: "}
                                     {eventData.charityEventFundraising.amountOfAlreadyCollectedMoney}/
                                         {eventData.charityEventFundraising.amountOfMoneyToCollect} zł
-                                        <div className={styles.button}><DonationDialog props={eventData.charityEventFundraising.id} /></div>
+                                        <div className={styles.button}><DonationDialog props={eventData.idCharityFundraising} /></div>
                                 </div>
                                 <div className={styles.volunteer}>{"Zgłosiło się "}
                                     {eventData.charityEventVolunteering.amountOfAttendedVolunteers}/
                                         {eventData.charityEventVolunteering.amountOfNeededVolunteers}
                                             {" wolontariuszy"}
-                                    <div className={styles.button}><VolunteerDialog props={eventData.charityEventVolunteering.id} /></div>
+                                    <div className={styles.button}><VolunteerDialog props={eventData.idCharityVolunteering} /></div>
                                 </div>
                                 <div className={styles.photos}><EventCarousel photos={photos}/></div>
-                                <div className={styles.stats}><div style={{marginTop:'0px',marginBottom:'30px',marginTop:'20px'}}><GetLocationsByIdVolunteering id={eventData.volunteeringId}/></div></div>
-                                <div className={styles.stats}><div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.fundraisingId}/></div>
-                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.volunteeringId}/></div></div>
+                                <div className={styles.stats}><div style={{marginTop:'0px',marginBottom:'30px',marginTop:'20px'}}><GetLocationsByIdVolunteering id={eventData.idCharityVolunteering}/></div></div>
+                                <div className={styles.stats}><div style={{marginBottom:'20px',marginTop:'20px'}}><GetDonationsById id={eventData.idCharityFundraising}/></div>
+                                <div style={{marginBottom:'20px',marginTop:'20px'}}><GetVolunteersById id={eventData.idCharityVolunteering}/></div></div>
                             </div>
                     }    
                 </div>

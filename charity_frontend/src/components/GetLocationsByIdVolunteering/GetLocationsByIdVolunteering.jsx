@@ -12,7 +12,7 @@ const token = jwtcookie.jwt
 
 const fetchLocationsByIdVolunteering = () =>
 { 
-     axios.get("http://localhost:5012/v1/location/CharityEventVolunteering/"+props.id,
+     axios.get("http://localhost:5012/v1/Location/charityEventVolunteering/"+props.id,
     {
         headers:{ Authorization: `Bearer ${token}`}
     }).then(response => {

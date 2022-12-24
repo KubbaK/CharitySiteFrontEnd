@@ -6,7 +6,7 @@ import {useCookies} from "react-cookie"
 import Footer from "../Footer/Footer.jsx"
 import axios from 'axios';
 
-const EventFormDonation = () => {
+const EventFormBoth = () => {
     const [errorT, setError] = useState("")
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -30,18 +30,18 @@ const EventFormDonation = () => {
         }
         e.preventDefault();
         const formdata = new FormData()
-        formdata.append("isVolunteering",true)
-        formdata.append("isFundraising",true)
-        formdata.append("title",title)
-        formdata.append("description",description)
-        formdata.append("organizerId",id)
-        formdata.append("imageCharityEvent",selectedFile,selectedFile.name)
+        formdata.append("IsVolunteering",true)
+        formdata.append("IsFundraising",true)
+        formdata.append("Title",title)
+        formdata.append("Description",description)
+        formdata.append("IdOrganizer",id)
+        formdata.append("ImageCharityEvent",selectedFile,selectedFile.name)
         for (let i = 0; i < files.length; i++) {
-            formdata.append("imagesCharityEvent", files[i])
+            formdata.append("ImagesCharityEvent", files[i])
         }
-        formdata.append("fundTarget",fundTarget)
-        formdata.append("amountOfMoneyToCollect",money)
-        formdata.append("amountOfNeededVolunteers",volunteers)
+        formdata.append("FundTarget",fundTarget)
+        formdata.append("AmountOfMoneyToCollect",money)
+        formdata.append("AmountOfNeededVolunteers",volunteers)
         
         try{
             let res = await axios.post("http://localhost:5012/v1/CharityEvent",formdata,
@@ -165,4 +165,4 @@ const EventFormDonation = () => {
 )
 }
 
-export default EventFormDonation
+export default EventFormBoth
