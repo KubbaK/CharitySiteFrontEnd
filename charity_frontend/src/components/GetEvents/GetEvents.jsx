@@ -1,3 +1,6 @@
+// MIT License
+// Copyright (c) 2014 Call-Em-All, https://v4.mui.com/
+
 import React,{useState,useEffect} from "react";
 import axios from "axios";
 import {useCookies} from "react-cookie";
@@ -52,7 +55,7 @@ const GetEvents = () => {
             <div className={styles.page}>
               {allEvents.length === 0 && <div className={styles.brak}>BRAK AKCJI!</div>}
               <GetEventsPerPage allEvents={allEvents} atype='normal' loaded={loaded}/>
-              <Pagination eventsPerPage={eventsPerPage} totalEvents={totalPages} paginate={paginate} />
+              <Pagination  totalEvents={totalPages} paginate={paginate} />
             </div>
           }
           <Footer/>

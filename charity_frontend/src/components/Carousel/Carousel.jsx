@@ -1,3 +1,6 @@
+//MIT LICENSE
+//Copyright (c) 2015-present Ant UED, https://xtech.antfin.com/
+
 import { Carousel } from 'antd';
 import styled from 'styled-components';
 import 'antd/lib/carousel/style/index.css'

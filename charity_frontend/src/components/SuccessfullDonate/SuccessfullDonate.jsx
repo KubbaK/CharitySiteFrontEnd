@@ -1,7 +1,11 @@
+//MIT License
+//Copyright (c) 2018 Mohan Pd., https://www.npmjs.com/package/react-loader-spinner
+// MIT License
+// Copyright (c) 2014 Call-Em-All, https://v4.mui.com/
+
 import { Button } from '@mui/material'
 import {React} from 'react'
 import {RotatingLines} from 'react-loader-spinner'
-import { useNavigate } from "react-router-dom";
 
 const SuccessfullDonate = () => {
     const close = () =>{

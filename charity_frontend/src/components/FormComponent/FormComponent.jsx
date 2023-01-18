@@ -8,27 +8,28 @@ import {useCookies} from "react-cookie"
 
 
 const FormComponent = () =>{
-    const [rodzaj,setRodzaj] = useState("donate");
-    
-    const [donateVisible,setDonate] = useState(false);
-    const [volunteeringVisible,setVolunteering] = useState(false);
-    const [bothVisible,setBoth] = useState(false);
-
     const [jwtcookie,,] = useCookies(["jwt"]);
+
+    
+    const [actionType,setActionType] = useState("donate");
+    const [donateIsVisible,setDonate] = useState(false);
+    const [volunteeringIsVisible,setVolunteering] = useState(false);
+    const [bothIsVisible,setBoth] = useState(false);
+    
     useEffect(() => {
-        rodzaj === "donate"
+        actionType === "donate"
         ? setDonate(true)
         : setDonate(false);
-        rodzaj === "volunteering"
+        actionType === "volunteering"
         ? setVolunteering(true)
         : setVolunteering(false);
-        rodzaj === "both"
+        actionType === "both"
         ? setBoth(true)
         : setBoth(false);
-     } ,[rodzaj]);
+     } ,[actionType]);
 
     function handleOnChange(event) {
-            setRodzaj(event.target.value);
+            setActionType(event.target.value);
         }  
     return(
         <div >
@@ -39,16 +40,19 @@ const FormComponent = () =>{
                 <h1>Utwórz swoją akcję charytatywną</h1>
             </div>
             <div className={styles.selection}>
-            <div className={styles.selectLabel}><label>Jaką akcję chcesz stworzyć?</label></div>
-                <select className={styles.select} value={rodzaj} onChange={handleOnChange}>
+                <div className={styles.selectLabel}>
+                    <label>Jaką akcję chcesz stworzyć?</label>
+                </div>
+                <select className={styles.select} value={actionType} 
+                    onChange={handleOnChange}>
                     <option value="donate">Akcja pieniężna</option>
                     <option value="volunteering">Akcja wolontariacka</option>
                     <option value="both">Akcja mieszana</option>
                 </select>
             </div>
-            {donateVisible  && <EventFormDonation/>}
-            {volunteeringVisible && <EventFormVolunteering/>}
-            {bothVisible && <EventFormBoth/>}
+            {donateIsVisible  && <EventFormDonation/>}
+            {volunteeringIsVisible && <EventFormVolunteering/>}
+            {bothIsVisible && <EventFormBoth/>}
             </div>
            
             }

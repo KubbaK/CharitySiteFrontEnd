@@ -1,3 +1,6 @@
+// MIT License
+// Copyright (c) 2014 Call-Em-All, https://v4.mui.com/
+
 import React, {useState,useEffect} from 'react';
 import { useParams } from "react-router-dom";
 import styles from './EditEvent.module.scss'

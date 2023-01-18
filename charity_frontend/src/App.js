@@ -1,9 +1,7 @@
 import './App.css';
 import React from 'react';
 import {Route,Routes} from "react-router-dom"
-import Signup from './components/SignUp/SignUp.jsx'
-import Login from './components/Login/Login.jsx'
-import MainPage from './components/MainPage/MainPage';
+
 import EventTypeChoose from './components/EventTypeChoose/EventTypeChoose';
 import FormComponent from './components/FormComponent/FormComponent';
 import UserAccount from './components/UserAccount/UserAccount';
@@ -19,6 +17,9 @@ import UserDeactivatedView from './components/UserDeactivatedView/UserDeactivate
 import UserVolunteerView from './components/UserVolunteerView/UserVolunteerView';
 import UserDeniedView from './components/UserDeniedView/UserDeniedView';
 import EditEvent from './components/EditEvent/EditEvent';
+import Signup from './components/SignUp/SignUp.jsx'
+import Login from './components/Login/Login.jsx'
+import MainPage from './components/MainPage/MainPage';
 
 function App() {
   return (

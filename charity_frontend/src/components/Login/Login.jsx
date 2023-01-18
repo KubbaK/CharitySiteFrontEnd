@@ -14,6 +14,7 @@ const Login = () => {
         setData({ ...data, [input.name]: input.value })
     }
     const [errorT, setError] = useState("")
+    
     const [, setJwtcookie] = useCookies(["jwt"]);
     const navigate = useNavigate()
 

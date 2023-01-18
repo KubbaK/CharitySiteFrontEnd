@@ -1,3 +1,6 @@
+// MIT License
+// Copyright (c) 2014 Call-Em-All, https://v4.mui.com/
+
 import React,{useState,useEffect} from "react";
 import axios from "axios";
 import {useCookies} from "react-cookie";
